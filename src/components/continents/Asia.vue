@@ -35,7 +35,9 @@
 
 
    <router-link to="/register"  class="link" v-if="isLogged === false">Login</router-link> 
-   <router-link to="/VisaFormPage"  class="link" v-if="isLogged === true">Devis</router-link> 
+   <div  @click="devisForm(item.translations.fr)" > 
+            <router-link to="/DevisFormePage" class="link" v-if="isLogged === true">Devis</router-link>
+        </div>
 
   </div>
                    </div>
@@ -162,15 +164,24 @@ function initDealCarrousel(dealCarrouselID) {
 initDealCarrousel('va_containerAsia'); //carrousel ID
     },
     methods: {
-      checkIfIsLogged () {
-      let token = localStorage.getItem('password')
-      //localStorage.getItem('access-token')
-      if (token) {
-        return true
-      } else {
-        return false
-      }
-    },
+      devisForm(country){
+   localStorage.setItem("selected_country", country)
+            },
+      singout() {
+            localStorage.removeItem("access-token");
+            this.isLogged = this.checkIfIsLogged();
+            localStorage.clear();
+            window.location.href = "/";
+        },
+        checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
     },
   };
   </script>

@@ -10,25 +10,27 @@
         </div>
 
         <div class="social-icons">
-          <!-- <ul>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/facebook.png" title="facebook"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/twitter.png" title="twitter"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/google.png" title="google pluse"
-                /></a>
-              </li>
-            </ul> -->
+          <ul v-if="isLogged === false">
+            <li>
+              <a href="#"
+                ><img src="@/assets/images/facebook.png" title="facebook"
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="@/assets/images/twitter.png" title="twitter"
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="@/assets/images/google.png" title="google pluse"
+              /></a>
+            </li>
+          </ul>
 
-          <div v-if="isLogged === false">
+
+
+          <div v-if="isLogged === true">
             <b-dropdown
             id="dropdown-dropleft"
             dropleft
@@ -73,7 +75,7 @@
       <div class="top-nav">
         <div class="top-nav-left">
           <ul>
-            <li><router-link to="/"> Accueil 34434343434</router-link></li>
+            <li><router-link to="/"> Accueil</router-link></li>
             <li class="active">
               <router-link to="/Visas"> visa </router-link>
             </li>
@@ -90,25 +92,26 @@
         </div>
 
         <div class="top-nav-right">
-          <div class="telephone">
-            <span
-              ><i class="phone_img"
-                ><img src="@/assets/images/phone.png" alt=""
-              /></i>
-              TEL</span
-            ><span class="number">075-363-0510</span>
+            <div class="telephone" v-if="isLogged === true">
+              <span
+                ><i class="phone_img"
+                  ><img src="@/assets/images/phone.png" alt=""
+                /></i>
+                TEL</span
+              ><span class="number">075-363-0510</span>
+            </div>
           </div>
-        </div>
-
-        <div class="top-nav-right">
+          <li v-if="isLogged === false"><router-link to="/Register">  <div class="top-nav-right">
           <div class="telephone">
             <span
               ><i class="phone_img"
                 ><img src="@/assets/user.png" alt=""
-              /></i> </span
+              /></i>
+              </span
             ><span class="number">Espace Client</span>
           </div>
-        </div>
+        </div> </router-link></li>
+      
 
         <div class="clear"></div>
       </div>
@@ -133,21 +136,26 @@ export default {
     });
   },
   methods: {
-    checkIfIsLogged() {
-      let token = localStorage.getItem("password");
-      //localStorage.getItem('access-token')
-      if (token) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+    singout() {
+            localStorage.removeItem("access-token");
+            this.isLogged = this.checkIfIsLogged();
+            localStorage.clear();
+            window.location.href = "/";
+        },
+        checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
   },
 };
 </script>
 
 <style scoped>
-/* http://caniuse.com/#search=variables */
 :root {
   --avatar-size: 18rem;
   /* change this value anything, e.g., 100px, 10rem, etc. */

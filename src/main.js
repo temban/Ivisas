@@ -15,7 +15,7 @@ import EventBus from './EventBus'
 
 
 Vue.prototype.$bus = EventBus;
-Vue.prototype.$url = "http://192.168.16.120:3000"
+Vue.prototype.$url = "http://192.168.43.210:3000"
 
 
 Vue.use(axios);

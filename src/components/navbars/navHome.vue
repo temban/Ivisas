@@ -10,7 +10,7 @@
         </div>
 
         <div class="social-icons">
-          <ul>
+          <ul v-if="isLogged === false">
             <li>
               <a href="#"
                 ><img src="@/assets/images/facebook.png" title="facebook"
@@ -27,6 +27,47 @@
               /></a>
             </li>
           </ul>
+
+
+
+          <div v-if="isLogged === true">
+            <b-dropdown
+            id="dropdown-dropleft"
+            dropleft
+              size="lg"
+              variant="link"
+              toggle-class="text-decoration-none dropleft"
+              no-caret
+            >
+              <template #button-content>
+                <div
+                  style="
+                    max-width: 100%;
+                    max-height: 100%;
+                    height: 50px;
+                    width: 50px;
+                    z-index: 3; 
+                  "
+                >
+                  <i
+                    class="fa fa-caret-down"
+                  ></i>
+
+                  <div class="placeholder">
+                    <span class="placeholder-text">TB</span>
+                  </div>
+                </div>
+              </template>
+              <div class="drop">
+                <router-link to="/UserDashboard" >  <b-dropdown-item href="/userDashboard"
+                  >Mon Espace </b-dropdown-item
+                ></router-link> 
+                <b-dropdown-item @click="singout"
+                  >Se déconnecter</b-dropdown-item
+                >
+              </div>
+            </b-dropdown>
+          </div>
         </div>
         <div class="clear"></div>
       </div>
@@ -48,7 +89,7 @@
           </ul>
         </div>
         <div class="top-nav-right">
-            <div class="telephone">
+            <div class="telephone" v-if="isLogged === true">
               <span
                 ><i class="phone_img"
                   ><img src="@/assets/images/phone.png" alt=""
@@ -57,8 +98,7 @@
               ><span class="number">075-363-0510</span>
             </div>
           </div>
-          
-        <div class="top-nav-right">
+          <li v-if="isLogged === false"><router-link to="/Register">  <div class="top-nav-right">
           <div class="telephone">
             <span
               ><i class="phone_img"
@@ -67,7 +107,8 @@
               </span
             ><span class="number">Espace Client</span>
           </div>
-        </div>
+        </div> </router-link></li>
+      
 
         <div class="clear"></div>
       </div>
@@ -92,21 +133,59 @@ export default {
     });
   },
   methods: {
-    checkIfIsLogged() {
-      let token = localStorage.getItem("password");
-      //localStorage.getItem('access-token')
-      if (token) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+    singout() {
+            localStorage.removeItem("access-token");
+            this.isLogged = this.checkIfIsLogged();
+            localStorage.clear();
+            window.location.href = "/";
+        },
+        checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
   },
 };
 </script>
 
 <style scoped>
+:root {
+  --avatar-size: 18rem;
+  /* change this value anything, e.g., 100px, 10rem, etc. */
+}
 
+.placeholder {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  float: right;
+  border-radius: 50%;
+  background: goldenrod;
+  transition: 0.5s;
+}
+.placeholder-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 30px;
+}
+.fa-caret-down{
+  font-size: 25px;
+                      position: absolute;
+                      z-index: 2;
+                      top: 45px;
+                      bottom: 0;
+                      left: 0px;
+                      right: 60px;
+  }
 button {
   height: 50px;
   width: 100px;
@@ -142,6 +221,19 @@ button#cancel-button:hover {
   }
 }
 @media screen and (max-width: 630px) {
+  .fa-caret-down{
+    font-size: 25px;
+                      position: absolute;
+                      z-index: 2;
+                      top: 35px;
+                      bottom: 0;
+                      left: 0px;
+                      right: 40px;
+  }
+  .drop{
+  max-width: 50%;
+  margin-right: 2rem;
+}
   .login {
     display: flex;
   }
@@ -164,11 +256,30 @@ button#cancel-button:hover {
     width: 6rem;
     margin: 15px 0;
   }
+
+  .placeholder {
+    position: relative;
+    display: inline-block;
+    height: 44px;
+    width: 45px;
+    border-radius: 50%;
+    background: goldenrod;
+    transition: 0.5s;
+  }
+  .placeholder-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 22px;
+  }
 }
 @media screen and (max-width: 500px) {
-  .phone_img img{
+  .phone_img img {
     max-width: 70%;
-}
+  }
 
   img {
     max-width: 260%;

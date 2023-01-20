@@ -32,8 +32,10 @@
     
     <div class="overlay">
       <h2 class="title">{{ item.translations.fra.official }}</h2>
-      <a class="link" href="#">Devis</a>
-    </div>
+      <router-link to="/register"  class="link" v-if="isLogged === false">Login</router-link> 
+      <div  @click="devisForm(item.translations.fra.official)" > 
+            <router-link to="/DevisFormePage" class="link" v-if="isLogged === true">Devis</router-link>
+        </div>   </div>
                      </div>
               </div>
   
@@ -64,7 +66,8 @@
       data() {
         return {
           slidedivs: 3,
-          africanCountries:[]
+          africanCountries:[],
+            isLogged : this.checkIfIsLogged()
         };
       },
       components: {
@@ -92,6 +95,10 @@
   
       },
       mounted() {
+
+        this.$bus.$on('logged', () => {
+      this.isLogged = this.checkIfIsLogged()
+    })
         var isAnimating = false;
   
   function scrollLeftAnimate(elem, unit) {
@@ -154,7 +161,24 @@
   initDealCarrousel('va_container'); //carrousel ID
       },
       methods: {
-  
+        devisForm(country){
+   localStorage.setItem("selected_country", country)
+            },
+        singout() {
+            localStorage.removeItem("access-token");
+            this.isLogged = this.checkIfIsLogged();
+            localStorage.clear();
+            window.location.href = "/";
+        },
+        checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
       },
     };
     </script>

@@ -36,7 +36,7 @@
         </p>
 
 
-        <div id="login-alert" class="fxm-content banner" style="display: block;">
+        <div id="login-alert" class="fxm-content banner">
   <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
     <div class="alert-content" data-children-count="1">
       <input id="collapsible" class="toggle" type="checkbox">
@@ -52,10 +52,14 @@
 
 </div>
 
-<a href="" class="button">Devis</a>
+<router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
 
 
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -87,9 +91,9 @@ adresse, numéro de téléphone et mail<br />
         </p>
 
 
-        <div id="login-alert" class="fxm-content banner" style="display: block;">
+        <div id="login-alert" class="fxm-content banner">
   <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
-    <div class="alert-content" data-children-count="1">
+    <!-- <div class="alert-content" data-children-count="1">
       <input id="collapsible1" class="toggle" type="checkbox">
       <label for="collapsible1" class="lbl-toggle">Plus d'info</label>
       <div class="collapsible1-content" style="z-index:40">
@@ -98,10 +102,13 @@ adresse, numéro de téléphone et mail<br />
 
         </div>
       </div>
-  </div>
+  </div> -->
 
-</div>
-        <a href="" class="button">Devis</a>
+</div> <router-link to="/DevisFormePage">
+  <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
+</router-link>
       </div>
 
 
@@ -135,7 +142,7 @@ adresse, numéro de téléphone et mail;<br />
         </p>
 
 
-        <div id="login-alert" class="fxm-content banner" style="display: block;">
+        <div id="login-alert" class="fxm-content banner">
   <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
     <div class="alert-content" data-children-count="1">
       <input id="collapsible2" class="toggle" type="checkbox">
@@ -156,7 +163,9 @@ devis)<br />
   </div>
 
 </div>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -189,7 +198,7 @@ adresse, numéro de téléphone et mail;<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible4" class="toggle" type="checkbox">
@@ -210,7 +219,9 @@ devis)<br />
 </div>
 
 </div>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -243,7 +254,7 @@ adresse, numéro de téléphone et mail;<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible5" class="toggle" type="checkbox">
@@ -264,7 +275,9 @@ devis)<br />
 </div>
 
 </div>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -296,7 +309,7 @@ adresse, numéro de téléphone et mail<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible6" class="toggle" type="checkbox">
@@ -312,7 +325,9 @@ adresse, numéro de téléphone et mail<br />
 </div>
 
 </div>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -343,7 +358,7 @@ adresse, numéro de téléphone et mail<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible7" class="toggle" type="checkbox">
@@ -359,7 +374,9 @@ adresse, numéro de téléphone et mail<br />
 </div>
 
 </div>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -392,7 +409,7 @@ adresse, numéro de téléphone et mail<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible9" class="toggle" type="checkbox">
@@ -410,7 +427,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 </div>
 
 </div>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       
@@ -442,7 +461,7 @@ adresse, numéro de téléphone et mail<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible10" class="toggle" type="checkbox">
@@ -461,7 +480,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<a href="" class="button">Devis</a>
+<router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -495,7 +516,7 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible12" class="toggle" type="checkbox">
@@ -516,7 +537,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<a href="" class="button">Devis</a>
+<router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -548,7 +571,7 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible11" class="toggle" type="checkbox">
@@ -570,7 +593,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<a href="" class="button">Devis</a>
+<router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
       
 
@@ -602,7 +627,7 @@ adresse, numéro de téléphone et mail.<br />
 </p>
 
 
-<div id="login-alert" class="fxm-content banner" style="display: block;">
+<div id="login-alert" class="fxm-content banner">
 <!--div id="login-alert" class="fxm-content banner" style="display: none;"-->
 <div class="alert-content" data-children-count="1">
 <input id="collapsible3" class="toggle" type="checkbox">
@@ -622,7 +647,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<a href="" class="button">Devis</a>
+<router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
    
@@ -653,7 +680,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
           Timbres fiscaux officiels à remettre au Consulat + commissions de
           traitement.
         </p>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -680,7 +709,9 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
           Timbres fiscaux officiels à remettre au Consulat + commissions de
           traitement.
         </p>
-        <a href="" class="button">Devis</a>
+        <router-link to="/DevisFormePage">
+  <a href="" @click="cmr()" class="button">Devis</a>
+</router-link>
       </div> -->
 
     </div>
@@ -696,7 +727,11 @@ export default {
   components: {},
   watch: {},
   created() {},
-  methods: {},
+  methods: {
+    cmr(){
+      localStorage.setItem('selected_country', 'Cameroun')
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -879,7 +914,7 @@ ul {
   padding: 0.75em 1.5em;
   position: absolute;
   bottom: 0.2em;
-  left: 60%;
+  left: 32%;
   text-decoration: none;
   width: 100px;
   height: 2.7rem;
@@ -900,7 +935,7 @@ sup,
 
 
 .fxm-content.banner {
-
+display: none;
 }
 label{
   text-shadow: 3px 3px 6px #000000;

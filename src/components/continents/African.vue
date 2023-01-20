@@ -24,7 +24,7 @@
                         <div style="position: absolute;
             top: 3rem; left:0px;     background-color:#ffffff5d;width:18rem;">
                         <h3  style="font-size:1.8rem; font-weight: 700; margin-left: 0.9rem;">
-                            {{ item.translations.fr }}
+                            {{ item.translations.fr }} 
         </h3>
           
                     </div>
@@ -32,8 +32,11 @@
     
       <div class="overlay">
         <h2 class="title">{{ item.translations.fr }}</h2>
-        <a class="link" href="#">Devis</a>
-      </div>
+        <router-link to="/register"  class="link" v-if="isLogged === false">Login</router-link> 
+        <div  @click="devisForm(item.translations.fr)" > 
+            <router-link to="/DevisFormePage" class="link" v-if="isLogged === true">Devis</router-link>
+        </div>
+         </div>
                        </div>
                 </div>
     
@@ -64,7 +67,9 @@
         data() {
           return {
             slidedivs: 3,
-            africanCountries:[]
+            africanCountries:[],
+            isLogged : this.checkIfIsLogged()
+
           };
         },
         components: {
@@ -92,6 +97,9 @@
     
         },
         mounted() {
+          this.$bus.$on('logged', () => {
+      this.isLogged = this.checkIfIsLogged()
+    })
           var isAnimating = false;
     
     function scrollLeftAnimate(elem, unit) {
@@ -154,7 +162,24 @@
     initDealCarrousel('va_containerAfrica'); //carrousel ID
         },
         methods: {
-    
+            devisForm(country){
+   localStorage.setItem("selected_country", country)
+            },
+          singout() {
+            localStorage.removeItem("access-token");
+            this.isLogged = this.checkIfIsLogged();
+            localStorage.clear();
+            window.location.href = "/";
+        },
+        checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         },
       };
       </script>

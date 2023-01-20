@@ -19,7 +19,7 @@
          <div class="contact-info-text">
            <h2>address</h2>
            <span>-4 Rue de la république 69001 Lyon</span> 
-           <span>-Cameroon</span> 
+           <span>-France</span> 
          </div>
        </div>            
      </div>          
@@ -35,7 +35,7 @@
          <div class="contact-info-text">
            <h2>E-mail</h2>
            <span>ivisas.affaire@gmail.com</span> 
-           <span>yourmail@gmail.com</span>
+           <span>Contact@visas-affaires.com</span>
          </div>
        </div>            
      </div>                
@@ -79,34 +79,36 @@
  <h2>Suivez-nous sur les réseaux sociaux</h2>
  <div class="links">
    <div class="link">
-     <a><img src="https://i.postimg.cc/m2mg2Hjm/linkedin.png" alt="linkedin"></a>
+     <a href="https://www.facebook.com/profile.php?id=100088504264307" target="_blank"><i class="fa fa-facebook-f" style="font-size:48px;"></i></a>
    </div>
    <div class="link">
-     <a><img src="https://i.postimg.cc/YCV2QBJg/github.png" alt="github"></a>
+     <a href="https://www.instagram.com/invites/contact/?i=1wt17ccjw3i2v&utm_content=pysezdx" target="_blank"><i class="fa fa-instagram" style="font-size:48px;"></i></a>
    </div>
    <div class="link">
-     <a><img src="https://i.postimg.cc/W4Znvrry/codepen.png" alt="codepen"></a>
+     <a href="https://twitter.com/IVISASaffaires?t=4-VPWV8JUqMzEAZq9WHf8Q&s=09" target="_blank"><i class="fa fa-twitter" style="font-size:48px;"></i></a>
    </div>
    <div class="link">
-     <a><img src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
+     <a></a>
    </div>
  </div>
 </div>
 <div class="contact-form-wrapper">
  <form>
+  <h4 style="font-size:1.4rem; text-align:center; margin-bottom: 1rem; position: relative;">Suggestion?</h4>
    <div class="form-item">
-     <input type="text" name="sender" required>
-     <label>Name:</label>
+     <input type="text" name="sender" required v-model="senderName">
+     <label>Nom:</label>
    </div>
    <div class="form-item">
-     <input type="text" name="email" required>
+     <input type="text" name="email" required v-model="senderEmail">
      <label>Email:</label>
    </div>
    <div class="form-item">
-     <textarea class="" name="message" required></textarea>
+     <textarea class="" name="message" required v-model="message"></textarea>
      <label>Message:</label>
    </div>
-   <button class="submit-btn">Envoyer</button>  
+   <button class="submit-btn" type="button" @click="sendMsg()">Envoyer <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
+            <span class="sr-only">Loading...</span></div></button>  
  </form>
 </div>
 </div>
@@ -131,17 +133,65 @@
   
   <script>
   import navContactVue from '../components/navbars/navContact.vue';
+  import Swal from 'sweetalert2'
   export default {
     name: "ContactUs",
     data() {
-      return {};
+      return {
+        message: "",
+  senderName:"",
+  senderEmail: "",
+  formSpinner: false
+      };
     },
     components: {
         navContactVue
   },
     watch: {},
     created() {},
-    methods: {},
+    methods: {
+      sendMsg(){
+      this.formSpinner = true;
+        var axios = require('axios').default;
+var data = JSON.stringify({
+  "message": this.message,
+  "senderName": this.senderName,
+  "senderEmail": this.senderEmail
+});
+
+var config = {
+  method: 'post',
+  url: this.$url+'/post/suggestion',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+  },
+  data : data
+};
+
+axios(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+  Swal.fire({
+      icon: "success",
+     title: 'Succès',
+     text: 'Message envoyé avec succès',
+  }).then(() => {
+            // Go to page after successfully login
+            this.formSpinner = false;
+          });
+})
+.catch( (error) => {
+  console.log(error);
+  Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
+                        this.formSpinner = false;
+  
+            // Go to page after successfully login
+          });
+});
+
+      }
+    },
   };
   </script>
   
@@ -338,7 +388,7 @@ h2 {
   cursor: pointer;
 }
 
-img {
+i {
   width: 45px;
   height: 45px;
   filter: 
@@ -348,11 +398,11 @@ img {
   user-select: none;
 }
 
-img:hover {
+i:hover {
   transform: scale(1.1, 1.1);
 }
 
-img:active {
+i:active {
   transform: scale(1.1, 1.1);
   filter: 
     hue-rotate(220deg)
@@ -438,7 +488,7 @@ textarea:valid+label {
     padding-top: 30px;
   }
   
-  img {
+  i {
     width: 38px;
     height: 38px;
   }
@@ -460,7 +510,7 @@ textarea:valid+label {
   padding: 8% 5% 10% 5%;
 }
 .contact-links {
-  width: 20.6rem;
+  width: 22.3rem;
   border-radius: 10px 10px 0 0;
 
 }

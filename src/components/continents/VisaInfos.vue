@@ -31,11 +31,9 @@
           </p>
 
           <p style="margin-bottom: 10px">
-            *Constitution du dossier<br />
-
-            *Dépôt et récupération de passeport au consulat<br />
-
-            *Suivi du dossier
+            *Delais sûr et rapide <br/>
+*Dépôt et recupération du passport au consulat <br/>
+*Sécurisation
           </p>
           <div class="goldButton" >
             <img href="#" src="@/assets/bouton.jpg"/>

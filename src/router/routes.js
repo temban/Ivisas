@@ -62,9 +62,9 @@ export default [
     props: true,
   },
   {
-    path: '/Admin',
-    name: 'Admin',
-    component: () => import('@/views/Admin.vue'),
+    path: '/AdminDashboard',
+    name: 'AdminDashboard',
+    component: () => import('@/views/AdminDashboard.vue'),
     props: true,
   },
   {
@@ -72,5 +72,78 @@ export default [
     name: 'VisaFormPage',
     component: () => import('@/views/VisaFormPage.vue'),
     props: true,
+  },
+  {
+    path: '/DevisFormePage',
+    name: 'DevisFormePage',
+    component: () => import('@/views/DevisFormePage.vue'),
+    props: true,
+  },
+  {
+    path: '/AdminAllVisas',
+    name: 'AdminAllVisas',
+    component: () => import('@/views/AdminAllVisas.vue')
+  },
+
+  {
+    path: '/AdminAllDevis',
+    name: 'AdminAllDevis',
+    component: () => import('@/views/AdminAllDevis.vue')
+  },
+  {
+    path: '/AdminParticularUserVisa',
+    name: 'AdminParticularUserVisa',
+    component: () => import('@/views/AdminParticularUserVisa.vue')
+  },
+  
+  {
+    path: '/AdminParticularUserDevis',
+    name: 'AdminParticularUserDevis',
+    component: () => import('@/views/AdminParticularUserDevis.vue')
+  },
+
+
+  {
+    path: '/UserDashboard',
+    name: 'UserDashboard',
+    component: () => import('@/views/UserDashboard.vue'),
+    props: true,
+  },
+  {
+    path: '/UserAllVisas',
+    name: 'UserAllVisas',
+    component: () => import('@/views/UserAllVisas.vue')
+  },
+
+  {
+    path: '/UserAllDevis',
+    name: 'UserAllDevis',
+    component: () => import('@/views/UserAllDevis.vue')
+  },
+  {
+    path: '/MyVisas',
+    name: 'MyVisas',
+    component: () => import('@/views/MyVisas.vue')
+  },
+  {
+    path: '/MyDevis',
+    name: 'MyDevis',
+    component: () => import('@/views/MyDevis.vue')
+  },
+  {
+    path: '/EditVisa',
+    name: 'EditVisa',
+    component: () => import('@/views/EditVisa.vue')
+  },
+  {
+    path: '/EditDevis',
+    name: 'EditDevis',
+    component: () => import('@/views/EditDevis.vue')
+  },
+
+  {
+    path: '/Suggestions',
+    name: 'Suggestions',
+    component: () => import('@/views/Suggestions.vue')
   },
 ]

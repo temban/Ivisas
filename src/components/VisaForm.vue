@@ -3,6 +3,7 @@
       <div class="form_wrapper">
         <div class="form_container">
           <div class="title_container">
+            <img src="@/assets/visa.png"/>
             <h2>FICHE DE DEMANDE DE VISA</h2>
           </div>
          
@@ -10,73 +11,114 @@
               <form>
                 <div class="row clearfix">
                   <div class="col_half">
+                    <div class="title_container1">
+            <h6>Nom:</h6>
+          </div>
                     <div class="input_field">
-                      <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                      <input type="text" name="name" placeholder="Nom" v-model="Nom"/>
+                      <input type="text" name="name" placeholder="Nom" v-model="firstName"/>
                     </div>
                   </div>
                   <div class="col_half">
+                    <div class="title_container1">
+            <h6>Prénom:</h6>
+          </div>
                     <div class="input_field">
-                      <span><i aria-hidden="true" class="fa fa-user"></i></span>
                       <input
                         type="text"
                         name="name"
                         placeholder="Prénom"
-                        required
-                        v-model="Prénom"
+                        
+                        v-model="lastName"
                       />
                     </div>
                   </div>
 
                 </div>
                 <div class="row clearfix">
-                  <div class="col_half">
+                  <div class="col_half p2">
+                    <div class="title_container1">
+            <h6>Sexe:</h6>
+          </div>
                     <div class="input_field">
-                      <span><i aria-hidden="true" class="fa fa-mars"></i></span>
-                      <input type="text" name="name" placeholder="Sexe" v-model="Sexe"
-/>
+                      <input type="text" name="name" placeholder="Sexe" v-model="sex"/>
                     </div>
                   </div>
-                  <div class="col_half">
+                  <div class="col_half p2">
+                    <div class="title_container1">
+            <h6>Lieu de naissance:</h6>
+          </div>
                     <div class="input_field">
-                      <span><i aria-hidden="true" class="fa fa-calendar"></i></span>
                       <input
                         type="text"
                         name="name"
-                        placeholder="Date et lieu de naissance"
-                        required v-model="dateNaissance"
+                        placeholder="Lieu de naissance"
+                         v-model="birthCountry" 
                       />
                     </div>
                   </div>
-                </div>
-                <div class="input_field">
-                  <span><i aria-hidden="true" class="fa fa-person"></i></span>
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="Nom et prénom du père"
-                    required v-model="pere"
-                  />
-                </div>
-                <div class="input_field">
-                  <span><i aria-hidden="true" class="fa fa-person"></i></span>
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="Nom et prénom du mère"
-                    required v-model="mere"
-                  />
-                </div>
-                <div class="input_field">
-                  <span><i aria-hidden="true" class="fa fa-flag"></i></span>
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="Nationalité d'origine"
-                    required v-model="nationalityOrigin"
-                  />
-                </div>
+                  <div class="col_half p2">
+                    <div class="title_container1">
+            <h6>Date de naissance:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                        type="date"
+                        name="name"
+                        placeholder="Date de naissance"
+                         v-model="birthday"
+                      />
+                    </div>
+                  </div>
 
+
+  
+
+
+                </div>
+                <div class="title_container1">
+            <h6>Nom et prénom du père:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nom et prénom du père"
+                     v-model="fatherName"
+                  />
+                </div>
+                <div class="title_container1">
+            <h6>Nom et prénom du mère:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nom et prénom du mère"
+                     v-model="motherName"
+                  />
+                </div>
+                <div class="title_container1">
+            <h6>Nationalité d'origine:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nationalité d'origine"
+                     v-model="currentCountry"
+                  />
+                </div>
+                <div class="title_container1">
+            <h6>Nationalité actuelle:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nationalité actuelle"
+                    required v-model="currentCountry"
+                  />
+                </div>
                 <div class="row clearfix">
                   <div class="col_half">
                   <h4>Situation de famille:</h4>
@@ -84,23 +126,24 @@
                   <div class="col_half left">
                   
                 <div class="input_field checkbox_option">
-                  <input type="radio" name="radiogroup1" id="rd1" />
-                  <label for="rd1">Célibataire</label>
-                  <input type="radio" name="radiogroup1" id="rd2" />
-                  <label for="rd2">Marié(e)</label>
-                  <input type="radio" name="radiogroup1" id="rd3" />
-                  <label for="rd3">Divorcé(e)</label>
-                  <input type="radio" name="radiogroup1" id="rd4" />
-                  <label for="rd4">Veuf(ve)</label>
+                  <input type="radio" value="Célibataire" name="familyStatus" id="familyStatus1" v-model="familyStatus" />
+                  <label for="familyStatus1">Célibataire</label>
+                  <input type="radio" value="Marié(e)" name="familyStatus" id="familyStatus2" v-model="familyStatus" />
+                  <label for="familyStatus2">Marié(e)</label>
+                  <input type="radio" value="Divorcé(e)" name="familyStatus" id="familyStatus3" v-model="familyStatus" />
+                  <label for="familyStatus3">Divorcé(e)</label>
+                  <input type="radio" value="Veuf(ve)" name="familyStatus" id="familyStatus4" v-model="familyStatus" />
+                  <label for="familyStatus4">Veuf(ve)</label>
                 </div>
                   </div>
 
                 </div>
                
-
+                <div class="title_container1">
+            <h6>Nom et Prénom du conjoint:</h6>
+          </div>
                 <div class="input_field space">
-                  <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                  <input type="text" name="email" placeholder="Nom et Prénom du conjoint" required v-model="conjoint"/>
+                  <input type="text" name="email" placeholder="Nom et Prénom du conjoint"  v-model="partnerName"/>
                 </div>
 
 
@@ -112,73 +155,340 @@
                   <div class="col_half1">
                   
                 <div class="input_field checkbox_option">
-                  <input type="radio" name="radiogroup1" id="rd5" />
+                  <input value="Passport ordinaire" type="radio" name="documentType" id="rd5" v-model="documentType"/>
                   <label for="rd5">Passport ordinaire</label>
-                  <input type="radio" name="radiogroup1" id="rd6" />
+                  <input value="Passport diplomatique" type="radio" name="documentType" id="rd6"  v-model="documentType"/>
                   <label for="rd6">Passport diplomatique</label>
-                  <input type="radio" name="radiogroup1" id="rd7" />
+                  <input value="Passport de service" type="radio" name="documentType" id="rd7"  v-model="documentType"/>
                   <label for="rd7">Passport de service</label>
                   
                 </div>
                   </div>
-
-                  <div class="row clearfix">
                   <div class="col_half input_field checkbox_option">
                    
-                    <input type="radio" name="radiogroup1" id="rd8" />
-                  <label for="rd8">Passport de service</label>
+                    <input value="Passport de service: " type="radio" name="radiogroup1" id="rd8" />
+                  <label class="laS" for="rd8">Passport de service(priser la nature) :</label>
+                  <div class="input_field">
+                  <input type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
+                </div>  
+                </div>
+
+
+                 
+                </div>
+
+                <div class="title_container1">
+            <h6>Numéro du passeport:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Numéro du passeport"
+                     v-model="passportNumber"
+                  />
+                </div>     
+
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Date de délivrance:</h6>
+          </div>
+                    <div class="input_field">
+                      <input type="date" name="name" placeholder="Date de délivrance" v-model="deliveredDate"
+/>
+                    </div>
                   </div>
                   <div class="col_half">
-                  
+                    <div class="title_container1">
+            <h6>Lieu de délivrance:</h6>
+          </div>
                     <div class="input_field">
-                  <input type="email" name="email" placeholder="Email" required />
-                </div>
-               
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Lieu de délivrance"
+                         v-model="lieuDelivrance"
+                      />
+                    </div>
                   </div>
                 </div>
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="input_field">
+                        <div class="title_container1">
+            <h6>Valide jusqu'au:</h6>
+          </div>
+                      <input type="date" name="name" placeholder="Valide jusqu'au" v-model="expiredDate"
+/>
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Autorité Ayant délivré ce document:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Autorité Ayant délivré ce document"
+                         v-model="approvedBy"
+                      />
+                    </div>
+                  </div>
                 </div>
 
 
-                <div class="input_field">
-                  <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                  <input type="email" name="email" placeholder="Email" required />
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Votre adresse exacte en France:</h6>
+          </div>
+                    <div class="input_field">
+                      <input  type="text"
+                    name="name"
+                    placeholder="Votre adresse exacte en France"
+                     v-model="adress"
+/>
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Votre numéro de téléphone:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                      type="text"
+                    name="name"
+                    placeholder="Votre numéro de téléphone"
+                     v-model="phone"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Email:</h6>
+          </div>
+                    <div class="input_field">
+                      <input type="text" name="email" 
+                      placeholder=" Email " 
+                       v-model="email"/>
+
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Profession:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                    type="text"
+                    name="name"
+                    placeholder="Profession"
+                     v-model="profession"
+                  />
+                    </div>
+                  </div>
                 </div>
                
+                
+
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Nom de l'employeur:</h6>
+          </div>
+                    <div class="input_field">
+                      <input  type="text"
+                    name="name"
+                    placeholder="Nom de l'employeur"
+                     v-model="employer" 
+/>
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Adresse de l'employeur:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                      type="text"
+                      name="name"
+                      placeholder="Adresse de l'employeur"
+                       v-model="employerAdress" 
+                      />
+                    </div>
+                  </div>
+                </div>
 
 
+            
+
+                <div class="title_container1">
+            <h6>Ville d'entrées au Cameroun:</h6>
+          </div>
                 <div class="input_field">
-                  <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Re-type Password"
-                    required
+<input
+                    type="text"
+                    name="name"
+                    placeholder="Ville d'entrées au Cameroun"
+                     v-model="inputTown"
                   />
                 </div>
-  
-                <div class="input_field radio_option">
-                  <input type="radio" name="radiogroup1" id="rd1" />
-                  <label for="rd1">Student</label>
-                  <input type="radio" name="radiogroup1" id="rd2" />
-                  <label for="rd2">Admin</label>
+
+
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Personne de contact au Cameroun pendant le séjour:</h6>
+          </div>
+                    <div class="input_field">
+                      <input  type="text"
+                    name="name"
+                    placeholder="Personne de contact au Cameroun pendant le séjour"
+                     v-model="host"
+/>
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Adresse au Cameroun pendant le séjour:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                      type="text"
+                    name="name"
+                    placeholder="Adresse au Cameroun pendant le séjour"
+                     v-model="hostAddress"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div class="input_field select_option">
-                  <select>
-                    <option>Select a country</option>
-                    <option>Bangladesh</option>
-                    <option>USA</option>
-                  </select>
-                  <div class="select_arrow"></div>
+                <div class="title_container1">
+            <h6>Motif du séjour:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Motif du séjour"
+                     v-model="travelReason"
+                  />
                 </div>
+               
+                
+
+                <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Durée du séjour au Cameroun du et au:</h6>
+          </div>                    <div class="input_field">
+                      <input type="date" name="name" placeholder="Durée du séjour au Cameroun du:" v-model="durationOfStay1"
+/>
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Durée du séjour au Cameroun du et au:</h6>
+          </div>                    <div class="input_field">
+                      <input
+                        type="date"
+                        name="name"
+                        placeholder="Durée du séjour au Cameroun au:"
+                        required v-model="durationOfStay2"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="title_container1">
+            <h6>Nombre d'entrées et sorties:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nombre d'entrées et sorties"
+                     v-model="numberOfInputOutput"
+                  />
+                </div>
+
+                <div class="row clearfix">
+                  <div class="col_half">
+                  <h4>Nature du visa sollicité:</h4>
+                  </div>
+                  <div class="col_half1 left">
+                  
                 <div class="input_field checkbox_option">
+                  <input type="radio" value="Transit" name="visaNature" id="rd10" v-model="visaNature"/>
+                  <label for="rd10">Transit</label>
+                  <input type="radio" value="Tourisme" name="visaNature" id="rd20" v-model="visaNature"/>
+                  <label for="rd20">Tourisme</label>
+                  <input type="radio" value="Temporaire" name="visaNature" id="rd30" v-model="visaNature"/>
+                  <label for="rd30">Temporaire</label>
+                  <input type="radio" value="Long séjour" name="visaNature" id="rd40" v-model="visaNature"/>
+                  <label for="rd40">Long séjour</label>
+                </div>
+                  </div>
+
+                </div>
+                <div class="title_container1">
+            <h6>Pays de destination après séjour au Cameroun:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Pays de destination après séjour au Cameroun"
+                     v-model="destinationCountry"
+                  />
+                </div>
+                <div class="row clearfix">
+                  <div class="col_half">
+                  <h4>En cas de transit: ete-vous titulaire d'une autorisation dentrée dans le pays de destination?</h4>
+                  </div>
+                  <div class="col_half ">
+                  
+                <div class="input_field checkbox_option">
+                  <input type="radio" value="OUI" name="radiogroup1" id="rd100" v-model="question"/>
+                  <label for="rd100">OUI</label>
+                  <input type="radio" value="NON" name="radiogroup1" id="rd200" v-model="question"/>
+                  <label for="rd200">NON</label>
+                </div>
+                  </div>
+
+                </div>
+                <div class="title_container1">
+            <h6>Moyen de transport utilisé:</h6>
+          </div>
+                <div class="input_field">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Moyen de transport utilisé"
+                     v-model="travelMode" 
+                  />
+                </div>
+                
+<div class="button1">
+  <button class="button" type="button" @click="order()" value="Envoyer" >Envoyer  
+    <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
+          <span class="sr-only">Loading...</span></div></button>
+
+</div>
+            
+                <!-- <div class="input_field checkbox_option">
                   <input type="checkbox" id="cb1" />
                   <label for="cb1">I agree with terms and conditions</label>
                 </div>
                 <div class="input_field checkbox_option">
                   <input type="checkbox" id="cb2" />
                   <label for="cb2">I want to receive the Class routine</label>
-                </div>
-                <input class="button" type="submit" value="Register" />
+                </div> -->
               </form>
             </div>
         
@@ -188,14 +498,124 @@
   </template>
   
   <script>
+    import Swal from 'sweetalert2'
   export default {
     name: "VisaForm.vue",
     data() {
-      return {};
+      return {
+        formSpinner: false,
+        firstName: "string",
+  lastName: "string",
+  sex: "string",
+  birthday: "string",
+  fatherName: "string",
+  motherName: "string",
+  birthCountry: "string",
+  currentCountry: "string",
+  familyStatus: "Célibataire",
+  partnerName: "string",
+  documentType: "Passport diplomatique",
+  passportNumber: "string",
+  deliveredDate: "string",
+  expiredDate: "string",
+  approvedBy: "string",
+  adress: "string",
+  phone: "string",
+  email: "string",
+  profession: "string",
+  employer: "string",
+  employerAdress: "string",
+  inputTown: "string",
+  host: "string",
+  hostAddress: "string",
+  travelReason: "travelReason",
+  durationOfStay1: "durationOfStay",
+  durationOfStay2: "durationOfStay",
+  numberOfInputOutput: "string",
+  visaNature: "Transit",
+  destinationCountry: "string",
+  question: "OUI",
+  travelMode: "travelMode",
+  sendedDate: "string",
+  lieuDelivrance:""
+      };
     },
     watch: {},
     created() {},
-    methods: {},
+    methods: {
+      order(){
+        this.formSpinner = true;
+        var axios = require('axios').default;
+var data = JSON.stringify({
+  "firstName": this.firstName,
+  "lastName": this.lastName,
+  "sex": this.sex,
+  "birthday": this.birthday,
+  "fatherName": this.fatherName,
+  "motherName": this.motherName,
+  "birthCountry": this.birthCountry,
+  "currentCountry": this.currentCountry,
+  "familyStatus": this.familyStatus,
+  "partnerName": this.partnerName,
+  "documentType": this.documentType,
+  "passportNumber": this.passportNumber,
+  "deliveredDate": this.deliveredDate,
+  "expiredDate": this.expiredDate,
+  "approvedBy": this.approvedBy,
+  "adress": this.adress,
+  "phone": this.phone,
+  "email": this.email,
+  "profession": this.profession,
+  "employer": this.employer,
+  "employerAdress": this.employerAdress,
+  "inputTown": this.inputTown,
+  "host": this.host,
+  "hostAddress": this.hostAddress,
+  "travelReason": this.hostAddress,
+  "durationOfStay": "du:"+ " "+ this.durationOfStay1 + " " + "au:"+ " "+ this.durationOfStay1,
+  "numberOfInputOutput": this.numberOfInputOutput, 
+  "visaNature":this.visaNature,
+  "destinationCountry": this.destinationCountry,
+  "question": this.question,
+  "travelMode": this.travelMode,
+  "rejected": false,
+  "view": false
+});
+
+var config = {
+  method: 'post',
+  url:  this.$url+'/order/visa',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+  },
+  data : data
+};
+
+axios(config)
+.then((response)=> {
+  console.log(JSON.stringify(response.data));
+  Swal.fire({
+    icon: "success",
+   title: 'Succès',
+   text: 'Votre demande de visa a été envoyée avec succès',
+}).then(() => {
+          // Go to page after successfully login
+          // this.$router.push('')
+
+          // window.location.href="/UserAllVisas"
+        });
+})
+.catch(function (error) {
+  Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
+  console.log(error);
+});
+
+      }
+    },
   };
   </script>
   
@@ -225,12 +645,13 @@
     box-sizing: border-box;
     padding: 25px;
     margin: 1% auto 0;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 1;
     border-top: 5px solid $yellow;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.51);
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.58);
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     -webkit-transform: scale3d(1, 1, 1);
@@ -271,25 +692,21 @@
       float: left;
     }
   
-   
+   .p2{
+      width: 33.3%;
+      float: left;
+    }
+   .visNature{
+      width: 77.2%;
+      float: left;
+   }
+ 
     .input_field {
       position: relative;
       margin-bottom: 20px;
       -webkit-animation: bounce 0.6s ease-out;
       animation: bounce 0.6s ease-out;
-      > span {
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: #333;
-        height: 100%;
-        border-right: 1px solid $grey;
-        text-align: center;
-        width: 30px;
-        > i {
-          padding-top: 10px;
-        }
-      }
+      
     }
     .space {
 
@@ -305,7 +722,8 @@
     input {
       &[type="text"],
       &[type="email"],
-      &[type="password"] {
+      &[type="date"],
+      &[type="number"]{
         width: 100%;
         padding: 8px 10px 9px 35px;
         height: 35px;
@@ -319,12 +737,12 @@
       }
       &[type="text"]:hover,
       &[type="email"]:hover,
-      &[type="password"]:hover {
+      &[type="text"]:hover {
         background: #fafafa;
       }
       &[type="text"]:focus,
       &[type="email"]:focus,
-      &[type="password"]:focus {
+      &[type="text"]:focus {
         -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
         -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
         box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
@@ -364,6 +782,37 @@
         position: absolute;
         width: 1px;
       }
+    }
+    .button1{
+      width: 100%;
+      display: flex;
+            justify-content: center;
+            align-items: center;
+    }
+    .button{
+      background: $yellow;
+        height: 50px;
+        line-height: 35px;
+text-align: center;
+        width: 40%;
+        border: none;
+        border-radius: 0.5rem;
+        outline: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background: darken($yellow, 10%);
+        }
+        &:focus {
+          background: darken($yellow, 50%);
+        }
     }
   }
   .form_container {
@@ -643,6 +1092,9 @@
       float: left;
       margin-left: -25rem;
     }
+    .visNatureMarg{
+    margin-left: -23rem;
+   }
   }
   @media (max-width: 1439px) {
     .left{
@@ -657,6 +1109,12 @@
   }
 
   @media (max-width: 630px) {
+    .col_half1{
+      margin-bottom: -1.5rem;
+    }
+    .visNatureMarg{
+      margin-top: -0.7rem;
+   }
     .form_wrapper {
       .col_half {
         width: 100%;

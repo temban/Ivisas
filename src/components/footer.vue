@@ -4,75 +4,52 @@
       <div class="footer">
         <div class="wrap">
           <div class="footer-grid">
-            <h3>Location</h3>
+            <h3>Adresse</h3>
             <div class="address">
               <ul>
-                <li>Neque porro quisquam,</li>
-                <li>dolor sit amet,</li>
-                <li>USA.</li>
-                <li>info(at)yourcompany.com</li>
-                <li><span>Telephone :</span> +00 000 00000</li>
-                <li><span>Fax :</span> +00 000 00000</li>
+                <li>Nous sommes situés en France.
+                  </li>
+                <li>4 Rue de la république 69001 Lyon.</li>
+                <li>France.</li>
               </ul>
             </div>
           </div>
           <div class="footer-grid twitts">
-            <h3>Latest Tweets</h3>
+            <h3>Adresse E-Mail</h3>
             <p>
-              <label>@Lorem ipsum</label>dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua.
+              ivisas.affaire@gmail.com
             </p>
-            <span>10 minutes ago...</span>
+            <!-- <span>10 minutes ago...</span> -->
             <p>
-              <label>@consectetur</label>dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua.
+              Contact@visas-affaires.com
             </p>
-            <span>15 minutes ago...</span>
+            <!-- <span>15 minutes ago...</span> -->
+          </div>
+         
+          <div class="footer-grid">
+            <h3>Nous Sommes Ouvert</h3>
+            <p>
+              Du Lundi au VendrediDe 9h à 17h
+            </p>
+            <p>
+               <span>IVISAS-AFFAIRES </span> 
+              vous propose un service complet billet d'avion, hotel, 
+              chauffeur, guide touriste professionnel. une offre est 
+              actuellement ouverte, profitez-en.            
+            </p>
           </div>
           <div class="footer-grid center-grid">
-            <h3>Recent posts</h3>
+            <h3>Contactez-Nous Au</h3>
             <ul>
-              <li><a href="#">eiusmod tempor incididunt</a></li>
-              <li><a href="#">adipisicing elit, sed</a></li>
-              <li><a href="#">mod tempor incididunt ut</a></li>
-              <li><a href="#">dipisicing elit, sed do</a></li>
-              <li><a href="#">econsectetur adipisicing</a></li>
+              <li><a href="#">Tel: +33753630510</a></li>
+              <li><a href="#">Tel: 0753630510</a></li>
             </ul>
-          </div>
-          <div class="footer-grid">
-            <h3>DID YOU KNOW?</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam
-            </p>
-            <!-- <div class="social-icons">
-            <ul>
-              <li> 
-                <a href="#"
-                  ><img src="@/assets/images/facebook.png" title="facebook" 
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/twitter.png" title="twitter" 
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/google.png" title="google pluse"
-                /></a>
-              </li>
-            </ul>
-          </div> -->
           </div>
           <div class="clear"></div>
         </div>
       </div>
       <div class="copy-right">
-        <p>Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
+        <p>Design by <a href="http://w3layouts.com/"> MbahgiMets-group</a></p>
       </div>
 </div>
 </template>

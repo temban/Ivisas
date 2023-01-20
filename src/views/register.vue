@@ -6,12 +6,19 @@
       <div class="user signinBx">
         <div class="imgBx"><img src="@/assets/slide4.png" alt="" /></div>
         <div class="formBx">
-            <router-link to="/" class="back con" ><img src="@/assets/back.png"/></router-link> 
+            
+            <router-link to="/" class="con" ><img src="@/assets/back.png"/></router-link> 
           <form action="" onsubmit="return false;">
             <h2>S'identifier</h2>
-            <input type="text" name="" placeholder="Username" v-model="usermail"/>
+            <input type="text" name="" placeholder="Username" v-model="useremail"/>
             <input type="password" name="" placeholder="Password"  v-model="password"/>
-            <input type="button" name="" value="Login" @click="login()"/>
+
+
+            <button type="button" name="" @click="login()"> S'identifier<div class="spinner-border text-light spinner-border-sm" role="status" v-if="logIn">
+          <span class="sr-only">Loading...</span></div></button>
+
+
+
             <p class="signup">
                 Vous n'avez pas de compte ?
           <a href="#" @click="toggleForm()">S'inscrire.</a>
@@ -19,17 +26,24 @@
           </form>
         </div>
       </div>
+
+      
       <div class="user signupBx">
         <div class="formBx">
-            <router-link to="/" class="back" ><img src="@/assets/back.png"/></router-link> 
+            <router-link to="/" class="back"><img  src="@/assets/back.png"/></router-link> 
           <form action="" onsubmit="return false;">
             <h2>Créer un compte</h2>
-            <input type="text" name="" placeholder="Nom et prénom" v-model="name"/>
-            <input type="email" name="" placeholder="Adresse e-mail" v-model="usermail"/>
-            <input type="email" name="" placeholder="Numéro de téléphone" v-model="tel"/>
+            <input type="name" name="" placeholder="Nom et prénom" v-model="name"/>
+            <input type="email" name="" placeholder="Adresse e-mail" v-model="useremail"/>
+            <input type="number" name="" placeholder="Numéro de téléphone" v-model="tel"/>
             <input type="password" name="" placeholder="Créer un mot de passe" v-model="password"/>
             <input type="password" name="" placeholder="Confirmez le mot de passe" v-model="confirmPassword"/>
-            <input type="button" name="" value="Sign Up" @click="login()"/>
+
+
+            <button type="button" name="" @click="register()"> S'inscrire
+              <div class="spinner-border text-light spinner-border-sm" role="status" v-if="loginOn">
+          <span class="sr-only">Loading...</span></div></button>
+
             <p class="signup">
                 Vous avez déjà un compte ?
               <a href="#" @click="toggleForm()">S'identifier.</a>
@@ -52,14 +66,19 @@ import Swal from 'sweetalert2'
         return {
             name:"",
             tel:"",
-            usermail:"",
+            useremail:"",
             password:"",
             confirmPassword:"",
-
+            loginOn:false,
+            logIn:false,
+            $url:  this.$url,
         };
       },
       watch: {},
       created() {
+        
+       console.log(this.$url)
+
 
       },
       methods: {
@@ -70,19 +89,47 @@ import Swal from 'sweetalert2'
 }, 
 
 
-login(event){
-if( this.usermail==='' || this.password==='') {
+login(){
+if( this.usermail==='' || this.password==='' || this.usermail==="ivisas.affaire@gmail.com") {
         Swal.fire({
-   title: 'Warning',
-   text: 'Fill all inputs',
+          icon: "warning",
+   title: 'Attention',
+   text: 'vous devez remplir toutes les champs',
    type: 'warning',
-   showCancelButton: true,
-   cancelButtonText: 'Some text for cancel button'
 })
  }else{
-    this.login = true;
-      event.preventDefault();
-      var axios = require("axios");
+    this.logIn = true;
+    let profile =()=>{
+      
+    var axios = require('axios').default;
+    var config0 = { 
+            method: "get",
+            url: this.$url+'/profile',
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("access-token"),
+            },
+          };
+
+          axios(config0)
+            .then((res) => {
+              let a = res.data;
+              if (a.email == "ivisas.affaire@gmail.com") {
+                window.location.href = "/AdminDashboard";
+              } else {
+                console.log(a);
+                window.location.href = "/";
+                //window.location.reload()
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+
+
+      }
+
+      var axios = require("axios").default;
 
       var qs = require("qs");
       var data = qs.stringify({
@@ -96,36 +143,19 @@ if( this.usermail==='' || this.password==='') {
       };
 
       axios(config)
-        .then(function (response) {
-          const temp = response.data;
+        .then((response) => {
+          if (response.status === 200) {
+
+            const temp = response.data;
           const refreshtoken = Object.values(temp)[0];
           const accesstoken = Object.values(temp)[1];
           localStorage.setItem("refresh-token", refreshtoken);
           localStorage.setItem("access-token", accesstoken);
+          this.$bus.$emit("logged", "User logged"); 
+          profile();
+          }
+         
 
-          var config0 = { 
-            method: "get",
-            url: "https://192.168.16.120:3000/profile",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
-          };
-
-          axios(config0)
-            .then((res) => {
-              let a = res.data;
-              if (a.email == "ivisas.affaire@gmail.com") {
-                window.location.href = "/Admin";
-              } else {
-                console.log(a);
-                window.location.href = "/";
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-          this.$bus.$emit("logged", "User logged");
         })
         .catch(function (error) {
           if (error.response.status === 500) {
@@ -133,13 +163,22 @@ if( this.usermail==='' || this.password==='') {
               "Échec de la connexion!",
               "Veuillez vérifier vos informations d'identification !",
               "error"
-            );
+            ).then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           if (error.response.status === 401) {
-            Swal.fire("Échec de la connexion !", "L'utilisateur n'existe pas !", "error");
+            Swal.fire("Échec de la connexion !", "L'utilisateur n'existe pas !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           if (error.response.status === 404) {
-            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error");
+            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           console.log(error);
         });
@@ -151,25 +190,22 @@ if( this.usermail==='' || this.password==='') {
 register(){
     if(this.password != this.confirmPassword){
         Swal.fire({
-   title: 'Warning',
-   text: "Password doesn't match",
+            icon: "warning",
+   title: 'Attention',
+   text: "Le mot de passe ne correspond pas",
    type: 'warning',
-   showCancelButton: true,
-   cancelButtonText: 'Some text for cancel button'
 })
-    }else if( this.name==='' || this.tel==='' || this.usermail==='' || this.password==='' || this.confirmPassword==='') {
+    }else if( this.name==='' || this.tel==='' || this.usermail==='' || this.password==='' || this.confirmPassword==='' || this.usermail==="ivisas.affaire@gmail.com") {
         Swal.fire({
-   title: 'Warning',
-   text: 'Fill all inputs',
+            icon: "warning",
+   title: 'Attention',
+   text: 'vous devez remplir toutes les champs',
    type: 'warning',
-   showCancelButton: true,
-   cancelButtonText: 'Some text for cancel button'
 })
     }else{
 this.loginOn = true;
       let onLogin =()=>{
-       event.preventDefault();
-      var axios = require("axios");
+      var axios = require("axios").default;
 
       var qs = require("qs");
       var data = qs.stringify({
@@ -183,7 +219,7 @@ this.loginOn = true;
       };
 
       axios(config)
-        .then(function (response) {
+        .then((response) => {
           const temp = response.data;
           const refreshtoken = Object.values(temp)[0];
           const accesstoken = Object.values(temp)[1];
@@ -192,7 +228,7 @@ this.loginOn = true;
 
           var config0 = { 
             method: "get",
-            url: "https://192.168.16.120:3000/profile",
+            url: this.$url+'/profile',
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + localStorage.getItem("access-token"),
@@ -203,7 +239,7 @@ this.loginOn = true;
             .then((res) => {
               let a = res.data;
               if (a.email == "ivisas.affaire@gmail.com") {
-                window.location.href = "/Admin";
+                window.location.href = "/AdminDashboard";
               } else {
                 console.log(a);
                 window.location.href = "/";
@@ -221,23 +257,31 @@ this.loginOn = true;
               "Échec de la connexion!",
               "Veuillez vérifier vos informations d'identification !",
               "error"
-            );
+            ).then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           if (error.response.status === 401) {
-            Swal.fire("Échec de la connexion !", "L'utilisateur n'existe pas !", "error");
+            Swal.fire("Échec de la connexion !", "L'utilisateur n'existe pas !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           if (error.response.status === 404) {
-            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error");
+            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           console.log(error);
         }); 
       }
 
-      var axios = require("axios");
+      var axios = require("axios").default;
       var data = JSON.stringify({
         "name": this.name,
         "phone": this.tel,
-        "profileimgage": "",
         "email": this.useremail,
         "password": this.password,
       });
@@ -266,10 +310,16 @@ this.loginOn = true;
         .catch(function (error) {
           console.log(error);
           if (error.response.status === 500) {
-            Swal.fire("Échec de l'enregistrement !", "L'utilisateur existe déjà !", "error");
+            Swal.fire("Échec de l'enregistrement !", "L'utilisateur existe déjà !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
           if (error.response.status === 404) {
-            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error");
+            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
+          // Go to page after successfully login
+          window.location.reload();
+        });
           }
         });
         
@@ -291,8 +341,15 @@ this.loginOn = true;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-.back{
+.con{
     width: 3rem;
+    cursor: pointer;
+    position: relative;
+    margin-top: -27rem;
+    margin-left: -2rem;
+}
+.back{
+    width: 6rem;
     cursor: pointer;
     position: relative;
     margin-top: -27rem;
@@ -380,8 +437,24 @@ section .container .user .formBx form input {
   font-weight: 300;
 }
 
+section button{
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  background: rgb(221, 169, 39);
+  color: rgb(0, 0, 0);
+  font-weight: 800;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 8px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
 section .container .user .formBx form input[type='submit'] {
-  max-width: 100px;
+    max-width: 100px;
   background: #677eff;
   color: #fff;
   cursor: pointer;

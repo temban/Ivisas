@@ -18,16 +18,25 @@
             <div class="carousel-item active">
               <div class="testimonial4_slide">
                 <img
-                  src="https://i.ibb.co/8x9xK4H/team.jpg"
+                  src="@/assets/blaise.jpg"
                   class="img-circle img-responsive"
                 />
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a.
+                  Depuis le jour où j'ai commencé à utiliser la plateforme IVISAS-AFFAIRES pour mes demandes de visa, je n'ai jamais été déçu.
                 </p>
-                <h4>Client 1</h4>
+                <h4>T. Blaise</h4>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial4_slide">
+                <img
+                  src="@/assets/elsie4.jpg"
+                  class="img-circle img-responsive"
+                />
+                <p>
+                  Ivisas fait toujours de mes journées passées au cameroun un témoignage vivant de joie.
+                </p>
+                <h4>Elsie </h4>
               </div>
             </div>
             <div class="carousel-item">
@@ -37,27 +46,10 @@
                   class="img-circle img-responsive"
                 />
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a.
+                  Ivisas-Affaires sont en fait les meilleurs qui offrent des services de demande
+                   de visa, billet d'avion, hôtel, chauffeur, guide touristique professionnel et je suis heureux de les avoir découverts.
                 </p>
-                <h4>Client 2</h4>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="testimonial4_slide">
-                <img
-                  src="https://i.ibb.co/8x9xK4H/team.jpg"
-                  class="img-circle img-responsive"
-                />
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a.
-                </p>
-                <h4>Client 3</h4>
+                <h4>B. Favour</h4>
               </div>
             </div>
           </div>

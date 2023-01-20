@@ -38,12 +38,12 @@ dédouanement.
         <div class="col-lg-4 col-sm-6">
           <div class="item"> <span class="icon feature_box_col_three"><img src="@/assets/logo-jpg.png"/></span>
             <h6>Autres services</h6>
-            <p>VISAS-AFFAIRES vous propose un service complet 
+            <p>IVISAS-AFFAIRES vous propose un service complet 
 billet d'avion, 
 hotel, 
 chauffeur, 
 guide touriste professionnel. 
-un offre est actuellement ouverte, profitez-en.</p>
+une offre est actuellement ouverte, profitez-en.</p>
           </div>
         </div>
       </div>
