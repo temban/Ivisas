@@ -6,10 +6,10 @@
           <div
             class="d-flex flex-column align-items-center text-center p-3 py-5"
           >
-            <img v-if="profileImage === null"
+            <img v-if="profileImage === 'null'"
               class="rounded-circle mt-5"
               width="150px"
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              src="@/assets/u.png"
             />
             <img v-else
               class="rounded-circle mt-5"
@@ -192,14 +192,28 @@
                   />
                   <label for="5s">Séparé(e)</label>
 
+                 
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input_field checkbox_option">
+
                   <input
                     type="radio"
-                    value="Autre"
+                    value="Préciser ici :  "
                     name="familyStatus"
                     id="6s"
                     v-model="civilStatus"
                   />
-                  <label for="6s">Autre</label>
+                  <label for="autre">Autre (à préciser)</label>
+
+                <input
+                v-model="civilStatus"
+                  type="text"
+                  class="form-control"
+                  value=""
+                  placeholder="préciser le type de document de voyage"
+                />
                 </div>
               </div>
 
@@ -283,14 +297,26 @@
                   />
                   <label for="5pass">Passeport de service</label>
 
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input_field checkbox_option">
+
                   <input
                     type="radio"
-                    value="Autre document de voyage"
+                    value="Préciser ici :  "
                     name="travelDocumentType"
                     id="6pass"
                     v-model="travelDocumentType"
                   />
                   <label for="6pass">Autre document de voyage</label>
+               <input
+                v-model="travelDocumentType"
+                  type="text"
+                  class="form-control"
+                  value=""
+                  placeholder="préciser le type de document de voyage"
+                />
                 </div>
               </div>
 
@@ -340,7 +366,7 @@
                 <label class="labels">Adresse électronique du demandeur :</label
                 ><input
                   v-model="applicantEmailAddress"
-                  type="text"
+                  type="email"
                   class="form-control"
                   placeholder="Adresse électronique du demandeur"
                   value=""
@@ -414,7 +440,7 @@
               <div class="col-md-12">
                 <label class="labels">Profession actuelle :</label
                 ><input
-                  v-model="destinationCountry"
+                  v-model="profession"
                   type="text"
                   class="form-control"
                   value=""
@@ -538,7 +564,7 @@
 
                   <input
                     type="radio"
-                    value="- "
+                    value="Préciser ici :  "
                     name="travelReason"
                     id="autre"
                     v-model="travelReason"
@@ -577,8 +603,8 @@ export default {
     return {
         email: localStorage.getItem("email"),
         name: localStorage.getItem("Name"),
-        profileImage: localStorage.getItem("profileImage"),
-        profile: this.$url+'/'+localStorage.getItem("profileImage"),
+        profileImage: "",
+        profile: "",
         formSpinner: false,
       familyName: "",
       birthName: "",
@@ -610,8 +636,14 @@ export default {
       view: false,
     };
   },
-  watch: {},
-  created() {
+  watch: {
+    
+  },
+  mounted() {
+    this.profileImage = localStorage.getItem("profileImage");
+    this.profile = this.$url+'/'+localStorage.getItem("profileImage");
+   
+    // console.log(localStorage.getItem("profileImage"))
   },
   methods: {
 

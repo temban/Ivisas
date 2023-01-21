@@ -166,10 +166,10 @@
                   </div>
                   <div class="col_half input_field checkbox_option">
                    
-                    <input value="Passport de service: " type="radio" name="radiogroup1" id="rd8" />
+                    <input value="priser la nature: " type="radio" name="radiogroup1" id="rd8" v-model="documentType"/>
                   <label class="laS" for="rd8">Passport de service(priser la nature) :</label>
                   <div class="input_field">
-                  <input type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
+                  <input type="text" name="text" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
                 </div>  
                 </div>
 

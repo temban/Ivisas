@@ -199,61 +199,31 @@
             </div>
 
             <div class="row clearfix">
-              <div class="col_half">
-                <h4>Nature du document du voyage:</h4>
-              </div>
-              <div class="col_half1">
+                  <div class="col_half">
+                  <h4>Nature du document du voyage:</h4>
+                  </div>
+                  <div class="col_half1">
+                  
                 <div class="input_field checkbox_option">
-                  <input
-                    value="Passport ordinaire"
-                    type="radio"
-                    name="documentType"
-                    id="rd5"
-                    v-model="documentType"
-                  />
+                  <input value="Passport ordinaire" type="radio" name="documentType" id="rd5" v-model="documentType"/>
                   <label for="rd5">Passport ordinaire</label>
-                  <input
-                    value="Passport diplomatique"
-                    type="radio"
-                    name="documentType"
-                    id="rd6"
-                    v-model="documentType"
-                  />
+                  <input value="Passport diplomatique" type="radio" name="documentType" id="rd6"  v-model="documentType"/>
                   <label for="rd6">Passport diplomatique</label>
-                  <input
-                    value="Passport de service"
-                    type="radio"
-                    name="documentType"
-                    id="rd7"
-                    v-model="documentType"
-                  />
+                  <input value="Passport de service" type="radio" name="documentType" id="rd7"  v-model="documentType"/>
                   <label for="rd7">Passport de service</label>
+                  
                 </div>
-              </div>
-              <div class="col_half input_field checkbox_option">
-                <input
-                  value="Passport de service: "
-                  type="radio"
-                  name="radiogroup1"
-                  id="rd8"
-                  v-model="documentType"
-                />
-                <label class="laS" for="rd8"
-                  >Passport de service(priser la nature) :</label
-                >
-              </div>
-              <div class="col_half visNature visNatureMarg">
-                <div class="input_field">
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="Passport de service(priser la nature) "
-                    readonly
-                    v-model="email"
-                  />
+                  </div>
+                  <div class="col_half input_field checkbox_option">
+                   
+                   <input value="Passport de service: " type="radio" name="radiogroup1" id="rd8" />
+                 <label class="laS" for="rd8">Passport de service(priser la nature) :</label>
+                 <div class="input_field">
+                 <input type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
+               </div>  
+               </div>
+                  
                 </div>
-              </div>
-            </div>
 
             <div class="title_container1">
               <h6>Numéro du passeport:</h6>
@@ -358,18 +328,32 @@
               </div>
             </div>
 
-            <div class="title_container1">
-              <h6>Profession:</h6>
-            </div>
-            <div class="input_field">
-              <input
-                type="text"
-                name="name"
-                placeholder="Profession"
-                readonly
-                v-model="profession"
-              />
-            </div>
+            <div class="row clearfix">
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Email:</h6>
+          </div>
+                    <div class="input_field">
+                      <input type="text" name="email" 
+                      placeholder=" Email " 
+                       v-model="email"/>
+
+                    </div>
+                  </div>
+                  <div class="col_half">
+                    <div class="title_container1">
+            <h6>Profession:</h6>
+          </div>
+                    <div class="input_field">
+                      <input
+                    type="text"
+                    name="name"
+                    placeholder="Profession"
+                     v-model="profession"
+                  />
+                    </div>
+                  </div>
+                </div>
 
             <div class="row clearfix">
               <div class="col_half">
