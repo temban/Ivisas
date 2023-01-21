@@ -14,7 +14,7 @@
 
 ## Features
 
-- Apply for visa via this website
+- Apply for visa via this webApp
 
 ## Technologies
 
