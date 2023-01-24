@@ -601,14 +601,23 @@
           <td   v-if="devi.rejected"
             class="responsive-table__body__text responsive-table__body__text--status"
           >
-            <span class="badge badge-danger font-weight-100 mx-20">Rejeté</span>
+            <span class="badge badge-danger font-weight-100">Rejeté</span>
           </td>
           <td
             v-else
             class="responsive-table__body__text responsive-table__body__text--status"
           ></td>
-
-          <td v-if="devi.authorized && devi.destinationCountry ==='Cameroun'"><a
+<td v-if="!devi.authorized && devi.destinationCountry ==='Cameroun'"><a
+              href="/VisaFormPage"
+              class="btn btn-sm btn-success"
+              variant="primary"
+              >Document requis</a
+            ></td>
+            <td
+            v-else
+            class="responsive-table__body__text responsive-table__body__text--status"
+          ></td>
+          <td v-if="!devi.authorized && devi.destinationCountry ==='Cameroun'"><a
               href="/VisaFormPage"
               class="btn btn-sm btn-success"
               variant="primary"
@@ -1008,8 +1017,7 @@ deleteDevi(devi) {
           border-bottom: 1px solid $table-border-color;
           padding: 0 1.5rem;
           @include min-tablet {
-              grid-template-columns: 2fr 1fr 2fr 2fr 1fr;
-          }
+            grid-template-columns: 1.6fr 2fr 0.6fr 1.3fr 1.4fr  1fr;          }
           @include tablet-to-desktop {
               grid-template-columns: 1fr 2fr 1fr;
           }

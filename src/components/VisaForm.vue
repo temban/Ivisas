@@ -543,8 +543,21 @@
     watch: {},
     created() {},
     methods: {
-      order(){
-        this.formSpinner = true;
+
+      order() {
+      Swal.fire({
+        title: "Attention!",
+        text: "Assurez-vous de remplir toutes les informations nécessaires, en particulier votre adresse mail, sinon votre demande sera rejetée!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Envoyer",
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          
+          this.formSpinner = true;
         var axios = require('axios').default;
 var data = JSON.stringify({
   "firstName": this.firstName,
@@ -603,18 +616,23 @@ axios(config)
           // Go to page after successfully login
           // this.$router.push('')
 
-          // window.location.href="/UserAllVisas"
+          window.location.href="/UserAllVisas"
         });
 })
-.catch(function (error) {
+.catch( (error) => {
   Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
           // Go to page after successfully login
-          window.location.reload();
+          this.formSpinner = false;
         });
   console.log(error);
 });
 
-      }
+
+        }
+      });
+    },
+       
+
     },
   };
   </script>

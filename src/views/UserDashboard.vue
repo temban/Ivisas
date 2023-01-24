@@ -224,7 +224,7 @@
                           class="h6 font-semibold text-muted text-sm d-block mb-2"
                           >Devis Rejete</span
                         >
-                        <span v-if="allDevisR === null" class="h2 font-bold mb-0">{{this.allDevisR  }}</span>
+                        <span v-if="allDevisR !== ''" class="h2 font-bold mb-0">{{this.allDevisR  }}</span>
                         <span v-else class="h2 font-bold mb-0">0</span>
   
                     </div>
@@ -290,7 +290,7 @@
                           class="h6 font-semibold text-muted text-sm d-block mb-2"
                           >Visas Rejete</span
                         >
-                        <span v-if="allVisaR === null" class="h2 font-bold mb-0">{{ allVisaR }}</span>
+                        <span v-if="allVisaR !== ''" class="h2 font-bold mb-0">{{ allVisaR }}</span>
                         <span v-else class="h2 font-bold mb-0">0</span>
  
                     </div>

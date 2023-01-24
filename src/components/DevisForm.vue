@@ -205,7 +205,7 @@
                     id="6s"
                     v-model="civilStatus"
                   />
-                  <label for="autre">Autre (à préciser)</label>
+                  <label for="6s">Autre (à préciser)</label>
 
                 <input
                 v-model="civilStatus"
@@ -661,8 +661,20 @@ export default {
     },
 
 
-    postDevis(){
-        this.formSpinner = true;
+
+    postDevis() {
+      Swal.fire({
+        title: "Attention!",
+        text: "Assurez-vous de remplir toutes les informations nécessaires, en particulier votre adresse mail, sinon votre demande sera rejetée!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Envoyer",
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          this.formSpinner = true;
     var axios = require("axios").default;
     var data = JSON.stringify({
       familyName: this.familyName,
@@ -715,7 +727,7 @@ export default {
 }).then(() => {
           // Go to page after successfully login
           // this.$router.push('/UserAllDevis')
-          // window.location.href="/UserAllDevis"
+          window.location.href="/UserAllDevis"
         });
       })
       .catch( (error) => {
@@ -726,7 +738,12 @@ export default {
           // Go to page after successfully login
         });
       });
-    }
+
+
+        }
+      });
+    },
+
   },
 };
 </script>

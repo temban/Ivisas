@@ -146,4 +146,15 @@ export default [
     name: 'Suggestions',
     component: () => import('@/views/Suggestions.vue')
   },
+
+  {
+    path: '/RequiredDocs',
+    name: 'RequiredDocs',
+    component: () => import('@/views/RequiredDocs.vue')
+  },
+  {
+    path: '/ResetPassword',
+    name: 'ResetPassword',
+    component: () => import('@/views/ResetPassword.vue')
+  },
 ]

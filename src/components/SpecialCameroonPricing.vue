@@ -52,14 +52,11 @@
 
 </div>
 
-<router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+  <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
 
 
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
       </div>
 
       <div class="grid-1-5">
@@ -104,11 +101,12 @@ adresse, numéro de téléphone et mail<br />
       </div>
   </div> -->
 
-</div> <router-link to="/DevisFormePage">
-  <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
-</router-link>
+</div> 
+<a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+<a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
+
       </div>
 
 
@@ -163,9 +161,10 @@ devis)<br />
   </div>
 
 </div>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -219,9 +218,10 @@ devis)<br />
 </div>
 
 </div>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -275,9 +275,10 @@ devis)<br />
 </div>
 
 </div>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -325,9 +326,10 @@ adresse, numéro de téléphone et mail<br />
 </div>
 
 </div>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -374,9 +376,10 @@ adresse, numéro de téléphone et mail<br />
 </div>
 
 </div>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -427,9 +430,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 </div>
 
 </div>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       
@@ -480,9 +484,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+  <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -537,9 +542,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+  <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -593,9 +599,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+  <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
       
 
@@ -647,9 +654,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 
 </div>
 
-<router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+  <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
    
@@ -680,9 +688,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
           Timbres fiscaux officiels à remettre au Consulat + commissions de
           traitement.
         </p>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div>
 
       <div class="grid-1-5">
@@ -709,9 +718,10 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
           Timbres fiscaux officiels à remettre au Consulat + commissions de
           traitement.
         </p>
-        <router-link to="/DevisFormePage">
-  <a href="" @click="cmr()" class="button">Devis</a>
-</router-link>
+          <a v-if="isLogged === true" href="/DevisFormePage" @click="cmr()" class="button">Devis</a>
+
+  <a v-if="isLogged === false" href="/Register"  class="button1">S'identifier</a>
+
       </div> -->
 
     </div>
@@ -722,15 +732,30 @@ de mariage accompagné des actes de naissances des enfants<br /></p>
 export default {
   name: "SpecialCameroonPricing",
   data() {
-    return {};
+    return {
+      isLogged: this.checkIfIsLogged(),
+    };
   },
   components: {},
   watch: {},
-  created() {},
+  created() {
+    this.$bus.$on("logged", () => {
+      this.isLogged = this.checkIfIsLogged();
+    });
+  },
   methods: {
     cmr(){
       localStorage.setItem('selected_country', 'Cameroun')
-    }
+    },
+    checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
   },
 };
 </script>
@@ -874,6 +899,9 @@ h2:after {
   & .button {
     background-color: rgb(41, 38, 35);
   }
+  & .button1 {
+    background-color: rgb(41, 38, 35);
+  }
 }
 h2,
 h3,
@@ -917,6 +945,22 @@ ul {
   left: 32%;
   text-decoration: none;
   width: 100px;
+  height: 2.7rem;
+}
+
+.button1 {
+  background-color: #0f0e0e00;
+  border-radius: 5px;
+  color: #f0cc7f;
+  text-shadow: 3px 3px 6px #000000;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.75em 1.5em;
+  position: absolute;
+  bottom: 0.2em;
+  left: 26%;
+  text-decoration: none;
+  width: 150px;
   height: 2.7rem;
 }
 

@@ -107,7 +107,10 @@
      <textarea class="" name="message" required v-model="message"></textarea>
      <label>Message:</label>
    </div>
-   <button class="submit-btn" type="button" @click="sendMsg()">Envoyer <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
+   <button  v-if="isLogged === true" class="submit-btn" type="button" @click="sendMsg()">Envoyer <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
+            <span class="sr-only">Loading...</span></div></button>  
+
+   <button  v-if="isLogged === false" class="submit-btn" type="button" @click="Login()">S'identifier <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
             <span class="sr-only">Loading...</span></div></button>  
  </form>
 </div>
@@ -141,17 +144,43 @@
         message: "",
   senderName:"",
   senderEmail: "",
-  formSpinner: false
+  formSpinner: false,
+  isLogged: this.checkIfIsLogged(),
       };
     },
     components: {
         navContactVue
   },
     watch: {},
-    created() {},
+    created() { this.$bus.$on("logged", () => {
+      this.isLogged = this.checkIfIsLogged();
+    });
+  },
     methods: {
+      Login(){
+        Swal.fire({
+            icon: "warning",
+   title: 'Attention',
+   text: 'pour envoyer un message vous devez vous indentifier!',
+   type: 'warning',
+}).then(() => {
+            // Go to page after successfully login
+window.location.href="/Register"          });
+      },
       sendMsg(){
-      this.formSpinner = true;
+      if( this.senderName ==="" || this.senderEmail ==="" || this.message ===""){
+        Swal.fire({
+            icon: "warning",
+   title: 'Attention',
+   text: 'vous devez remplir toutes les champs',
+   type: 'warning',
+}).then(() => {
+            // Go to page after successfully login
+            this.formSpinner = false;
+          });
+      }
+      else{
+        this.formSpinner = true;
         var axios = require('axios').default;
 var data = JSON.stringify({
   "message": this.message,
@@ -189,8 +218,20 @@ axios(config)
             // Go to page after successfully login
           });
 });
-
       }
+     
+      
+
+      },
+      checkIfIsLogged() {
+            let token = localStorage.getItem("access-token");
+            //localStorage.getItem('access-token')
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        },
     },
   };
   </script>

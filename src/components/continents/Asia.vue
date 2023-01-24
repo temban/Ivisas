@@ -34,7 +34,7 @@
     <h2 class="title">{{ item.translations.fr }}</h2>
 
 
-   <router-link to="/register"  class="link" v-if="isLogged === false">Login</router-link> 
+   <router-link to="/register"  class="link" v-if="isLogged === false">S'identifier</router-link> 
    <div  @click="devisForm(item.translations.fr)" > 
             <router-link to="/DevisFormePage" class="link" v-if="isLogged === true">Devis</router-link>
         </div>
