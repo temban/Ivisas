@@ -17,11 +17,14 @@
             <button type="button" name="" @click="login()"> S'identifier<div class="spinner-border text-light spinner-border-sm" role="status" v-if="logIn">
           <span class="sr-only">Loading...</span></div></button>
 
-
-
             <p class="signup">
                 Vous n'avez pas de compte ?
           <a href="#" @click="toggleForm()">S'inscrire.</a>
+            </p>
+
+            <p class="" style="margin-top:2rem">
+              Mot de passe oublié ?
+          <a href="/ResetPassword">Réinitialiser.</a>
             </p>
           </form>
         </div>
@@ -384,7 +387,7 @@ section .container .user {
 
 section .container .user .imgBx {
   position: relative;
-  width: 50%;
+  width: 55%;
   height: 100%;
   background: #ff0;
   transition: 0.5s;

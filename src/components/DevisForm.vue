@@ -367,6 +367,7 @@
                 ><input
                   v-model="applicantEmailAddress"
                   type="email"
+                  name="email"
                   class="form-control"
                   placeholder="Adresse électronique du demandeur"
                   value=""
@@ -727,7 +728,7 @@ export default {
 }).then(() => {
           // Go to page after successfully login
           // this.$router.push('/UserAllDevis')
-          window.location.href="/UserAllDevis"
+          // window.location.href="/UserAllDevis"
         });
       })
       .catch( (error) => {

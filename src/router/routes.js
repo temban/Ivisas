@@ -157,4 +157,45 @@ export default [
     name: 'ResetPassword',
     component: () => import('@/views/ResetPassword.vue')
   },
+  {
+    path: '/doc1',
+    name: 'doc1',
+    component: () => import('@/views/doc1.vue')
+  },
+  {
+    path: '/doc2',
+    name: 'doc2',
+    component: () => import('@/views/doc2.vue')
+  },
+  {
+    path: '/doc3',
+    name: 'doc3',
+    component: () => import('@/views/doc3.vue')
+  },
+  {
+    path: '/doc4',
+    name: 'doc4',
+    component: () => import('@/views/doc4.vue')
+  },
+  {
+    path: '/doc5',
+    name: 'doc5',
+    component: () => import('@/views/doc5.vue')
+  },
+  {
+    path: '/doc6',
+    name: 'doc6',
+    component: () => import('@/views/doc6.vue')
+  },
+  {
+    path: '/doc7',
+    name: 'doc7',
+    component: () => import('@/views/doc7.vue')
+  },
+  {
+    path: '/AdminDevisCompletx',
+    name: 'AdminDevisCompletx',
+    component: () => import('@/views/AdminDevisCompletx.vue')
+  },
+
 ]

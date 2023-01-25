@@ -1,45 +1,40 @@
 <template>
-
-    <!-- /* Please ❤ this if you like it! 😊 */ -->
-  
-  <!-- Page wrapper/Container Section -->
-  <div >
-
-
-    <b-modal id="modal-xl" size="xl">
-       
+    <div>
+        <neutralNavBar/>
+      <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
           <div class="col-md-3 border-right">
             <div
               class="d-flex flex-column align-items-center text-center p-3 py-5"
             >
-            <img v-if="profileImage === 'null'"
+            <img v-if="UprofileImage === 'null'"
               class="rounded-circle mt-5"
               width="150px"
-              src="@/assets/u.png"            />
+              src="@/assets/u.png"  
+            />
             <img v-else
               class="rounded-circle mt-5"
-              :src="profile" style="border-radius: 160px;
+              v-bind:src="profile" style="border-radius: 160px;
                               image-resolution: 3000000dpi;
                               background-color: #000;
                               background-position: center;
-                              background-size: cover; 
+                              background-size: cover;
                               background-repeat: no-repeat;
                               max-width: 100%;
-                              max-height: 100%;
+                              max-height: 100%; 
                               height: 180px;
                               width: 180px;"
             />
-
-            <span class="font-weight-bold">{{ this.name}}</span
-              ><span class="text-black-50">{{this.email}}</span
+  
+            <span class="font-weight-bold">{{ this.Uname}}</span
+              ><span class="text-black-50">{{this.Uemail}}</span
               ><span> </span>
             </div>
           </div>
           <div class="col-md-5 border-right">
             <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Une demande de devis</h4>
+                <h4 class="text-right">Demande de l'utilisateur</h4>
               </div>
               <div class="row mt-2">
                 <div class="col-md-6">
@@ -354,14 +349,13 @@
                   />
                 </div>
              
-              </div>
-            
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 py-5">
-             
-              <div class="col-md-12">
+
+
+
+
+
+
+                <div class="col-md-12">
                   <label class="labels">N° de téléphone :</label
                   ><input
                     v-model="phoneNumber"
@@ -561,123 +555,296 @@
                   />
                   </div>
                 </div>
+              </div>
+            
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 py-5">
+                <h4 class="text-right">Partie réservée à l’administration</h4>
+                <div class="col-md-12">
+                  <label class="labels">Date de la demande :</label
+                  ><input
+                    v-model="requestDate"
+                    type="date"
+                    class="form-control"
+                    placeholder="Date de la demande "
+                    value=""
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Numéro de la demande :</label
+                  ><input
+                    v-model="requestNumber"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Numéro de la demande "
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Demande introduite :</label>
+                  <div class="input_field checkbox_option">
+                    <input
+                      type="radio"
+                      value="Auprès de VA"
+                      name="requestMade"
+                      id="VA"
+                      v-model="requestMade"
+                    />
+                    <label for="VA">Auprès de VA</label>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="input_field checkbox_option">
   
+                    <input
+                      type="radio"
+                      value="- "
+                      name="requestMade"
+                      id="autre1"
+                      v-model="requestMade"
+                    />
+                    <label for="autre1">Autre (à préciser)</label>
+  
+                  <input
+                  v-model="requestMade"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="préciser le type de document de voyage"
+                  />
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Responsable du dossier :</label
+                  ><input
+                    v-model="personInCharge"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Responsable du dossier"
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Documents justificatifs :</label>
+                  <div class="input_field checkbox_option">
+                    <input
+                      type="radio"
+                      value="Complet"
+                      name="supportDocument"
+                      id="Complet"
+                      v-model="supportDocument"
+                    />
+                    <label for="Complet">Complet</label>
+
+                    <input
+                      type="radio"
+                      value="Incomplet"
+                      name="supportDocument"
+                      id="Incomplet"
+                      v-model="supportDocument"
+                    />
+                    <label for="Incomplet">Incomplet</label>
+
+                    <input
+                      type="radio"
+                      value="En attente"
+                      name="travelReason"
+                      id="attente"
+                      v-model="supportDocument"
+                    />
+                    <label for="attente">En attente</label>
+
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="input_field checkbox_option">
+  
+                    <input
+                      type="radio"
+                      value="- "
+                      name="travelReason"
+                      id="autre"
+                      v-model="travelReason"
+                    />
+                    <label for="autre">Autre (à préciser)</label>
+  
+                  <input
+                  v-model="travelReason"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="préciser le type de document de voyage"
+                  />
+                  </div>
+                </div> -->
+
+                <div class="col-md-12">
+                  <label class="labels">Décision concernant le visas :</label>
+                  <div class="input_field checkbox_option">
+                    <input
+                      type="radio"
+                      value="Délivré"
+                      name="visaDecision"
+                      id="Délivré"
+                      v-model="visaDecision"
+                    />
+                    <label for="Délivré">Délivré</label>
+
+                    <input
+                      type="radio"
+                      value="En cours"
+                      name="visaDecision"
+                      id="En-cours"
+                      v-model="visaDecision"
+                    />
+                    <label for="En-cours">En cours</label>
+
+                    <input
+                      type="radio"
+                      value="Refusé"
+                      name="visaDecision"
+                      id="Refusé"
+                      v-model="visaDecision"
+                    />
+                    <label for="Refusé">Refusé</label>
+
+                  </div>
+                </div>
+
+<div class="row">
+    <div class="col-md-6">
+                  <label class="labels">Valable du :</label
+                  ><input
+                    v-model="validFrom"
+                    type="date"
+                    class="form-control"
+                    placeholder="Date de délivrance"
+                    value=""
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="labels">Au :</label
+                  ><input
+                    v-model="validTo"
+                    type="date"
+                    class="form-control"
+                    placeholder="Date d’expiration"
+                    value=""
+                  />
+                </div>
+</div>
                
+
+
+
+                <div class="col-md-12">
+                  <label class="labels">Nombre d’entrées :</label>
+                  <div class="input_field checkbox_option">
+                    <input
+                      type="radio"
+                      value="1"
+                      name="numberInputs"
+                      id="1"
+                      v-model="numberInputs"
+                    />
+                    <label for="1">1</label>
+
+                    <input
+                      type="radio"
+                      value="2"
+                      name="numberInputs"
+                      id="2"
+                      v-model="numberInputs"
+                    />
+                    <label for="2">2</label>
+
+                    <input
+                      type="radio"
+                      value="Multiples"
+                      name="numberInputs"
+                      id="Multiples"
+                      v-model="numberInputs"
+                    />
+                    <label for="Multiples">Multiples</label>
+
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Nombres de jours :</label
+                  ><input
+                    v-model="phoneNumber"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Nombres de jours"
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Nombre d’entrées :</label>
+                  <div class="input_field checkbox_option">
+                    <input
+                      type="radio"
+                      value="Espèces"
+                      name="paymentMethod"
+                      id="Espèces"
+                      v-model="paymentMethod"
+                    />
+                    <label for="Espèces">Espèces</label>
+
+                    <input
+                      type="radio"
+                      value="Carte bleue"
+                      name="paymentMethod"
+                      id="Carte"
+                      v-model="paymentMethod"
+                    />
+                    <label for="Carte"> Carte bleue</label>
+
+                    <input
+                      type="radio"
+                      value="Chèques de bancaire"
+                      name="paymentMethod"
+                      id="Chèques"
+                      v-model="paymentMethod"
+                    />
+                    <label for="Chèques">Chèques de bancaire</label>
+
+                  </div>
+                </div>
+
+                <div class="mt-5 text-center">
+                <button class="btn profile-button" type="button" @click="adminAvis()">
+                  Envoyer <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
+            <span class="sr-only">Loading...</span></div>
+                </button>
+              </div>
               
             </div>
           </div>
         </div>
-     
-</b-modal>
-
-      <!-- Responsive Table Section -->
-      <table class="responsive-table">
-		<!-- Responsive Table Header Section -->
-		<thead class="responsive-table__head">
-			<tr class="responsive-table__row">
-				<th class="responsive-table__head__title responsive-table__head__title--name">Nom</th>
-				<th class="responsive-table__head__title responsive-table__head__title--types">Date d'envoi</th>
-                <!-- <th class="responsive-table__head__title responsive-table__head__title--update"></th>
-				<th class="responsive-table__head__title responsive-table__head__title--status">travelMode</th>
-                <th class="responsive-table__head__title responsive-table__head__title--country">action</th> -->
-
-			</tr>
-		</thead>
-		<!-- Responsive Table Body Section -->
-        <tbody class="responsive-table__body">
-        <tr class="responsive-table__row" v-for="devi in devis.slice(1, devis.length)" :key="devi.id">
-          <td 
-            class="responsive-table__body__text responsive-table__body__text--name"
-          >
-            {{ devi.familyName + " " + devi.birthName + " "+ devi.lastName }}
-          </td>
-          <td
-            class="responsive-table__body__text responsive-table__body__text--date"
-          >
-            {{ devi.sendedDate }}
-          </td>
-
-          <td   v-if="devi.rejected"
-            class="responsive-table__body__text responsive-table__body__text--status"
-          >
-            <span class="badge badge-danger font-weight-100">Rejeté</span>
-          </td>
-          <td
-            v-else
-            class="responsive-table__body__text responsive-table__body__text--status"
-          ></td>
-<td v-if="devi.authorized && devi.destinationCountry ==='Cameroun'"><a
-              href="/VisaFormPage"
-              class="btn btn-sm btn-success"
-              variant="primary"
-              >Document requis</a
-            ></td>
-            <td
-            v-else
-            class="responsive-table__body__text responsive-table__body__text--status"
-          ></td>
-          <td v-if="devi.authorized && devi.destinationCountry ==='Cameroun'"><a
-              href="/VisaFormPage"
-              class="btn btn-sm btn-success"
-              variant="primary"
-              >Formulaire de visa</a
-            ></td>
-            <td
-            v-else
-            class="responsive-table__body__text responsive-table__body__text--status"
-          ></td>
-
-          <td 
-            class="responsive-table__body__text responsive-table__body__text--country"
-            width="210"
-          >
-          
-          
-            <a
-              class="btn btn-sm btn-neutral"
-              v-b-modal.modal-xl
-              variant="primary"
-              @click="viewDevis(devi.id)"
-              >View</a
-            >
-            <a @click="editDevis(devi.id)" class="btn btn-sm btn-neutral mx-2">Edit</a>
-
-            <button
-              @click="deleteDevi(devi)"
-              type="button"
-              class="btn btn-sm btn-square btn-neutral text-danger-hover"
-            >
-              <i class="bi bi-trash"></i>
-            </button>
-          </td>
-
-          <!-- <td class="responsive-table__body__text responsive-table__body__text--name">
-				<img enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" class="user-icon"  src="@/assets/logo-png.png"/>
-				</td> -->
-          <!-- <td class="responsive-table__body__text responsive-table__body__text--status"><span class="status-indicator status-indicator--active"></span>Active</td> -->
-        </tr>
-      </tbody>
-      </table>
-  </div>
+      </div>
+    </div>
+  </template>
   
-      </template>
-      
-      <script>
-      import Swal from "sweetalert2";
-      export default {
-        name: "UserAlldevi",
-        data() {
-          return {
-            child:[],
-            child2:[],
-            profileImage: localStorage.getItem("profileImage"),
-        profile: this.$url+'/'+localStorage.getItem("profileImage"),
-            email: localStorage.getItem("email"),
-          name: localStorage.getItem("Name"),
-              devis:[],
-              new: [],
-              myArray: [],
-              id:"",
+  <script>
+  import neutralNavBar from '../components/navbars/neutralNavBar.vue';
+      import Swal from 'sweetalert2'
+  export default {
+    name: "footer",
+    data() {
+      return {
+        UprofileImage: localStorage.getItem("pUserPhoto"),
+        profile: this.$url+'/'+localStorage.getItem("pUserPhoto"),
+          Uemail: localStorage.getItem("pUserEmail"),
+          Uname: localStorage.getItem("pUserName"),
+          formSpinner: false,
         familyName: "",
         birthName: "",
         lastName: "",
@@ -703,137 +870,48 @@
         profession: "",
         travelReason: "",
         currentdate: "",
+        sendedDate:"",
         destinationCountry:"",
-        rejected: false,
-        view: false,
-          };
-        },
-        watch: {},
-        created(){
-          // let all = []   for(let i=0; i<devis.orderdevis.length; i++){}
-//           let devis = JSON.parse(localStorage.getItem("infoUser"));
-//   for (let j = 0; j < devis.orderDevisDaos.length; j++) {
-//     this.devis.push(devis.orderDevisDaos[j])
-//     console.log("cart----------------------------",this.devis.firstName);
-//   }
-  
-  
-  
-  
-        },
-    mounted() {
+        rejected: "",
+        view: "",
+              roleDaos:[],
+              orderDevisDaos: [],
+              orderVisas:[],
+              suggestionDaos:[],
+              orderDevis:[],
+              user:[],
+              authorized:"",
+              email:"",
+              id:"", 
+              name:"",
+              password:"",
+              phone:"",
+              profileImage:"",
+              requestDate: "",
+    requestNumber: "",
+    requestMade: "",
+    personInCharge: "",
+    supportDocument: "",
+    visaDecision: "",
+    validFrom: "",
+    validTo: "",
+    numberInputs: "",
+    numberDay: "",
+    paymentMethod: ""
 
-
-
-
-        var axios = require("axios").default;
-    var config = {
-      method: "get",
-      url: this.$url + "/profile",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access-token"),
-      },
-    };
-
-    axios(config)
-      .then((res) => {
-        // console.log(JSON.stringify(res.data));
-
-        this.myArray.push(res.data);
-        for (let i = 0; i < this.myArray.length; i++) {
-          this.child = this.myArray[i].orderDevisDaos;
-          for (let j = 0; j < this.child.length; j++) {
-            // console.log("childdddddddd",this.child[j]);
-          }
-
-          this.child2 = this.myArray[i].orderDevisDaos;
-          for (let j = 0; j < this.child2.length; j++) {
-            // console.log("child1111111111111",this.child2[j]);
-          }
-        }
-
-      this.devis  = [...this.myArray, ...this.child];
-
-      
-          console.log("devissssssssss",this.devis);
-
-        
-
-        //localStorage.setItem('refresh-token', refreshtoken);
-        //localStorage.setItem('access-token', accesstoken);
-      })
-      .catch(function (error) {
-        console.log(error);
-        //  localStorage.clear()
-        // window.location.href = "/"
-      });
-  
-      /* Please ❤ this if you like it! 😊 */
-  
-  // Select thead titles from Dom
-  const headTitleName = document.querySelector(
-      ".responsive-table__head__title--name"
-  );
-  const headTitleStatus = document.querySelector(
-      ".responsive-table__head__title--status"
-  );
-  const headTitleTypes = document.querySelector(
-      ".responsive-table__head__title--types"
-  );
-  const headTitleUpdate = document.querySelector(
-      ".responsive-table__head__title--update"
-  );
-  const headTitleCountry = document.querySelector(
-      ".responsive-table__head__title--country"
-  );
-  
-  // Select tbody text from Dom
-  const bodyTextName = document.querySelectorAll(
-      ".responsive-table__body__text--name"
-  );
-  const bodyTextStatus = document.querySelectorAll(
-      ".responsive-table__body__text--status"
-  );
-  const bodyTextTypes = document.querySelectorAll(
-      ".responsive-table__body__text--types"
-  );
-  const bodyTextUpdate = document.querySelectorAll(
-      ".responsive-table__body__text--update"
-  );
-  const bodyTextCountry = document.querySelectorAll(
-      ".responsive-table__body__text--country"
-  );
-  
-  // Select all tbody table row from Dom
-  const totalTableBodyRow = document.querySelectorAll(
-      ".responsive-table__body .responsive-table__row"
-  );
-  
-  // Get thead titles and append those into tbody table data items as a "data-title" attribute
-  for (let i = 0; i < totalTableBodyRow.length; i++) {
-      bodyTextName[i].setAttribute("data-title", headTitleName.innerText);
-      bodyTextStatus[i].setAttribute("data-title", headTitleStatus.innerText);
-      bodyTextTypes[i].setAttribute("data-title", headTitleTypes.innerText);
-      bodyTextUpdate[i].setAttribute("data-title", headTitleUpdate.innerText);
-      bodyTextCountry[i].setAttribute("data-title", headTitleCountry.innerText);
-  }
-  
+              
+      };
     },
-    
-        methods: {
-editDevis(id){
-    localStorage.setItem("editDevisId", id)
-    window.location.href="/EditDevis"
-},
-
-
-viewDevis(id) {
-      var axios = require('axios').default;
+    watch: {},
+    components:{
+        neutralNavBar
+    },
+    created() {
+        var axios = require('axios').default;
 
 var config = {
   method: 'get',
-  url: this.$url+'/id/devis?id='+ id,
+  url: this.$url+'/user/id?userId='+ localStorage.getItem("adminUserVisasDevis"),
   headers: { 
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer ' + localStorage.getItem('access-token')
@@ -842,6 +920,58 @@ var config = {
 
 axios(config)
 .then((res) => {
+    this.user.push(res.data);
+           localStorage.setItem("pUserPhoto", res.data.profileImage);
+          localStorage.setItem("pUserName", res.data.name);
+          localStorage.setItem("pUserEmail", res.data.email);
+        //   console.log("alllll", res.data);
+//   this.authorized =  res.data.authorized;
+//   this.email = res.data.email;
+//   this.id = res.data.id;
+//   this.name = res.data.name;
+//   this.password = res.data.password;
+//   this.phone = res.data.phone
+//   this.profileImage = res.data.profileImage;
+
+//   this.orderDevisDaos.push(res.data.orderDevisDaos);
+//   this.orderVisas.push(res.data.orderVisas)
+//   this.suggestionDaos.push(res.data.suggestionDaos)
+//   this.roleDaos.push(res.data.roleDaos)
+//   console.log("yyyyyyyyy", this.roleDaos);
+
+
+//         for (let i = 0; i < this.myArray.length; i++) {
+//           this.child = this.myArray[i].orderDevisDaos;
+//           for (let j = 0; j < this.child.length; j++) {
+//             // console.log("childdddddddd",this.child[j]);
+//           }
+
+//           this.child2 = this.myArray[i].orderDevisDaos;
+//           for (let j = 0; j < this.child2.length; j++) {
+//             // console.log("child1111111111111",this.child2[j]);
+//           }
+//         }
+
+})
+.catch(function (error) {
+  console.log(error);
+//    localStorage.clear()
+// window.location.href = "/"
+});
+
+
+var config1 = {
+  method: 'get',
+  url: this.$url+'/id/devis?id='+ localStorage.getItem("adminDeviId"),
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+  }
+};
+
+axios(config1)
+.then((res) => {
+    this.orderDevis.push(res.data)
   this.id = res.data.id,
    this.familyName = res.data.familyName,
       this.birthName = res.data.birthName,
@@ -868,283 +998,95 @@ axios(config)
       this.profession = res.data.profession,
       this.travelReason = res.data.travelReason,
       this.currentdate = res.data.currentdate, 
+      this.sendedDate = res.data.sendedDate,
+      this.destinationCountry =  res.data.destinationCountry
+      this.rejected = res.data.rejected,
+        this.view = res.data.view,
   console.log(res.data.data);
 })
 .catch(function (error) {
   console.log(error);
 });
 
-    },
 
-deleteDevi(devi) {
-      Swal.fire({
-        title: "Êtes-vous sûr?",
-        text: "Vous ne pourrez pas revenir en arrière !",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Oui, supprimer!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          var axios = require("axios").default;
-          var config = {
-            method: "delete",
-            url: this.$url + "/devis",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
-            data: devi,
-          };
 
-          axios(config)
-            .then((response) => {
-              Swal.fire({
-                icon: "success",
-                title: "Succès",
-                text: "Ce devis a été supprimé",
-              }).then(() => {
-                // Go to page after successfully login
-                window.location.reload();
-              });
-              console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-              Swal.fire(
-                "Échec !",
-                "Quelque chose s'est mal passé !",
-                "error"
-              ).then(() => {
-                // Go to page after successfully login
-                // window.location.reload();
-              });
-              console.log(error);
-            });
-        }
-      });
     },
-        },
-      };
-      </script>
-      
-      <style lang="scss" scoped>
-   /* Please ❤ this if you like it! 😊 */
+    methods: {
   
-  //SCSS Variables:
-  $bg-color: #f2f6f9;
-  $active-color: #25be64;
-  $inactive-color: #dadde4;
-  $new-color: #febf02;
-  $text-color: #141a4e;
-  $table-bg-color: #fefefe;
-  $table-head-bg-color: #e1e8f2;
-  $table-border-color: #edeef2;
-  $hover-bg-color: rgb(224, 191, 5);
-  $hover-text-color: #ffffff;
-  
-  //Responsive Breakpoint SCSS Mixin:
-  
-  //xxs
-  @mixin mobile-xxs {
-      @media (max-width: 400px) {
-          @content;
-      }
-  }
-  //min-sm
-  @mixin min-tablet {
-      @media (min-width: 768px) {
-          @content;
-      }
-  }
-  //md
-  @mixin desktop {
-      @media (max-width: 991px) {
-          @content;
-      }
-  }
-  //sm to md
-  @mixin tablet-to-desktop {
-      @media (min-width: 768px) and (max-width: 991px) {
-          @content;
-      }
-  }
-  
-  /* Googles Font Link */
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-  
-  /* Reset Style */
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
-  
-  html {
-      font-size: 10px;
-  }
-  
-  body {
-      
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: "Poppins", sans-serif;
-      color: $text-color;
-      background-color: $bg-color;
-      font-size: 1.6rem;
-  }
-  
-  /* Page Wrapper/Container Style */
-  .container {
-      width: 100%;
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 15px;
-  }
-  
-  /* Responsive Table Style */
-  .responsive-table {
-      background-color: $table-bg-color;
-      border-collapse: collapse;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.02);
-      width: 100%;
-      margin: 2rem 0;
-      overflow: hidden;
-      &__row {
-          display: grid;
-          border-bottom: 1px solid $table-border-color;
-          padding: 0 1.5rem;
-          @include min-tablet {
-            grid-template-columns: 1.6fr 2fr 0.6fr 1.3fr 1.4fr  1fr;          }
-          @include tablet-to-desktop {
-              grid-template-columns: 1fr 2fr 1fr;
-          }
-          th,
-          td {
-              padding: 1rem;
-          }
-      }
-      &__head {
-          background-color: $table-head-bg-color;
-          @include desktop {
-              display: none;
-          }
-          &__title {
-              display: flex;
-              align-items: center;
-              font-weight: 500;
-              text-transform: capitalize;
-          }
-  
+      p(){
           
-      }
-      &__body {
-          .responsive-table__row {
-              transition: 0.1s linear;
-              transition-property: color, background;
-              &:last-child {
-                  border-bottom: none;
-              }
-              &:hover {
-                  color: $hover-text-color;
-                  background-color: $hover-bg-color;
-              }
-          }
-          &__text {
-              display: flex;
-              flex-wrap: wrap;
-              align-items: center;
-              &::before {
-                  margin-right: 1rem;
-                  font-weight: 600;
-                  text-transform: capitalize;
-              }
-              @include desktop {
-                  &::before {
-                      content: attr(data-title) " :";
-                  }
-              }
-              @include mobile-xxs {
-                  &::before {
-                      width: 100%;
-                      margin-bottom: 1rem;
-                      color: #000000;
-                      
-                  }
-              }
-              &--name {
-                  font-weight: 600;
-                  @include min-tablet {
-                      &::before {
-                          display: none;
-                      }
-                  }
-                  @include tablet-to-desktop {
-                      grid-column: 1 / 2;
-                      flex-direction: column;
-                  }
-              }
-              &--status,
-              &--types,
-              &--update {
-                  @include tablet-to-desktop {
-                      grid-column: 2/ 3;
-                  }
-              }
-              &--country {
-                  @include tablet-to-desktop {
-                      grid-column: 3/ -1;
-                  }
-              }
-              &--name,
-              &--country {
-                  @include tablet-to-desktop {
-                      grid-row: 2;
-                  }
-              }
-          }
-      }
-  }
+          this.formSpinner = true;
+          Swal.fire({
+      icon: "success",
+     title: 'Succès',
+     text: 'Votre demande de visa a été envoyée avec succès',
+  }).then(() => {
+            // Go to page after successfully login
+            this.formSpinner = false;
+          });
+      },
   
-  /* SVG Up Arrow Style */
-  .up-arrow {
-      height: 100%;
-      max-height: 1.8rem;
-      margin-left: 1rem;
-  }
   
-  /* SVG User Icon Style */
-  .user-icon {
-      width: 100%;
-      max-width: 4rem;
-      height: auto;
-      margin-right: 1rem;
+      adminAvis(){
+          this.formSpinner = true;
+      var axios = require("axios").default;
+      var data = JSON.stringify({
+  "orderDevis": this.orderDevis,
+  "user": this.user,
+  "adminDevis": {
+    "id": this.id,
+    "requestDate": this.requestDate,
+    "requestNumber": this.requestNumber,
+    "requestMade":this.requestMade,
+    "personInCharge": this.personInCharge,
+    "supportDocument": this.supportDocument,
+    "visaDecision": this.visaDecision,
+    "validFrom": this.validFrom,
+    "validTo":this.validTo,
+    "numberInputs": this.numberInputs,
+    "numberDay": this.numberDay,
+    "paymentMethod": this.paymentMethod,
   }
+});
+      var config = {
+        method: "post",
+        url: this.$url+"/admin/devis",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+        },
+        data: data,
+      };
   
-  /* Status Indicator Style */
-  .status-indicator {
-      display: inline-block;
-      width: 1.8rem;
-      height: 1.8rem;
-      border-radius: 50%;
-      background: #222222;
-      margin-right: 0.5rem;
-      &--active {
-          background: $active-color;
-      }
-      &--inactive {
-          background: $inactive-color;
-      }
-      &--new {
-          background: $new-color;
-      }
-  }
+      axios(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+          Swal.fire({
+      icon: "success",
+     title: 'Succès',
+     text: 'Mise à jour réussie',
+  }).then(() => {
+            // Go to page after successfully login
+            // this.$router.push('/UserAllDevis')
+            // window.location.href="/UserAllDevis"
+          });
+        })
+        .catch( (error) => {
+          console.log(error);
+          Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
+                        this.formSpinner = false;
   
-
-    
+            // Go to page after successfully login
+          });
+        });
+      }
+    },
+  };
+  </script>
+  
+  <style lang="scss" scoped>
+  @import url(https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css);
+  
   .input_field {
     position: relative;
     margin-bottom: 10px;
@@ -1263,5 +1205,8 @@ deleteDevi(devi) {
     cursor: pointer;
     border: solid 1px goldenrod;
   }
-      </style>
-      
+
+
+  
+  </style>
+  

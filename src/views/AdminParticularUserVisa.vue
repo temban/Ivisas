@@ -615,10 +615,10 @@
                             <a  class="nav-link">Tableau de bord</a>
                         </li>
                     </router-link>
-                    <router-link to="/AdminAllVisas" class="nav-item"><li >
+                    <!-- <router-link to="/AdminAllVisas" class="nav-item"><li >
                             <a class="nav-link ">Demandes des visas</a>
                         </li>
-                    </router-link>
+                    </router-link> -->
 
                         <li class="nav-item">
                             <a class="nav-link active">Demandes des visas</a>

@@ -1,13 +1,11 @@
 <template>
     <div>
+        <neutralNavBar/>
         <body>
 
-                        
-<div class="header__logo">
-  <a href="/" class="sign__logo2-img">  </a>  
-</div>
 
-<div class="main" style="margin-top: 30px">
+
+<div class="main" >
 <a  href="/" style="   height: 55px; z-index: 100;position:absolute;;
            width: 55px;">
       <img
@@ -18,7 +16,7 @@
            width: 35px;
            margin-top: 30px;
            left: 10px; 
-         " 
+         "
          src="@/assets/back.png"
        />
 </a>            
@@ -40,7 +38,7 @@ e-mail et nous ferons le reste
 <button id="login-btn" type="button" @click="forgotPassword()">Envoyer  <div class="spinner-border text-light spinner-border-sm" role="status" v-if="login">
 <span class="sr-only">Loading...</span></div></button>
 <p>Vous souvenez-vous ?  <a href="/Register">
-<span style="font-size:large; color: orangered;"> S'identifier ?</span>
+<span style="font-size:large; color: blue;"> S'identifier ?</span>
 </a></p>
 <p style="font-size:larger">Assurez-vous que l'e-mail saisi est celui du compte que vous essayez de récupérer!</p>
 </form>
@@ -53,13 +51,18 @@ e-mail et nous ferons le reste
     
     <script>
     import Swal from "sweetalert2";
+    import neutralNavBar from "../components/navbars/neutralNavBar.vue";
     export default {
       name: "RestPassword",
       data() {
         return { email:"",
         login: false,
     };
+    
       },
+      components:{
+        neutralNavBar
+    },
       watch: {},
       created() {},
       methods: {
@@ -69,7 +72,7 @@ e-mail et nous ferons le reste
         }
         else{
 this.login = true;
-var axios = require('axios');
+var axios = require('axios').default;
 
 var config = {
   method: 'put',
@@ -78,13 +81,17 @@ var config = {
 };
 
 axios(config)
-.then(function (response) {
+.then( (response) => {
   console.log(JSON.stringify(response.data));
-  Swal.fire("Succès !", "Vous allez recevoir un nouveau mot de passe par e-mail !","warning");
+  Swal.fire("Succès !", "Vous allez recevoir un nouveau mot de passe par e-mail !","success").then(() => {
+    window.location.href="/Register"
+});
 })
-.catch(function (error) {
-    Swal.fire("Échec !", "", "warning");
-    window.location.reload()
+.catch( (error) => {
+    Swal.fire("Échec !", "", "warning").then(() => {
+        window.location.reload()
+    });
+    // window.location.reload()
   console.log(error);
 });
 
@@ -100,18 +107,21 @@ axios(config)
     width: 50%;
   }
   body {
+
     margin: 20px;
-    padding: 0;
+    padding-bottom: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: auto;
     font-family:  "Times New Roman", Times, serif;
-    background: linear-gradient(to bottom, #388bff, #388bff, #fff, #fff);
-  }
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0),  rgba(255, 255, 255, 0.853));
+
+}
   .main {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 560px;
     position: relative;
     background: rgb(0, 187, 255);
@@ -120,6 +130,8 @@ axios(config)
       no-repeat center/ cover;
     border-radius: 10px;
     box-shadow: 5px 20px 50px rgba(35, 19, 7, 0.444);
+    background: linear-gradient(to bottom, rgba(175,144,63,255), rgba(240,206,108,255), #fff, #fff);
+ 
   }
   #chk {
     display: none;
@@ -162,9 +174,11 @@ axios(config)
     border: 2px solid black;
     outline: 19px;
     border-radius: 5px;
+   
   }
   .button1 {
     width: 60%;
+   
     height: 40px;
     padding: 10px;
     margin: 10px auto;
@@ -184,8 +198,9 @@ axios(config)
     background: #ff7300;
   }
   .button {
-    width: 60%;
-    height: 40px;
+    width: 10%;
+    height: 10px;
+    max-width: 5rem;
     margin: 10px auto;
     justify-content: center;
     display: block;
@@ -388,21 +403,26 @@ formgroup input:focus ~ span {
   margin-top: 21px;
   opacity: 0.8;
 }
+form{
+    text-align: center;
+
+}
 
 #login-btn {
   border: none;
   color: #FEFEFE;
-  padding: 0.8em 0;
-  font-size: 1em;
+  padding: 0.6em 0;
+  font-size: 1.2em;
   font-weight: 300;
   width: 100%;
-  border-radius: 55px;
-  -webkit-box-shadow: 0px 3px 21px rgba(255, 100, 0, 0.7);
-          box-shadow: 0px 3px 21px rgba(255, 100, 0, 0.7);
-  background: -webkit-gradient(linear, left top, right top, from(#F98340), to(#F71442));
-  background: linear-gradient(to right, #F98340, #f45474);
+  max-width: 20rem;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 3px 21px rgba(24, 19, 15, 0.7);
+   box-shadow: 0px 3px 21px rgba(34, 27, 22, 0.7);
+  background: -webkit-gradient(linear, left top, right top, from(goldenrod), to(gold));
+  background: linear-gradient(to right, goldenrod, gold);
   background-size: 100%;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.308);
 }
 
 .social {
@@ -451,7 +471,8 @@ p a {
 }
 
 /***** For Tablets *******/
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
+   
   .container-center {
     width: 70%;
   }
@@ -462,9 +483,38 @@ p a {
   }
 }
 /***** For Desktop Monitors *******/
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
+    body {
+
+margin: 20px;
+padding: 0rem;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+border-radius: 10px;
+min-height: auto;
+font-family:  "Times New Roman", Times, serif;
+background: linear-gradient(to bottom, rgba(218, 165, 32, 0.842),  rgba(255, 255, 255, 0.853));
+
+}
   .container-center {
     width: 500px;
+  }
+  .main {
+    width: 600px;
+    height: 560px;
+    position: relative;
+    background: rgb(0, 187, 255);
+    overflow: hidden;
+    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38")
+      no-repeat center/ cover;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px rgba(35, 19, 7, 0.444);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;	
+    width: 100%;  
   }
 }
     </style>

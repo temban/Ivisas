@@ -14,13 +14,27 @@
            <div
              class="d-flex flex-column align-items-center text-center p-3 py-5"
            >
-             <img
-               class="rounded-circle mt-5"
-               width="150px"
-               src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-             /><span class="font-weight-bold">{{ this.name}}</span
-             ><span class="text-black-50">{{this.email}}</span
-             ><span> </span>
+           <img v-if="profileImage === 'null'"
+              class="rounded-circle mt-5"
+              width="150px"
+              src="@/assets/u.png"            />
+            <img v-else
+              class="rounded-circle mt-5"
+              v-bind:src="profile" style="border-radius: 160px;
+                              image-resolution: 3000000dpi;
+                              background-color: #000;
+                              background-position: center;
+                              background-size: cover;
+                              background-repeat: no-repeat;
+                              max-width: 100%;
+                              max-height: 100%; 
+                              height: 180px;
+                              width: 180px;"
+            />
+  
+            <span class="font-weight-bold">{{ this.Mname}}</span
+              ><span class="text-black-50">{{this.email}}</span
+              ><span> </span>
            </div>
          </div>
          <div class="col-md-5 border-right">
@@ -645,7 +659,7 @@
                     <div class="row align-items-center">
                         <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                             <!-- Title -->
-                            <h1 class="h2 mb-0 ls-tight">Demandes des visas</h1>
+                            <h1 class="h2 mb-0 ls-tight">Demandes des devis</h1>
                         </div>
                         <!-- Actions -->
                         <!-- <div class="col-sm-6 col-12 text-sm-end">
@@ -672,10 +686,10 @@
                             <a  class="nav-link">Tableau de bord</a>
                         </li>
                     </router-link>
-                    <router-link to="/AdminAllDevis" class="nav-item"><li >
+                    <!-- <router-link to="/AdminAllDevis" class="nav-item"><li >
                             <a class="nav-link ">Demandes des devis</a>
                         </li>
-                    </router-link>
+                    </router-link> -->
 
                         <li class="nav-item">
                             <a class="nav-link active">Demandes des devis</a>
@@ -805,6 +819,7 @@
                                     <th scope="col">Date d'envoi</th>
                                     <th scope="col">Statut de rejet</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody  v-for="devi in devis" :key="devi.id">
@@ -820,6 +835,8 @@
                                             {{ devi.sendedDate }}
                                         </a>
                                     </td>
+
+                    
                                     <td>
                                         <span v-if="devi.rejected" class="badge badge-lg badge-dot mx-6">
                                             <i class="bg-danger"></i>
@@ -829,6 +846,12 @@
                                         </span>
                                     </td>
 
+                                    <td ><a
+              @click="adminAvis(devi)"
+              class="btn btn-sm btn-success"
+              variant="primary"
+              >Avis</a
+            ></td>
                                    
                                     <td class="text-end">
                                         <a  v-if="!devi.rejected"  @click="rejectedDevi(devi.id, devi.applicantEmailAddress)" class="btn btn-sm btn-danger mr-2">Rejeter</a>
@@ -837,13 +860,13 @@
                                         <button v-if="!devi.view" 
                                         v-b-modal.modal-xl
                                         variant="primary"
-                                        @click="viewDevis(devi.id)" type="button" class="btn btn-sm btn-square btn-warning text-danger-hover">
+                                        @click="viewDevis(devi),  user()" type="button" class="btn btn-sm btn-square btn-warning text-danger-hover">
                                             <i class="bi bi-eye"></i>
                                         </button>
                                         <button v-else 
                                         v-b-modal.modal-xl
                                         variant="primary"
-                                        @click="viewDevis(devi.id)" type="button" class="btn btn-sm btn-square btn-success text-danger-hover">
+                                        @click="viewDevis(devi),  user()" type="button" class="btn btn-sm btn-square btn-success text-danger-hover">
                                             <i class="bi bi-eye"></i>
                                         </button>
 
@@ -872,6 +895,10 @@
       name: "AdminAllUsers",
       data() {
         return {
+          profileImage: localStorage.getItem("pUserPhoto"),
+        profile: this.$url+'/'+localStorage.getItem("pUserPhoto"),
+          email: localStorage.getItem("pUserEmail"),
+          Mname: localStorage.getItem("pUserName"),
             devis:[],
             name:"",
             loading:false,   
@@ -943,13 +970,47 @@ axios(config)
 
       },
       methods: {
+adminAvis(devi){
+localStorage.setItem("adminDeviId", devi.id);
+window.location.href="/AdminDevisCompletx"
+},
 
-        viewDevis(id) {
+        user(){
+          var axios = require('axios').default;
+
+var config = {
+  method: 'get',
+  url: this.$url+'/user/id?userId='+ localStorage.getItem("adminUserVisasDevis"),
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+  }
+};
+
+axios(config)
+.then((response) => {
+           localStorage.setItem("pUserPhoto", response.data.profileImage);
+          localStorage.setItem("pUserName", response.data.name);
+          localStorage.setItem("pUserEmail", response.data.email);
+
+  console.log("yyyyyyyyy",response);
+})
+.catch(function (error) {
+  console.log(error);
+//    localStorage.clear()
+// window.location.href = "/"
+});
+        },
+
+        viewDevis(devi) {
+
+          console.log("rrrrrr", devi)
+
       var axios = require('axios').default;
 
 var config = {
   method: 'get',
-  url: this.$url+'/id/devis?id='+ id,
+  url: this.$url+'/id/devis?id='+ devi.id,
   headers: { 
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer ' + localStorage.getItem('access-token')

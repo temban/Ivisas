@@ -298,26 +298,31 @@
                                     <th scope="col">Nom</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Numero</th>
-                                    <th scope="col">Statut d'autorisation</th>
+                                    <th scope="col">Autorisation</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody  v-for="user in allUsers" :key="user">
                                 <tr class="tr" >
-                                    <td class="mx-30">
-                                        <div v-if="user.profileImage === null" class="m-r-5"><a  style="border-radius:40px;text-transform: uppercase"
+                                    <td class="mx-0">
+                                        <div style="display:flex;">
+                                            <div v-if="user.profileImage === null" style="margin-top: -10px; margin-right: 10px; position: relative;"><a  style="border-radius:40px;text-transform: uppercase"
                                   class="btn btn-circle btn-primary text-white"
                                   >{{ user.name[0]
                                   }}</a></div> 
-<div v-else  class="avatar avatar-xs" >
+<div v-else  class="avatar avatar-xs" style="margin-top: -10px; margin-right: 10px; position: relative;">
     <img alt="..." v-bind:src="$url+ '/' +  user.profileImage" v-on:click="viewImg(user.profileImage)" data-target="#exampleModal" style="width:60px; height:40px;cursor:pointer"
                                   data-toggle="modal">
 </div>
-  
-   <span class="text-heading font-semibold" href="#"  v-on:click="viewImg(user.profileImage)" data-target="#exampleModal" style="cursor:pointer"
+  <div>
+    <span class="text-heading font-semibold"  href="#"  v-on:click="viewImg(user.profileImage)" data-target="#exampleModal" style="cursor:pointer"
                                   data-toggle="modal">
                                             {{ user.name}}
                                         </span>
+  </div>
+                                        </div>
+               
+
                                     </td>
                                     <td>
                                         <a class="text-heading font-semibold" href="#">
@@ -400,7 +405,7 @@
     'Authorization': 'Bearer ' + localStorage.getItem('access-token')
   }
 };
-axios(config2)
+axios(config2)  
 .then((response)=> {
 //   console.log(response.data.length);
   this.visaCount = response.data.length;
@@ -629,10 +634,13 @@ this.$router.push('/AdminParticularUserVisa')
     display: flex;
 
 }
+
 .thead-light1 th{
-    font-size: 1rem;
+    
+    font-size: 0.9rem;
 }
 .tr td{
+    
     font-size: 1rem;
     
 }
