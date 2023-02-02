@@ -54,8 +54,27 @@
                   ></i>
 
                   <div class="placeholder">
-                    <span class="placeholder-text">{{ first + second }}</span>
-                  </div>
+                    
+                    <img v-if="profileimgage!==null" :src=pic style="border-radius: 160px;
+                  image-resolution: 30000000000000dpi;  
+                  background-position: center;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                   max-width: 100%;
+                    max-height: 100%;
+                    height:100px; width: 100px;" 
+                    
+                  /> 
+                    <img v-else src="@/assets/u.png" 
+              class="rounded-circle img-fluid" style="border-radius: 160px;
+                  background-position: center;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                   max-width: 100%;
+                    max-height: 100%;
+                    height:100px; width: 100px;"   />  
+                  
+                </div>
                 </div>
               </template>
               <div class="drop">
@@ -120,6 +139,8 @@ export default {
   name: "navHome",
   data() {
     return {
+      profileimgage:"",
+      pic:"",
       first:"",
         second:"",
       isLogged: this.checkIfIsLogged(),
@@ -127,6 +148,50 @@ export default {
   },
   watch: {},
   created() {
+    
+    var axios = require('axios').default;
+var config = {
+  method: 'get',
+  url: this.$url+'/profile',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+  },
+};
+
+axios(config)
+.then((res) => {
+
+// console.log(JSON.stringify(res.data));
+// this.myArray.push(res.data);
+// localStorage.setItem('infoUser',JSON.stringify(res.data))          
+// localStorage.setItem('userId', res.data.id);
+// localStorage.setItem('Name', res.data.name);
+// localStorage.setItem('tel', res.data.phone);
+// localStorage.setItem('email', res.data.email);
+// localStorage.setItem('authorized', res.data.authorized)
+// localStorage.setItem("profileImage", res.data.profileImage)
+
+var all = res.data.name;
+      var f =  all.substring(0, all.indexOf(' ')); 
+      var s =  all.substring(all.indexOf(' ') + 1)
+      this.first = f[0];
+      this.second = s[0];
+this.profileimgage = res.data.profileImage;
+this.pic = this.$url + "/" + this.profileimgage;
+this.currenUser = res.data.id;
+window.onbeforeunload = () => {
+  localStorage.removeItem('isAuth');
+}
+        //localStorage.setItem('refresh-token', refreshtoken);
+        //localStorage.setItem('access-token', accesstoken);
+      })
+.catch(function (error) {
+  console.log(error);
+//  localStorage.clear()
+// window.location.href = "/"
+});
+    
     this.$bus.$on("logged", () => {
       this.isLogged = this.checkIfIsLogged();
     });

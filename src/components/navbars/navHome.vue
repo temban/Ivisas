@@ -54,7 +54,26 @@
                   ></i>
 
                   <div class="placeholder">
-                    <span class="placeholder-text">{{ first + second }}</span>
+                    
+                      <img v-if="profileimgage!==null" :src=pic style="border-radius: 160px;
+                    image-resolution: 30000000000000dpi;  
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                     max-width: 100%;
+                      max-height: 100%;
+                      height:100px; width: 100px;" 
+                      
+                    /> 
+                      <img v-else src="@/assets/u.png" 
+                class="rounded-circle img-fluid" style="border-radius: 160px;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                     max-width: 100%;
+                      max-height: 100%;
+                      height:100px; width: 100px;"   />  
+                    
                   </div>
                 </div>
               </template>
@@ -123,6 +142,8 @@ export default {
   name: "navHome",
   data() {
     return {
+      profileimgage:"",
+      pic:"",
       first:"",
         second:"",
       isLogged: this.checkIfIsLogged(),
@@ -163,7 +184,8 @@ var all = res.data.name;
       var s =  all.substring(all.indexOf(' ') + 1)
       this.first = f[0];
       this.second = s[0];
-
+this.profileimgage = res.data.profileImage;
+this.pic = this.$url + "/" + this.profileimgage;
 this.currenUser = res.data.id;
 window.onbeforeunload = () => {
   localStorage.removeItem('isAuth');

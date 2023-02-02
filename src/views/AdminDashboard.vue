@@ -506,6 +506,8 @@ axios(config)
 });
 
 
+
+
       },
       watch: {
       userInput(word) {
@@ -527,32 +529,32 @@ axios(config)
       }
     },
       methods: {
-        updateUser(){
-        var axios = require('axios').default;
-            var config = {
-  method: 'get',
-  url: this.$url+'/users',
-  headers: { 
-    'Content-Type': 'application/json', 
-  }
-};
+//         updateUser(){
+//         var axios = require('axios').default;
+//             var config = {
+//   method: 'get',
+//   url: this.$url+'/users',
+//   headers: { 
+//     'Content-Type': 'application/json', 
+//   }
+// };
 
-axios(config)
-.then((response)=> {
-//   console.log(JSON.stringify(response.data));
+// axios(config)
+// .then((response)=> {
+// //   console.log(JSON.stringify(response.data));
 
-  for(let i=0; i<response.data.length; i++){
-    if(response.data[i].email != "ivisas.affaire@gmail.com"){
-        this.allUsers.push(response.data[i])
-    }
-  }
- this.users1 =  this.allUsers;
- this.users = this.users1;
-})
-.catch(function (error) {
-  console.log(error);
-});
-        },
+//   for(let i=0; i<response.data.length; i++){
+//     if(response.data[i].email != "ivisas.affaire@gmail.com"){
+//         this.allUsers.push(response.data[i])
+//     }
+//   }
+//  this.users1 =  this.allUsers;
+//  this.users = this.users1;
+// })
+// .catch(function (error) {
+//   console.log(error);
+// });
+//         },
 //          change() {
 //     var decider = document.getElementById('1');
 //     if(decider.checked){
@@ -603,8 +605,10 @@ if(user.authorized ===false){
                 text: "Le client a été autorisé",
               }).then(() => {
                 // Go to page after successfully login
-                this.updateUser()
+                // this.updateUser()
+                
                 this.loading = false;
+                window.location.reload()
               });
               console.log(JSON.stringify(response.data));
             })
@@ -655,9 +659,9 @@ if(user.authorized ===false){
                 text: "L'autorisation a été annulée!",
               }).then(() => {
                 // Go to page after successfully login
-                this.updateUser()
+                // this.updateUser()
                 this.loading = false;
-                
+                window.location.reload()
 
               });
               console.log(JSON.stringify(response.data));
