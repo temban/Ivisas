@@ -18,21 +18,20 @@
              <img
                class="rounded-circle mt-5"
                width="150px"
-               src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-             /><span class="font-weight-bold">{{ this.name}}</span
-             ><span class="text-black-50">{{this.email}}</span
+               src="@/assets/logo-png.png"
+             /><span class="font-weight-bold">{{ "IVISAS-AFFAIRS"}}</span
              ><span> </span>
            </div>
          </div>
          <div class="col-md-5 border-right">
            <div class="p-3 py-5">
              <div class="d-flex justify-content-between align-items-center mb-3">
-               <h4 class="text-right">Une demande de devis</h4>
+               <h4 class="text-right">Demande de devis</h4>
              </div>
              <div class="row mt-2">
                <div class="col-md-6">
                  <label class="labels">Nom [nom de famille] :</label
-                 ><input
+                 ><input readonly
                    v-model="familyName"
                    type="text"
                    class="form-control"
@@ -42,7 +41,7 @@
                </div>
                <div class="col-md-6">
                  <label class="labels">Nom(s) de naissance :</label
-                 ><input
+                 ><input readonly
                    v-model="birthName"
                    type="text"
                    class="form-control"
@@ -52,7 +51,7 @@
                </div>
                <div class="col-md-6">
                  <label class="labels">Nom(s) de naissance :</label
-                 ><input
+                 ><input readonly
                    v-model="lastName"
                    type="text"
                    class="form-control"
@@ -64,7 +63,7 @@
              <div class="row mt-3">
                <div class="col-md-12">
                  <label class="labels">Date de naissance :</label
-                 ><input
+                 ><input readonly
                    v-model="birthday"
                    type="date"
                    class="form-control"
@@ -74,7 +73,7 @@
                </div>
                <div class="col-md-12">
                  <label class="labels">Lieu de naissance :</label
-                 ><input
+                 ><input readonly
                    v-model="birthplace"
                    type="text"
                    class="form-control"
@@ -84,7 +83,7 @@
                </div>
                <div class="col-md-12">
                  <label class="labels">Nationalité actuelle:</label
-                 ><input
+                 ><input readonly
                    v-model="currentNationality"
                    type="text"
                    class="form-control"
@@ -95,7 +94,7 @@
                <div class="col-md-12">
                  <label class="labels"
                    >Nationalité à la naissance, si différente :</label
-                 ><input
+                 ><input readonly
                    v-model="birthNationality"
                    type="text"
                    class="form-control"
@@ -105,7 +104,7 @@
                </div>
                <div class="col-md-12">
                  <label class="labels">Autre(s) nationalité(s) :</label
-                 ><input
+                 ><input readonly
                    v-model="anotherNationality"
                    type="text"
                    class="form-control"
@@ -117,16 +116,16 @@
                <div class="col-md-12">
                  <label class="labels">Sexe</label>
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Masculin"
                      name="sexe"
                      id="3sex"
                      v-model="sex"
                    />
                    <label for="3sex">Masculin</label>
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Féminin"
                      name="sexe"
                      id="4sex"
@@ -139,8 +138,8 @@
                <div class="col-md-12">
                  <label class="labels">Etat Civil :</label>
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Célibataire"
                      name="familyStatus"
                      id="1s"
@@ -148,8 +147,8 @@
                    />
                    <label for="1s">Célibataire</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Marié(e)"
                      name="familyStatus"
                      id="2s"
@@ -157,8 +156,8 @@
                    />
                    <label for="2s">Marié(e)</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Divorcé(e)"
                      name="familyStatus"
                      id="3s"
@@ -166,8 +165,8 @@
                    />
                    <label for="3s">Divorcé(e)</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Veuf(ve)"
                      name="familyStatus"
                      id="4s"
@@ -178,8 +177,8 @@
                </div>
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Séparé(e)"
                      name="familyStatus"
                      id="5s"
@@ -187,8 +186,8 @@
                    />
                    <label for="5s">Séparé(e)</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Autre"
                      name="familyStatus"
                      id="6s"
@@ -203,7 +202,7 @@
                    >Autorité parentale (pour les mineurs)/tuteur légal ( nom,
                    prénom, adresse (si différente de celle du demandeur), numéro
                    de téléphone, adresse électronique et nationalité: </label
-                 ><input
+                 ><input readonly
                    v-model="parentalAuthority"
                    type="text"
                    class="form-control"
@@ -215,7 +214,7 @@
                <div class="col-md-12">
                  <label class="labels"
                    >Numéro national d’identité, le cas échéant :</label
-                 ><input
+                 ><input readonly
                    v-model="cniNumber"
                    type="text"
                    class="form-control"
@@ -227,8 +226,8 @@
                <div class="col-md-12">
                  <label class="labels">Type de document de voyage :</label>
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Passeport ordinaire"
                      name="travelDocumentType"
                      id="1pass"
@@ -236,8 +235,8 @@
                    />
                    <label for="1pass">Passeport ordinaire</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Passeport officie"
                      name="travelDocumentType"
                      id="2pass"
@@ -248,8 +247,8 @@
                </div>
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Passeport diplomatique"
                      name="travelDocumentType"
                      id="3pass"
@@ -257,8 +256,8 @@
                    />
                    <label for="3pass">Passeport diplomatique</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Passeport spécial"
                      name="travelDocumentType"
                      id="4pass"
@@ -269,8 +268,8 @@
                </div>
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Séparé(e)"
                      name="travelDocumentType"
                      id="5pass"
@@ -278,8 +277,8 @@
                    />
                    <label for="5pass">Passeport de service</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Autre document de voyage"
                      name="travelDocumentType"
                      id="6pass"
@@ -291,7 +290,7 @@
  
                <div class="col-md-12">
                  <label class="labels">Numéro du document de voyage :</label
-                 ><input
+                 ><input readonly
                    v-model="travelDocumentNumber"
                    type="text"
                    class="form-control"
@@ -301,8 +300,8 @@
                </div>
                <div class="col-md-6">
                  <label class="labels">Date de délivrance :</label
-                 ><input
-                   v-model="deliveredBy"
+                 ><input readonly
+                   v-model="currentdate"
                    type="date"
                    class="form-control"
                    placeholder="Date de délivrance"
@@ -311,7 +310,7 @@
                </div>
                <div class="col-md-6">
                  <label class="labels">Date d’expiration :</label
-                 ><input
+                 ><input readonly
                    v-model="expiredDate"
                    type="date"
                    class="form-control"
@@ -322,8 +321,8 @@
  
                <div class="col-md-12">
                  <label class="labels">Délivré par (pays) :</label
-                 ><input
-                   v-model="homeAddress"
+                 ><input readonly
+                   v-model="deliveredBy"
                    type="text"
                    class="form-control"
                    placeholder="Délivré par (pays)"
@@ -333,7 +332,7 @@
  
                <div class="col-md-12">
                  <label class="labels">Adresse électronique du demandeur :</label
-                 ><input
+                 ><input readonly
                    v-model="applicantEmailAddress"
                    type="text"
                    class="form-control"
@@ -342,16 +341,10 @@
                  />
                </div>
             
-             </div>
-           
-           </div>
-         </div>
-         <div class="col-md-4">
-           <div class="p-3 py-5">
-            
-             <div class="col-md-12">
+
+               <div class="col-md-12">
                  <label class="labels">N° de téléphone :</label
-                 ><input
+                 ><input readonly
                    v-model="phoneNumber"
                    type="text"
                    class="form-control"
@@ -366,16 +359,16 @@
                    actuelle:</label
                  >
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Oui"
                      name="Résidence"
                      id="oui"
                      v-model="anotherHome"
                    />
                    <label for="oui">Oui</label>
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Non"
                      name="Résidence"
                      id="non"
@@ -388,7 +381,7 @@
                <div class="col-md-12">
                  <label class="labels"
                    >Autorisation de séjour ou équivalent N° :</label
-                 ><input
+                 ><input readonly
                    v-model="residencePermitNumber"
                    type="text"
                    class="form-control"
@@ -397,8 +390,8 @@
                  />
                </div>
                <div class="col-md-12">
-                 <label class="labels">Date d’expiration:</label
-                 ><input
+                <label class="labels">Date d’expiration de l'autorisation:</label
+                 ><input readonly
                    v-model="residencePermitExpirationDate"
                    type="date"
                    class="form-control"
@@ -406,9 +399,20 @@
                    placeholder="Date d’expiration"
                  />
                </div>
+
+               <div class="col-md-12">
+                 <label class="labels">Adresse du domicile :</label
+                 ><input readonly
+                   v-model="homeAddress"
+                   type="text"
+                   class="form-control"
+                   value=""
+                   placeholder="Profession actuelle "
+                 />
+               </div>
                <div class="col-md-12">
                  <label class="labels">Profession actuelle :</label
-                 ><input
+                 ><input readonly
                    v-model="profession"
                    type="text"
                    class="form-control"
@@ -418,18 +422,18 @@
                </div>
  
                <div class="col-md-12">
-                 <label class="labels">Type de document de voyage :</label>
+                 <label class="labels">Objet(s) du voyage :</label>
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Tourisme"
                      name="travelReason"
                      id="Tourisme"
                      v-model="travelReason"
                    />
                    <label for="Tourisme">Tourisme</label>
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Visite officielle "
                      name="travelReason"
                      id="o"
@@ -443,8 +447,8 @@
                </div>
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Sports"
                      name="travelReason"
                      id="Sports"
@@ -452,8 +456,8 @@
                    />
                    <label for="Sports">Sports</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Transit aéroportuaire"
                      name="travelReason"
                      id="Transit"
@@ -465,8 +469,8 @@
  
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Raisons médicales"
                      name="travelReason"
                      id="raison"
@@ -475,8 +479,8 @@
                    <label for="raison">Raisons médicales</label>
  
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Affaires"
                      name="travelReason"
                      id="Affaires"
@@ -490,8 +494,8 @@
  
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
-                     <input
-                     type="radio"
+                     <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Études"
                      name="travelReason"
                      id="Études"
@@ -499,8 +503,8 @@
                    />
                    <label for="Études">Études</label>
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Culture"
                      name="travelReason"
                      id="Culture"
@@ -516,8 +520,8 @@
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="Visite à la famille ou à des amis"
                      name="travelReason"
                      id="visit"
@@ -531,8 +535,8 @@
                <div class="col-md-12">
                  <div class="input_field checkbox_option">
  
-                   <input
-                     type="radio"
+                   <input readonly
+                     type="radio" onclick="javascript: return false;"
                      value="- "
                      name="travelReason"
                      id="autre"
@@ -540,7 +544,7 @@
                    />
                    <label for="autre">Autre (à préciser)</label>
  
-                 <input
+                 <input readonly
                  v-model="travelReason"
                    type="text"
                    class="form-control"
@@ -551,11 +555,350 @@
                </div>
  
               
-             
+             </div>
+           
            </div>
+         </div>
+         <div class="col-md-4">
+          <div class="p-3 py-5">
+                <h4 class="text-left">Partie réservée à l’administration</h4>
+              
+              <div style="margin:5rem 0 0 5.5rem" v-if="this.checkAvis.length === 0">
+                <h1>Pas d'avis!</h1>
+              </div>
+              <div v-else>
+                <div class="col-md-12">
+                  <label class="labels">Date de la demande :</label
+                  ><input readonly
+                    v-model="requestDate"
+                    type="date"
+                    class="form-control"
+                    placeholder="Date de la demande "
+                    value=""
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Numéro de la demande :</label
+                  ><input readonly
+                    v-model="requestNumber"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Numéro de la demande "
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Demande introduite :</label>
+                  <div class="input_field checkbox_option">
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Auprès de VA"
+                      name="requestMade"
+                      id="VA"
+                      v-model="requestMade"
+                    />
+                    <label for="VA">Auprès de VA</label>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="input_field checkbox_option">
+  
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="- "
+                      name="requestMade"
+                      id="autre1"
+                      v-model="requestMade"
+                    />
+                    <label for="autre1">Autre (à préciser)</label>
+  
+                  <input readonly
+                  v-model="requestMade"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="préciser le type de document de voyage"
+                  />
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Responsable du dossier :</label
+                  ><input readonly
+                    v-model="personInCharge"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Responsable du dossier"
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Documents justificatifs :</label>
+                  <div class="input_field checkbox_option">
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Complet"
+                      name="supportDocument"
+                      id="Complet"
+                      v-model="supportDocument"
+                    />
+                    <label for="Complet">Complet</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Incomplet"
+                      name="supportDocument"
+                      id="Incomplet"
+                      v-model="supportDocument"
+                    />
+                    <label for="Incomplet">Incomplet</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="En attente"
+                      name="travelReason"
+                      id="attente"
+                      v-model="supportDocument"
+                    />
+                    <label for="attente">En attente</label>
+
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="input_field checkbox_option">
+  
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="- "
+                      name="travelReason"
+                      id="autre"
+                      v-model="travelReason"
+                    />
+                    <label for="autre">Autre (à préciser)</label>
+  
+                  <input readonly
+                  v-model="travelReason"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="préciser le type de document de voyage"
+                  />
+                  </div>
+                </div> -->
+
+                <div class="col-md-12">
+                  <label class="labels">Décision concernant le visas :</label>
+                  <div class="input_field checkbox_option">
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Délivré"
+                      name="visaDecision"
+                      id="Délivré"
+                      v-model="visaDecision"
+                    />
+                    <label for="Délivré">Délivré</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="En cours"
+                      name="visaDecision"
+                      id="En-cours"
+                      v-model="visaDecision"
+                    />
+                    <label for="En-cours">En cours</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Refusé"
+                      name="visaDecision"
+                      id="Refusé"
+                      v-model="visaDecision"
+                    />
+                    <label for="Refusé">Refusé</label>
+
+                  </div>
+                </div>
+
+                <div class="row">
+    <div class="col-md-6">
+                  <label class="labels">Valable du :</label
+                  ><input readonly
+                    v-model="validFrom"
+                    type="date"
+                    class="form-control"
+                    placeholder="Date de délivrance"
+                    value=""
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="labels">Au :</label
+                  ><input readonly
+                    v-model="validTo"
+                    type="date"
+                    class="form-control"
+                    placeholder="Date d’expiration"
+                    value=""
+                  />
+                </div>
+</div>
+               
+
+
+
+                <div class="col-md-12">
+                  <label class="labels">Nombre d’entrées :</label>
+                  <div class="input_field checkbox_option">
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="1"
+                      name="numberInputs"
+                      id="1"
+                      v-model="numberInputs"
+                    />
+                    <label for="1">1</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="2"
+                      name="numberInputs"
+                      id="2"
+                      v-model="numberInputs"
+                    />
+                    <label for="2">2</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Multiples"
+                      name="numberInputs"
+                      id="Multiples"
+                      v-model="numberInputs"
+                    />
+                    <label for="Multiples">Multiples</label>
+
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Nombres de jours :</label
+                  ><input readonly
+                    v-model="numberDay"
+                    type="text"
+                    class="form-control"
+                    value=""
+                    placeholder="Nombres de jours"
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="labels">Nombre d’entrées :</label>
+                  <div class="input_field checkbox_option">
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Espèces"
+                      name="paymentMethod"
+                      id="Espèces"
+                      v-model="paymentMethod"
+                    />
+                    <label for="Espèces">Espèces</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Carte bleue"
+                      name="paymentMethod"
+                      id="Carte"
+                      v-model="paymentMethod"
+                    />
+                    <label for="Carte"> Carte bleue</label>
+
+                    <input readonly
+                      type="radio"  onclick="javascript: return false;"
+                      value="Chèques de bancaire"
+                      name="paymentMethod"
+                      id="Chèques"
+                      v-model="paymentMethod"
+                    />
+                    <label for="Chèques">Chèques de bancaire</label>
+
+                  </div>
+                </div>
+              </div>
+                
+
+
+
+                <!-- <div class="mt-5 text-center">
+                <button class="btn profile-button" type="button" @click="adminAvis()">
+                  Envoyer <div class="spinner-border text-light spinner-border-sm mb-1 " role="status" v-if="formSpinner">
+            <span class="sr-only">Loading...</span></div>
+                </button>
+              </div> -->
+              
+            </div>
          </div>
        </div>
     
+       
+       <div class="row">
+        <div class="col-md-12">
+            <div id="grid">
+  <div class="cell">
+    <label>Je suis informé que les droits de visa ne sont pas remboursés si le visa est refusé
+</label>  </div>
+  <div class="cell">Applicable en cas de demande de visa à entrées multiples,
+Je suis informé de la nécessité de disposer d’une 
+assurance maladie en voyage adéquate pour mon premier séjour et lors de  
+voyages ultérieurs sur le territoire Camerounais
+
+  </div>
+  <div class="cell">
+       En connaissance de cause, j'accepte ce qui suit: aux fins de l'examen de ma demande de visa, il y a lieu de recueillir
+        les données requises dans ce formulaire, de me photographier et, le cas échéant, de prendre mes empreintes digitales.
+         Les données à caractère personnel me concernant qui figurent dans le présent formulaire de demande de visa, ainsi que 
+          mes empreintes digitales et ma photo, seront communiquées aux autorités compétentes camerounaise et traitées par elles, 
+          aux fins de la décision relative à ma demande de visa.
+Ces données ainsi que celles concernant la décision relative
+ à ma demande de visa, ou toute décision d'annulation, d'abrogation ou de
+prolongation de visa, seront saisies et conservées dans le système des visas pendant une période 
+maximale de cinq ans, durant laquelle elles seront
+accessibles aux autorités chargées des visas,aux autorités 
+compétentes chargées de contrôler les visas aux frontières extérieures et dans les États
+membres, aux autorités compétentes en matière d'immigration et d'asile dans les
+ États membres aux fins de la vérification du respect des
+conditions d'entrée et de séjour réguliers sur le territoire des États 
+membres, aux fins de l'identification des personnes qui ne remplissent
+pas ou plus ces conditions, aux fins de l'examen d'une 
+demande d'asile et de la détermination de l'autorité responsable de cet examen. 
+Dans
+certaines conditions, ces données seront aussi accessibles aux autorités 
+désignées des États membres et à Europol aux fins de la
+prévention et de la détection des infractions terroristes et des autres infractions pénales graves, ainsi qu'aux fins des enquêtes en la matière.
+Les autorités compétentes pour le traitement des données sont le Ministère des relations extérieurs au Cameroun (VGH8+G34, Yaoundé,
+Cameroun) et le Ministère des Affaires Etrangères (VGH8+G34, Yaoundé, Cameroun).
+Je suis informé(e) de mon droit d'obtenir auprès de IVISAS-AFFAIRES la notification des données me concernant qui sont enregistrées dans les
+services ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées si elles sont erronées .
+À ma demande expresse, l'autorité qui a examiné ma demande m'informera de la manière dont je peux exercer mon droit de vérifier les
+données à caractère personnel me concernant et de les faire rectifier ou supprimer, y compris des voies de recours prévues à cet égard par
+la législation nationale de l'État concerné. L'autorité de contrôle nationale du Cameroun pourra être saisie des demandes concernant la
+protection des données
+Je déclare qu'à ma connaissance, toutes les indications que j'ai fournies sont correctes et complètes. Je suis informé(e) que toute fausse
+déclaration entraînera le rejet de mademande ou l'annulation du visa s'il a déjà été délivré, et peut entraîner des poursuites pénales à mon égard
+en application du droit de l'État membre qui traite la demande.
+Je m'engage à quitter le territoire du Cameroun avant l'expiration du visa, si celui-ci m'est délivré. J'ai été informé(e) que la possession d'un
+visa n'est que l'une des conditions de l'entrée sur le territoire Camerounais. Le simple fait qu'un visa m'ait été accordé n'implique pas que j'aurai
+droit attachés aux citoyens du territoire, je dois prendre des informations auprès des services compétentes pour connaitre les droits qui me sont
+accordés.
+  </div>
+  <div class="cell1">Lieu et date :<br/>
+    Lieu : <span style="font-weight:700">{{ this.homeAddress }} </span><br/> 
+    Date : <span style="font-weight:700">{{ this.sendedDate }} </span>  
+  </div>
+  <div class="cell1">Signature (pour les mineurs, signature de l’autorité parentale/du
+tuteur légal) : </div>
+</div>
+        </div>
+    </div> 
 </b-modal>
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
@@ -788,7 +1131,7 @@
                                 <tr>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Date d'envoi</th>
-                                    <th scope="col">Statut de rejet</th>
+                                    <th scope="col">Statut</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -817,13 +1160,13 @@
                                    
                                     <td class="text-end">
                                         <a  v-if="!devi.rejected"  @click="rejectedDevi(devi.id, devi.applicantEmailAddress)" class="btn btn-sm btn-danger mr-2">Rejeter</a>
-                                        <a v-else  class="btn btn-sm btn-neutral mr-2">Rejeté</a>
+                                        <a v-else  class="btn btn-sm btn-secondary mr-2">Rejeté</a>
 
-                                        <button v-if="!devi.view" 
+                                        <button v-if="devi.view" 
                                         v-b-modal.modal-xl
                                         variant="primary"
                                         @click="viewDevis(devi.id)" type="button" class="btn btn-sm btn-square btn-warning text-danger-hover">
-                                            <i class="bi bi-eye"></i>
+                                            <i class="bi bi-eye-slash"></i>
                                         </button>
                                         <button v-else 
                                         v-b-modal.modal-xl
@@ -886,6 +1229,20 @@
         currentdate: "",
         rejected: false,
         view: false,
+        sendedDate:"",
+        requestDate: "",
+    requestNumber: "",
+    requestMade: "",
+    personInCharge: "",
+    supportDocument: "",
+    visaDecision: "",
+    validFrom: "",
+    validTo: "",
+    numberInputs: "",
+    numberDay: "",
+    paymentMethod: "",
+        checkAvis:[],
+
         };
       },
       watch: {},
@@ -913,6 +1270,9 @@ axios(config)
 
 
         viewDevis(id) {
+          
+          this.checkAvis = [];
+
       var axios = require('axios').default;
 
 var config = {
@@ -952,7 +1312,25 @@ axios(config)
       this.profession = res.data.profession,
       this.travelReason = res.data.travelReason,
       this.currentdate = res.data.currentdate, 
-  console.log(res.data.data);
+      this.sendedDate = res.data.sendedDate;
+
+
+      this.requestDate = res.data.adminDevisDao[0].requestDate
+    this.requestNumber = res.data.adminDevisDao[0].requestNumber
+    this.requestMade = res.data.adminDevisDao[0].requestMade
+    this.personInCharge = res.data.adminDevisDao[0].personInCharge
+    this.supportDocument = res.data.adminDevisDao[0].supportDocument
+    this.visaDecision = res.data.adminDevisDao[0].visaDecision
+    this.validFrom = res.data.adminDevisDao[0].validFrom
+    this.validTo = res.data.adminDevisDao[0].validTo
+    this.numberInputs = res.data.adminDevisDao[0].numberInputs
+    this.numberDay = res.data.adminDevisDao[0].numberDay
+    this.paymentMethod = res.data.adminDevisDao[0].paymentMethod
+
+this.checkAvis = res.data.adminDevisDao;
+
+
+  console.log(res.data);
 })
 .catch(function (error) {
   console.log(error);
@@ -1104,6 +1482,35 @@ axios(config)
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
   
+h1 {
+    background: linear-gradient(to bottom, #634f2c 24%, #686254 26%, #605c52 27%,#c6b173 40%,#3b2b0c 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+font-family: 'Playfair Display', serif;
+    position: relative;
+	text-transform: uppercase;	
+	font-size: 2vw;
+	margin: 0;
+	font-weight: 700;
+    	text-shadow:	5px 5px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+h1:after {
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow: 
+		-1px 0 1px #c6bb9f, 
+		0 1px 1px #c6bb9f, 
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+}
+
   .input_field {
     position: relative;
     margin-bottom: 10px;
@@ -1223,5 +1630,34 @@ axios(config)
     border: solid 1px goldenrod;
   }
 
+
+  h1 {
+    background: linear-gradient(to bottom, #634f2c 24%, #686254 26%, #605c52 27%,#c6b173 40%,#3b2b0c 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+font-family: 'Playfair Display', serif;
+    position: relative;
+	text-transform: uppercase;	
+	font-size: 2vw;
+	margin: 0;
+	font-weight: 700;
+    	text-shadow:	5px 5px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+h1:after {
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow: 
+		-1px 0 1px #c6bb9f, 
+		0 1px 1px #c6bb9f, 
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+}
     </style>
     

@@ -14,13 +14,20 @@
 
  
         <div class="form_wrapper">
-        <div  id="AdminParticularUserVisa" ref="document">
+
+          <div ref="pdf" class="pdf-file">
+      <div
+      
+        :key="page"
+        :class="{ debug: !working }"
+      >
+          
           <div class="title_container">
             <img src="@/assets/visa.png"/>
             <h2>FICHE DE DEMANDE DE VISA</h2>
           </div>
          
-            <div class="">
+            <div>
               <form>
                 <div class="row clearfix">
                   <div class="col_half">
@@ -65,7 +72,7 @@
                         type="text"
                         name="name"
                         placeholder="Lieu de naissance"
-                        readonly v-model="birthCountry" 
+                        readonly v-model="birthPlace" 
                       />
                     </div>
                   </div>
@@ -118,7 +125,7 @@
                     type="text"
                     name="name"
                     placeholder="Nationalité d'origine"
-                    readonly v-model="currentCountry"
+                    readonly v-model="birthCountry"
                   />
                 </div>
                 <div class="title_container1">
@@ -486,12 +493,14 @@
             </div>
         
 
-        </div>
-
+     
+            <div class="pager">Page {{ page }} of {{ pageTotal }}</div>
+      </div>
+    </div>
 
 
         <div class="flex">
-  <a @click="exportToPDF" class="btn btn-download">Generate PDF</a>
+  <a @click="download" :disabled="working" class="btn btn-download">Generate PDF</a>
 </div>
 
 </div>
@@ -738,7 +747,7 @@
                                 <tr>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Date d'envoi</th>
-                                    <th scope="col">Statut de rejet</th>
+                                    <th scope="col">Statut</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -766,14 +775,16 @@
 
 
                                     <td class="text-end">
-                                        <a  v-if="!visa.rejected"  @click="rejectedVisa(visa.id, visa.email)" class="btn btn-sm btn-danger mr-2">Rejeter</a>
-                                        <a v-else  class="btn btn-sm btn-neutral mr-2">Rejeté</a>
+                                      <a  @click="pdf(visa.id)" class="btn btn-sm btn-danger mr-2">pdf</a>
 
-                                        <button v-if="!visa.view" 
+                                        <a  v-if="!visa.rejected"  @click="rejectedVisa(visa.id, visa.email)" class="btn btn-sm btn-danger mr-2">Rejeter</a>
+                                        <a v-else  class="btn btn-sm btn-secondary mr-2">Rejeté</a>
+
+                                        <button v-if="visa.view" 
                                         v-b-modal.modal-xl
                                         variant="primary"
                                         @click="viewVisa(visa.id)" type="button" class="btn btn-sm btn-square btn-warning text-danger-hover">
-                                            <i class="bi bi-eye"></i>
+                                            <i class="bi bi-eye-slash"></i>
                                         </button>
                                         <button v-else 
                                         v-b-modal.modal-xl
@@ -810,6 +821,8 @@
     </template>
     
     <script>
+    import jsPDF from "jspdf";
+import html2canvas from 'html2canvas';
     import html2pdf from 'html2pdf.js'
     import Swal from "sweetalert2";
 import $ from 'jquery'
@@ -824,6 +837,7 @@ import $ from 'jquery'
   lastName: "",
   sex: "",
   birthday: "",
+  birthPlace: "",
   fatherName: "",
   motherName: "",
   birthCountry: "",
@@ -853,6 +867,8 @@ import $ from 'jquery'
   question: "",
   travelMode: "",
   sendedDate: "",
+  pageTotal: 1,
+      working: false,
         };
       },
       watch: {},
@@ -913,6 +929,65 @@ axios(config)
 
       },
       methods: {
+
+        async download() {
+      this.working = true;
+      
+      await this.$nextTick();
+      
+      // A4 in 96dpi
+      // 29.7cm x 21cm
+      const pageWidth = 1123;
+      const pageHeight = 794;
+      
+      const doc = new jsPDF({
+        orientation: "l",
+        unit: "px",
+        hotfixes: ["px_scaling"],
+        format: [pageWidth, pageHeight],
+        compressPdf: true
+      });
+      
+      // Slower, Larger, But maintain the html elements
+      // doc.html(this.$refs.pdf, {
+      //   callback: async doc => {
+      //     const pageCount = doc.internal.getNumberOfPages();
+      //     doc.deletePage(pageCount);
+      //     await doc.save("favorites.pdf");
+      //     this.working = false;
+      //   },
+      // });
+      
+      // Faster, Smaller, Flatten all elements
+      const canvas = await html2canvas(this.$refs.pdf, {
+        allowTaint: true,
+        useCORS: true,
+        width: pageWidth,
+        y: 0
+      })
+      const img = canvas.toDataURL("image/jpeg", 0.8);
+      const totalHeight = pageHeight * this.pageTotal;
+      for (let i = 0; i < this.pageTotal; i++) {
+        doc.addImage(img, "JPEG", 0, -pageHeight * i, pageWidth, totalHeight, undefined, "FAST");
+        if (i < this.pageTotal - 1) {
+          doc.addPage();
+        }
+      }
+      await doc.save("favorites.pdf");
+      this.working = false;
+    },
+    slice(string, length, ellipsis = " ...") {
+      return string.length > length
+        ? string.slice(0, length) + ellipsis
+        : string;
+    },
+
+
+pdf(id){
+localStorage.setItem("pdfVisaId", id)
+window.location.href="/PdfGenerateVisa"
+},
+
         viewVisa(id){
             var axios = require('axios').default;
 
@@ -933,6 +1008,7 @@ axios(config)
  this.lastName =  response.data.lastName,
   this.sex = response.data.sex,
  this.birthday =  response.data.birthday ,
+ this.birthPlace =  response.data.birthPlace ,
  this.fatherName =  response.data.fatherName,
   this.motherName =  response.data.motherName,
   this.birthCountry =  response.data.birthCountry,
@@ -1137,10 +1213,10 @@ this.visaNature=  response.data.visaNature,
 				html2pdf(this.$refs.document, {
 					margin: 1,
 					filename: 'document.pdf',
-					image: { type: 'jpeg', quality: 0.98 },
+					image: { type: 'jpeg', quality: 1 },
 					html2canvas: { dpi: 192, letterRendering: true },
-					jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
-				})
+					jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape', useCORS: true }
+				});
 			}
 
       },
@@ -1785,6 +1861,41 @@ this.visaNature=  response.data.visaNature,
 #block1{
   font-family: "Times New Roman", serif;
 }
+
+
+  h1 {
+    background: linear-gradient(to bottom, #634f2c 24%, #686254 26%, #605c52 27%,#c6b173 40%,#3b2b0c 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+font-family: 'Playfair Display', serif;
+    position: relative;
+	text-transform: uppercase;	
+	font-size: 2vw;
+	margin: 0;
+	font-weight: 700;
+    	text-shadow:	5px 5px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+h1:after {
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow: 
+		-1px 0 1px #c6bb9f, 
+		0 1px 1px #c6bb9f, 
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
 
     </style>
     

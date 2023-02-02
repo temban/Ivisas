@@ -1,6 +1,72 @@
 <template>
     <div >
 <neutralNavBar/>
+<b-modal id="modal-xl1" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/hors-EU.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+<b-modal id="modal-xl2" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/mois-EU.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+<b-modal id="modal-xl3" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/visa-diplomatique.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+<b-modal id="modal-xl4" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/visas-engine-a-moteur.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+<b-modal id="modal-xl5" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/visas-long-sejour.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+<b-modal id="modal-xl6" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/visas-transit.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+<b-modal id="modal-xl7" size="xl">
+  <center>
+        <h1 style="color: green">IVISAS-AFFAIRE</h1>
+        <embed src="pdf/visas-travail.pdf" type="application/pdf"
+             style="max-width:65rem; width: 100%;"
+               height="1000">
+    </center>
+</b-modal>
+
+
+
+
         <div class="modal-dialo" >
           <div class="modal-content">
             <div class="modal-header">
@@ -42,7 +108,7 @@
                           </div>
                          
 
-                <a href="/doc1" target="_blank" rel="noopener noreferrer"><div id="inner"
+                <a v-b-modal.modal-xl1 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="
@@ -54,7 +120,7 @@
           <span style="font-size: 20px; margin-left: 10px">Documents à fournir pour obtention de visas 1 mois hors EU.pdf</span>
           </div></a>
 
-              <a  target="_blank" rel="noopener noreferrer"><div id="inner"
+              <a v-b-modal.modal-xl2 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="
@@ -66,7 +132,7 @@
           <span style="font-size: 20px; margin-left: 10px">Documents à fournir pour obtention de visas transit.pdf</span>
           </div></a>
 
-              <a  target="_blank" rel="noopener noreferrer"><div id="inner"
+              <a v-b-modal.modal-xl3 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="
@@ -78,7 +144,7 @@
           <span style="font-size: 20px; margin-left: 10px">Documents à fournir pour obtention de visas de mission de travail.pdf</span>
           </div></a>
 
-          <a  target="_blank" rel="noopener noreferrer"><div id="inner"
+          <a v-b-modal.modal-xl4 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="
@@ -90,7 +156,7 @@
           <span style="font-size: 20px; margin-left: 10px">Documents à fournir pour obtention de visas diplomatique.pdf</span>
           </div></a>
 
-              <a  target="_blank" rel="noopener noreferrer"><div id="inner"
+              <a v-b-modal.modal-xl5 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="
@@ -102,7 +168,7 @@
           <span style="font-size: 20px; margin-left: 10px">Documents à fournir pour obtention de visas 1 mois EU.pdf</span>
           </div></a>
 
-              <a  target="_blank" rel="noopener noreferrer"><div id="inner"
+              <a v-b-modal.modal-xl6 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="
@@ -113,7 +179,7 @@
           ></i>
           <span style="font-size: 20px; margin-left: 10px">Documents à fournir pour obtention de visas engin à moteur.pdf</span>
           </div></a>
-          <a  target="_blank" rel="noopener noreferrer"><div id="inner"
+          <a v-b-modal.modal-xl7 variant="primary" target="_blank" rel="noopener noreferrer"><div id="inner"
           class="createButton"><i
             class="far fa-images"
             style="

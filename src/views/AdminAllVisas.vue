@@ -11,7 +11,16 @@
 </a> -->
 
 <b-modal id="modal-xl" size="xl" @close="onClose" @ok="onClose" @cancel="onClose">
-      <div class="form_wrapper">
+  <div class="form_wrapper">
+  <div ref="pdf" class="pdf-file">
+      <div
+        :key="page"
+        class="pdf-page"
+        :class="{ debug: !working }"
+      >
+       
+        
+
         <div class="title_container">
           <img src="@/assets/visa.png" />
           <h2>FICHE DE DEMANDE DE VISA</h2>
@@ -25,7 +34,7 @@
                   <h6>Nom:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Nom"
@@ -38,11 +47,11 @@
                   <h6>Prénom:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Prénom"
-                    readonly
+                    
                     v-model="lastName"
                   />
                 </div>
@@ -54,7 +63,7 @@
                   <h6>Sexe:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Sexe"
@@ -67,12 +76,12 @@
                   <h6>Lieu de naissance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Lieu de naissance"
-                    readonly
-                    v-model="birthCountry"
+                    
+                    v-model="birthPlace"
                   />
                 </div>
               </div>
@@ -81,11 +90,11 @@
                   <h6>Date de naissance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Date de naissance"
-                    readonly
+                    
                     v-model="birthday"
                   />
                 </div>
@@ -95,11 +104,11 @@
               <h6>Nom et prénom du père:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nom et prénom du père"
-                readonly
+                
                 v-model="fatherName"
               />
             </div>
@@ -107,11 +116,11 @@
               <h6>Nom et prénom du mère:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nom et prénom du mère"
-                readonly
+                
                 v-model="motherName"
               />
             </div>
@@ -119,19 +128,19 @@
               <h6>Nationalité d'origine:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nationalité d'origine"
-                readonly
-                v-model="currentCountry"
+                
+                v-model="birthCountry"
               />
             </div>
             <div class="title_container1">
               <h6>Nationalité actuelle:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nationalité actuelle"
@@ -145,40 +154,40 @@
               </div>
               <div class="col_half left">
                 <div class="input_field checkbox_option">
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Célibataire"
                     name="familyStatus1"
                     id="familyStatus1"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus1">Célibataire</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Marié(e)"
                     name="familyStatus2"
                     id="familyStatus2"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus2">Marié(e)</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Divorcé(e)"
                     name="familyStatus3"
                     id="familyStatus3"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus3">Divorcé(e)</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Veuf(ve)"
                     name="familyStatus4"
                     id="familyStatus4"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus4">Veuf(ve)</label>
                 </div>
@@ -189,11 +198,11 @@
               <h6>Nom et Prénom du conjoint:</h6>
             </div>
             <div class="input_field space">
-              <input
+              <input readonly
                 type="text"
                 name="email"
                 placeholder="Nom et Prénom du conjoint"
-                readonly
+                
                 v-model="partnerName"
               />
             </div>
@@ -205,21 +214,21 @@
                   <div class="col_half1">
                   
                 <div class="input_field checkbox_option">
-                  <input value="Passport ordinaire" type="radio" name="documentType" id="rd5" v-model="documentType"/>
+                  <input readonly value="Passport ordinaire" type="radio" name="documentType" onclick="javascript: return false;" id="rd5" v-model="documentType"/>
                   <label for="rd5">Passport ordinaire</label>
-                  <input value="Passport diplomatique" type="radio" name="documentType" id="rd6"  v-model="documentType"/>
+                  <input readonly value="Passport diplomatique" type="radio" name="documentType" onclick="javascript: return false;" id="rd6"  v-model="documentType"/>
                   <label for="rd6">Passport diplomatique</label>
-                  <input value="Passport de service" type="radio" name="documentType" id="rd7"  v-model="documentType"/>
+                  <input readonly value="Passport de service" type="radio" name="documentType" onclick="javascript: return false;" id="rd7"  v-model="documentType"/>
                   <label for="rd7">Passport de service</label>
                   
                 </div>
                   </div>
                   <div class="col_half input_field checkbox_option">
                    
-                   <input value="Passport de service: " type="radio" name="radiogroup1" id="rd8" />
+                   <input readonly value="Passport de service: " type="radio" name="radiogroup1" id="rd8" />
                  <label class="laS" for="rd8">Passport de service(priser la nature) :</label>
                  <div class="input_field">
-                 <input type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
+                 <input readonly type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
                </div>  
                </div>
                   
@@ -229,11 +238,11 @@
               <h6>Numéro du passeport:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Numéro du passeport"
-                readonly
+                
                 v-model="passportNumber"
               />
             </div>
@@ -244,7 +253,7 @@
                   <h6>Date de délivrance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Date de délivrance"
@@ -257,11 +266,11 @@
                   <h6>Lieu de délivrance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Lieu de délivrance"
-                    readonly
+                    
                     v-model="lieuDelivrance"
                   />
                 </div>
@@ -273,7 +282,7 @@
                   <div class="title_container1">
                     <h6>Valide jusqu'au:</h6>
                   </div>
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Valide jusqu'au"
@@ -286,11 +295,11 @@
                   <h6>Autorité Ayant délivré ce document:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Autorité Ayant délivré ce document"
-                    readonly
+                    
                     v-model="approvedBy"
                   />
                 </div>
@@ -303,11 +312,11 @@
                   <h6>Votre adresse exacte en France:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Votre adresse exacte en France"
-                    readonly
+                    
                     v-model="adress"
                   />
                 </div>
@@ -317,11 +326,11 @@
                   <h6>Votre numéro de téléphone:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Votre numéro de téléphone"
-                    readonly
+                    
                     v-model="phone"
                   />
                 </div>
@@ -334,7 +343,7 @@
             <h6>Email:</h6>
           </div>
                     <div class="input_field">
-                      <input type="text" name="email" 
+                      <input readonly type="text" name="email" 
                       placeholder=" Email " 
                        v-model="email"/>
 
@@ -345,7 +354,7 @@
             <h6>Profession:</h6>
           </div>
                     <div class="input_field">
-                      <input
+                      <input readonly
                     type="text"
                     name="name"
                     placeholder="Profession"
@@ -361,11 +370,11 @@
                   <h6>Nom de l'employeur:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Nom de l'employeur"
-                    readonly
+                    
                     v-model="employer"
                   />
                 </div>
@@ -375,11 +384,11 @@
                   <h6>Adresse de l'employeur:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Adresse de l'employeur"
-                    readonly
+                    
                     v-model="employerAdress"
                   />
                 </div>
@@ -390,11 +399,11 @@
               <h6>Ville d'entrées au Cameroun:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Ville d'entrées au Cameroun"
-                readonly
+                
                 v-model="inputTown"
               />
             </div>
@@ -405,11 +414,11 @@
                   <h6>Personne de contact au Cameroun pendant le séjour:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Personne de contact au Cameroun pendant le séjour"
-                    readonly
+                    
                     v-model="host"
                   />
                 </div>
@@ -419,11 +428,11 @@
                   <h6>Adresse au Cameroun pendant le séjour:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Adresse au Cameroun pendant le séjour"
-                    readonly
+                    
                     v-model="hostAddress"
                   />
                 </div>
@@ -433,11 +442,11 @@
               <h6>Motif du séjour:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Motif du séjour"
-                readonly
+                
                 v-model="travelReason"
               />
             </div>
@@ -445,11 +454,11 @@
               <h6>Durée du séjour au Cameroun du et au:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Motif du séjour"
-                readonly
+                
                 v-model="durationOfStay"
               />
             </div>
@@ -458,11 +467,11 @@
               <h6>Nombre d'entrées et sorties:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nombre d'entrées et sorties"
-                readonly
+                
                 v-model="numberOfInputOutput"
               />
             </div>
@@ -473,32 +482,32 @@
               </div>
               <div class="col_half1 left">
                 <div class="input_field checkbox_option">
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Transit"
                     name="visaNature"
                     id="rd10"
                     v-model="visaNature"
                   />
                   <label for="rd10">Transit</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Tourisme"
                     name="visaNature"
                     id="rd20"
                     v-model="visaNature"
                   />
                   <label for="rd20">Tourisme</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Temporaire"
                     name="visaNature"
                     id="rd30"
                     v-model="visaNature"
                   />
                   <label for="rd30">Temporaire</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="Long séjour"
                     name="visaNature"
                     id="rd40"
@@ -512,11 +521,11 @@
               <h6>Pays de destination après séjour au Cameroun:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Pays de destination après séjour au Cameroun"
-                readonly
+                
                 v-model="destinationCountry"
               />
             </div>
@@ -529,16 +538,16 @@
               </div>
               <div class="col_half">
                 <div class="input_field checkbox_option">
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="OUI"
                     name="radiogroup1"
                     id="rd100"
                     v-model="question"
                   />
                   <label for="rd100">OUI</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                    type="radio" onclick="javascript: return false;"
                     value="NON"
                     name="radiogroup1"
                     id="rd200"
@@ -552,17 +561,23 @@
               <h6>Moyen de transport utilisé:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Moyen de transport utilisé"
-                readonly
+                
                 v-model="travelMode"
               />
             </div>
           </form>
         </div>
+    
       </div>
+    </div>
+
+
+  </div>
+
     </b-modal>
 
 <!-- Dashboard -->
@@ -801,7 +816,7 @@
                                 <tr>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Date d'envoi</th>
-                                    <th scope="col">Statut de rejet</th>
+                                    <th scope="col">Statut</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -830,13 +845,13 @@
 
                                     <td class="text-end">
                                         <a  v-if="!visa.rejected"  @click="rejectedVisa(visa.id, visa.email)" class="btn btn-sm btn-danger mr-2">Rejeter</a>
-                                        <a v-else  class="btn btn-sm btn-neutral mr-2">Rejeté</a>
+                                        <a v-else  class="btn btn-sm btn-secondary mr-2">Rejeté</a>
 
-                                        <button v-if="!visa.view" 
+                                        <button v-if="visa.view" 
                                         v-b-modal.modal-xl
                                         variant="primary"
                                         @click="viewVisa(visa.id)" type="button" class="btn btn-sm btn-square btn-warning text-danger-hover">
-                                            <i class="bi bi-eye"></i>
+                                            <i class="bi bi-eye-slash"></i>
                                         </button>
                                         <button v-else 
                                         v-b-modal.modal-xl
@@ -870,12 +885,17 @@
     </div>
     </template>
     
-    <script>
+      <script>
+    import jsPDF from "jspdf";
+import html2canvas from 'html2canvas';
+  
     import Swal from "sweetalert2";
     export default {
       name: "AdminAllUsers",
       data() {
         return {
+          pageTotal: 1,
+      working: false,
             loading:false,
             allVisas:[],
             visas: [],
@@ -885,6 +905,7 @@
       lastName: "",
       sex: "",
       birthday: "",
+      birthPlace:"",
       fatherName: "",
       motherName: "",
       birthCountry: "",
@@ -962,6 +983,7 @@ axios(config)
             (this.lastName = response.data.lastName),
             (this.sex = response.data.sex),
             (this.birthday = response.data.birthday),
+            (this.birthPlace = response.data.birthPlace),
             (this.fatherName = response.data.fatherName),
             (this.motherName = response.data.motherName),
             (this.birthCountry = response.data.birthCountry),
@@ -1089,6 +1111,60 @@ axios(config)
         }
       });
     },
+
+    
+    async download() {
+      this.working = true;
+      
+      await this.$nextTick();
+      
+      // A4 in 96dpi
+      // 29.7cm x 21cm
+      const pageWidth = 1123;
+      const pageHeight = 794;
+      
+      const doc = new jsPDF({
+        orientation: "l",
+        unit: "px",
+        hotfixes: ["px_scaling"],
+        format: [pageWidth, pageHeight],
+        compressPdf: true
+      });
+      
+      // Slower, Larger, But maintain the html elements
+      // doc.html(this.$refs.pdf, {
+      //   callback: async doc => {
+      //     const pageCount = doc.internal.getNumberOfPages();
+      //     doc.deletePage(pageCount);
+      //     await doc.save("favorites.pdf");
+      //     this.working = false;
+      //   },
+      // });
+      
+      // Faster, Smaller, Flatten all elements
+      const canvas = await html2canvas(this.$refs.pdf, {
+        allowTaint: true,
+        useCORS: true,
+        width: pageWidth,
+        y: 0
+      })
+      const img = canvas.toDataURL("image/jpeg", 0.8);
+      const totalHeight = pageHeight * this.pageTotal;
+      for (let i = 0; i < this.pageTotal; i++) {
+        doc.addImage(img, "JPEG", 0, -pageHeight * i, pageWidth, totalHeight, undefined, "FAST");
+        if (i < this.pageTotal - 1) {
+          doc.addPage();
+        }
+      }
+      await doc.save("favorites.pdf");
+      this.working = false;
+    },
+    slice(string, length, ellipsis = " ...") {
+      return string.length > length
+        ? string.slice(0, length) + ellipsis
+        : string;
+    },
+
     singout() {
             localStorage.removeItem("access-token");
             this.isLogged = this.checkIfIsLogged();
@@ -1786,6 +1862,34 @@ $yellow: #f5ba1a;
 }
 
 
+h1 {
+    background: linear-gradient(to bottom, #634f2c 24%, #686254 26%, #605c52 27%,#c6b173 40%,#3b2b0c 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+font-family: 'Playfair Display', serif;
+    position: relative;
+	text-transform: uppercase;	
+	font-size: 2vw;
+	margin: 0;
+	font-weight: 700;
+    	text-shadow:	5px 5px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+h1:after {
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow: 
+		-1px 0 1px #c6bb9f, 
+		0 1px 1px #c6bb9f, 
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+}
 
     </style>
     

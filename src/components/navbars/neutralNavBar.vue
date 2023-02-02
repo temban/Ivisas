@@ -1,33 +1,33 @@
 <template>
-    <!----start-header----->
-    <div class="header">
-      <div class="wrap">
-        <div class="top-header">
-          <div class="logo" style="max-width: 25%; position: relative">
-            <a href="index.html">
-              <img src="@/assets/img/b2.png" title="logo"
-            /></a>
-          </div>
-  
-          <div class="social-icons">
-            <ul v-if="isLogged === false">
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/facebook.png" title="facebook"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/twitter.png" title="twitter"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="@/assets/images/google.png" title="google pluse"
-                /></a>
-              </li>
-            </ul>
-  
+  <!----start-header----->
+  <div class="header">
+    <div class="wrap">
+      <div class="top-header">
+        <div class="logo" style="max-width: 25%; position: relative">
+          <a href="/">
+            <img src="@/assets/img/b2.png" title="logo"
+          /></a>
+        </div>
+
+        <div class="social-icons">
+          <ul v-if="isLogged === false">
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=100088504264307" target="_blank"
+                ><img src="@/assets/images/facebook.png" title="facebook"
+              /></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/IVISASaffaires?t=4-VPWV8JUqMzEAZq9WHf8Q&s=09" target="_blank"
+                ><img  src="@/assets/images/twitter.png" title="twitter"
+              /></a>
+            </li>
+            <li>
+              <a  href="https://www.instagram.com/invites/contact/?i=1wt17ccjw3i2v&utm_content=pysezdx" target="_blank"
+                ><img src="@/assets/images/instagram.png" title="google pluse"
+              /></a>
+            </li>
+          </ul>
+
   
   
             <div v-if="isLogged === true">
@@ -43,7 +43,7 @@
                   <div
                     style="
                       max-width: 100%;
-                      max-height: 100%;
+                      max-height: 100%; 
                       height: 50px;
                       width: 50px;
                       z-index: 3;
@@ -54,7 +54,7 @@
                     ></i>
   
                     <div class="placeholder">
-                      <span class="placeholder-text">TB</span>
+                      <span class="placeholder-text">{{ first + second }}</span>
                     </div>
                   </div>
                 </template>
@@ -126,6 +126,9 @@
     name: "navHome",
     data() {
       return {
+        first:"",
+        second:"",
+        all:"",
         isLogged: this.checkIfIsLogged(),
       };
     },
@@ -134,6 +137,12 @@
       this.$bus.$on("logged", () => {
         this.isLogged = this.checkIfIsLogged();
       });
+
+      var all = localStorage.getItem("Name");
+      var f =  all.substring(0, all.indexOf(' ')); 
+      var s =  all.substring(all.indexOf(' ') + 1)
+      this.first = f[0];
+      this.second = s[0];
     },
     methods: {
       singout() {

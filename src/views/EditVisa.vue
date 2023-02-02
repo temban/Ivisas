@@ -53,7 +53,7 @@
                         type="text"
                         name="name"
                         placeholder="Lieu de naissance"
-                         v-model="birthCountry" 
+                         v-model="birthPlace" 
                       />
                     </div>
                   </div>
@@ -106,7 +106,7 @@
                     type="text"
                     name="name"
                     placeholder="Nationalité d'origine"
-                     v-model="currentCountry"
+                     v-model="birthCountry"
                   />
                 </div>
                 <div class="title_container1">
@@ -511,6 +511,7 @@
   lastName: "",
   sex: "",
   birthday: "",
+  birthPlace: "",
   fatherName: "",
   motherName: "",
   birthCountry: "",
@@ -569,6 +570,7 @@ axios(config)
       this.lastName = response.data.lastName,
       this.sex = response.data.sex,
       this.birthday = response.data.birthday,
+      this.birthPlace = response.data.birthPlace,
       this.fatherName = response.data.fatherName,
       this.motherName = response.data.motherName,
       this.birthCountry = response.data.birthCountry,
@@ -615,6 +617,7 @@ var data = JSON.stringify({
   lastName: this.lastName,
   sex: this.sex,
   birthday: this.birthday,
+  birthPlace: this.birthPlace,
   fatherName: this.fatherName,
   motherName: this.motherName,
   birthCountry: this.birthCountry,
@@ -642,9 +645,9 @@ var data = JSON.stringify({
   destinationCountry: this.destinationCountry,
   question: this.question,
   travelMode: this.travelMode,
-  rejected: this.rejected,
   sendedDate: this.sendedDate,
-  view: this.view,
+  rejected: false,
+  view: false,
 });
 
 var config = {

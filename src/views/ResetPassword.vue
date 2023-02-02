@@ -17,7 +17,7 @@
            margin-top: 30px;
            left: 10px; 
          "
-         src="@/assets/back.png"
+         src="@/assets/back.gif"
        />
 </a>            
 <input type="checkbox" id="chk" aria-hidden="true" />

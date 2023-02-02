@@ -158,29 +158,29 @@ export default [
     component: () => import('@/views/ResetPassword.vue')
   },
   {
-    path: '/doc1',
-    name: 'doc1',
-    component: () => import('@/views/doc1.vue')
+    path: '/PdfGenerateVisa',
+    name: 'PdfGenerateVisa',
+    component: () => import('@/views/PdfGenerateVisa.vue')
   },
   {
-    path: '/doc2',
-    name: 'doc2',
-    component: () => import('@/views/doc2.vue')
+    path: '/PdfGenarateDevi',
+    name: 'PdfGenarateDevi',
+    component: () => import('@/views/PdfGenarateDevi.vue')
   },
   {
-    path: '/doc3',
-    name: 'doc3',
-    component: () => import('@/views/doc3.vue')
+    path: '/PdfDisplayDevi',
+    name: 'PdfDisplayDevi',
+    component: () => import('@/views/PdfDisplayDevi.vue')
   },
   {
-    path: '/doc4',
-    name: 'doc4',
-    component: () => import('@/views/doc4.vue')
+    path: '/PdfDownloadDevi',
+    name: 'PdfDownloadDevi',
+    component: () => import('@/views/PdfDownloadDevi.vue')
   },
   {
-    path: '/doc5',
-    name: 'doc5',
-    component: () => import('@/views/doc5.vue')
+    path: '/PdfDownloadVisa',
+    name: 'PdfDownloadVisa',
+    component: () => import('@/views/PdfDownloadVisa.vue')
   },
   {
     path: '/doc6',

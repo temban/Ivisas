@@ -3,8 +3,7 @@
     <!-- <Navbar/> -->
 <div>  <router-view/></div>
   
-    <!-- <b-container>
-    </b-container> -->
+ 
 
     <div> <footerVue/></div>
    
@@ -90,35 +89,6 @@ axios(config)
 
 
   this.myArray.push(res.data);
-// for(let i = 0; i < this.myArray.length; i++){ 
-// this.child = this.myArray[i].orderVisas; 
-// for(let j = 0; j < this.child.length; j++){ 
-// // console.log("childdddddddd",this.child[j]); 
-// }
-
-// this.child2 = this.myArray[i].orderVisas; 
-// for(let j = 0; j < this.child2.length; j++){ 
-// // console.log("child1111111111111",this.child2[j]); 
-// }
-
-// }
-
-// const all = [...this.myArray, ...this.child];
-
-// localStorage.setItem('all',JSON.stringify(all))          
-
-// let f = all; 
-// let r = [];
-// for(let j = 0; j < f.length; j++){ 
-
-// r = f[j]
-// // console.log("allllll", r.authorized); 
-
-// }
-
-
-
-
 
 localStorage.setItem('infoUser',JSON.stringify(res.data))          
 localStorage.setItem('userId', res.data.id);

@@ -18,7 +18,8 @@
                   <h6>Nom:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
+                  
                     type="text"
                     name="name"
                     placeholder="Nom"
@@ -31,11 +32,11 @@
                   <h6>Prénom:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Prénom"
-                    readonly
+                    
                     v-model="lastName"
                   />
                 </div>
@@ -47,11 +48,12 @@
                   <h6>Sexe:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Sexe"
                     v-model="sex"
+                    
                   />
                 </div>
               </div>
@@ -60,12 +62,12 @@
                   <h6>Lieu de naissance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Lieu de naissance"
-                    readonly
-                    v-model="birthCountry"
+                    
+                    v-model="birthPlace"
                   />
                 </div>
               </div>
@@ -74,11 +76,11 @@
                   <h6>Date de naissance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Date de naissance"
-                    readonly
+                    
                     v-model="birthday"
                   />
                 </div>
@@ -88,11 +90,11 @@
               <h6>Nom et prénom du père:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nom et prénom du père"
-                readonly
+                
                 v-model="fatherName"
               />
             </div>
@@ -100,11 +102,11 @@
               <h6>Nom et prénom du mère:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nom et prénom du mère"
-                readonly
+                
                 v-model="motherName"
               />
             </div>
@@ -112,24 +114,25 @@
               <h6>Nationalité d'origine:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nationalité d'origine"
-                readonly
-                v-model="currentCountry"
+                
+                v-model="birthCountry"
               />
             </div>
             <div class="title_container1">
               <h6>Nationalité actuelle:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nationalité actuelle"
                 required
                 v-model="currentCountry"
+                
               />
             </div>
             <div class="row clearfix">
@@ -138,40 +141,44 @@
               </div>
               <div class="col_half left">
                 <div class="input_field checkbox_option">
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Célibataire"
                     name="familyStatus1"
                     id="familyStatus1"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus1">Célibataire</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Marié(e)"
                     name="familyStatus2"
                     id="familyStatus2"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus2">Marié(e)</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Divorcé(e)"
                     name="familyStatus3"
                     id="familyStatus3"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus3">Divorcé(e)</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Veuf(ve)"
                     name="familyStatus4"
                     id="familyStatus4"
                     v-model="familyStatus"
-                    readonly
+                    
                   />
                   <label for="familyStatus4">Veuf(ve)</label>
                 </div>
@@ -182,11 +189,11 @@
               <h6>Nom et Prénom du conjoint:</h6>
             </div>
             <div class="input_field space">
-              <input
+              <input readonly
                 type="text"
                 name="email"
                 placeholder="Nom et Prénom du conjoint"
-                readonly
+                
                 v-model="partnerName"
               />
             </div>
@@ -197,38 +204,44 @@
               </div>
               <div class="col_half1">
                 <div class="input_field checkbox_option">
-                  <input
+                  <input readonly
                     value="Passport ordinaire"
-                    type="radio"
+                    onclick="javascript: return false;"
+                    type="radio" 
                     name="documentType"
                     id="rd5"
                     v-model="documentType"
+                    
                   />
                   <label for="rd5">Passport ordinaire</label>
-                  <input
+                  <input readonly
                     value="Passport diplomatique"
-                    type="radio"
+                    onclick="javascript: return false;"
+                    type="radio" 
                     name="documentType"
                     id="rd6"
                     v-model="documentType"
                   />
                   <label for="rd6">Passport diplomatique</label>
-                  <input
+                  <input readonly
                     value="Passport de service"
-                    type="radio"
+                    onclick="javascript: return false;"
+                    type="radio" 
                     name="documentType"
                     id="rd7"
                     v-model="documentType"
+                    
                   />
                   <label for="rd7">Passport de service</label>
                 </div>
               </div>
               <div class="col_half input_field checkbox_option">
                    
-                   <input value="Passport de service: " type="radio" name="radiogroup1" id="rd8" />
+                   onclick="javascript: return false;"<input readonly value="Passport de service: " 
+                   type="radio"  name="radiogroup1" id="rd8" />
                  <label class="laS" for="rd8">Passport de service(priser la nature) :</label>
                  <div class="input_field">
-                 <input type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
+                 <input readonly type="text" name="email" placeholder="Passport de service(priser la nature) "  v-model="documentType"/>
                </div>  
                </div>
 
@@ -239,11 +252,11 @@
               <h6>Numéro du passeport:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Numéro du passeport"
-                readonly
+                
                 v-model="passportNumber"
               />
             </div>
@@ -254,7 +267,7 @@
                   <h6>Date de délivrance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Date de délivrance"
@@ -267,11 +280,11 @@
                   <h6>Lieu de délivrance:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Lieu de délivrance"
-                    readonly
+                    
                     v-model="lieuDelivrance"
                   />
                 </div>
@@ -283,7 +296,7 @@
                   <div class="title_container1">
                     <h6>Valide jusqu'au:</h6>
                   </div>
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Valide jusqu'au"
@@ -296,11 +309,11 @@
                   <h6>Autorité Ayant délivré ce document:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Autorité Ayant délivré ce document"
-                    readonly
+                    
                     v-model="approvedBy"
                   />
                 </div>
@@ -313,11 +326,11 @@
                   <h6>Votre adresse exacte en France:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Votre adresse exacte en France"
-                    readonly
+                    
                     v-model="adress"
                   />
                 </div>
@@ -327,11 +340,11 @@
                   <h6>Votre numéro de téléphone:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Votre numéro de téléphone"
-                    readonly
+                    
                     v-model="phone"
                   />
                 </div>
@@ -343,7 +356,7 @@
             <h6>Email:</h6>
           </div>
                     <div class="input_field">
-                      <input type="text" name="email" 
+                      <input readonly type="text" name="email" 
                       placeholder=" Email " 
                        v-model="email"/>
 
@@ -354,7 +367,7 @@
             <h6>Profession:</h6>
           </div>
                     <div class="input_field">
-                      <input
+                      <input readonly
                     type="text"
                     name="name"
                     placeholder="Profession"
@@ -370,11 +383,11 @@
                   <h6>Nom de l'employeur:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Nom de l'employeur"
-                    readonly
+                    
                     v-model="employer"
                   />
                 </div>
@@ -384,11 +397,11 @@
                   <h6>Adresse de l'employeur:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Adresse de l'employeur"
-                    readonly
+                    
                     v-model="employerAdress"
                   />
                 </div>
@@ -399,11 +412,11 @@
               <h6>Ville d'entrées au Cameroun:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Ville d'entrées au Cameroun"
-                readonly
+                
                 v-model="inputTown"
               />
             </div>
@@ -414,11 +427,11 @@
                   <h6>Personne de contact au Cameroun pendant le séjour:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Personne de contact au Cameroun pendant le séjour"
-                    readonly
+                    
                     v-model="host"
                   />
                 </div>
@@ -428,11 +441,11 @@
                   <h6>Adresse au Cameroun pendant le séjour:</h6>
                 </div>
                 <div class="input_field">
-                  <input
+                  <input readonly
                     type="text"
                     name="name"
                     placeholder="Adresse au Cameroun pendant le séjour"
-                    readonly
+                    
                     v-model="hostAddress"
                   />
                 </div>
@@ -442,11 +455,11 @@
               <h6>Motif du séjour:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Motif du séjour"
-                readonly
+                
                 v-model="travelReason"
               />
             </div>
@@ -454,11 +467,11 @@
               <h6>Durée du séjour au Cameroun du et au:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Motif du séjour"
-                readonly
+                
                 v-model="durationOfStay"
               />
             </div>
@@ -467,11 +480,11 @@
               <h6>Nombre d'entrées et sorties:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Nombre d'entrées et sorties"
-                readonly
+                
                 v-model="numberOfInputOutput"
               />
             </div>
@@ -482,32 +495,36 @@
               </div>
               <div class="col_half1 left">
                 <div class="input_field checkbox_option">
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Transit"
                     name="visaNature"
                     id="rd10"
                     v-model="visaNature"
                   />
                   <label for="rd10">Transit</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Tourisme"
                     name="visaNature"
                     id="rd20"
                     v-model="visaNature"
                   />
                   <label for="rd20">Tourisme</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Temporaire"
                     name="visaNature"
                     id="rd30"
                     v-model="visaNature"
                   />
                   <label for="rd30">Temporaire</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="Long séjour"
                     name="visaNature"
                     id="rd40"
@@ -521,11 +538,11 @@
               <h6>Pays de destination après séjour au Cameroun:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Pays de destination après séjour au Cameroun"
-                readonly
+                
                 v-model="destinationCountry"
               />
             </div>
@@ -538,16 +555,18 @@
               </div>
               <div class="col_half">
                 <div class="input_field checkbox_option">
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="OUI"
                     name="radiogroup1"
                     id="rd100"
                     v-model="question"
                   />
                   <label for="rd100">OUI</label>
-                  <input
-                    type="radio"
+                  <input readonly
+                  onclick="javascript: return false;"  
+                  type="radio" 
                     value="NON"
                     name="radiogroup1"
                     id="rd200"
@@ -561,11 +580,11 @@
               <h6>Moyen de transport utilisé:</h6>
             </div>
             <div class="input_field">
-              <input
+              <input readonly
                 type="text"
                 name="name"
                 placeholder="Moyen de transport utilisé"
-                readonly
+                
                 v-model="travelMode"
               />
             </div>
@@ -638,18 +657,20 @@
           >
             <a
               href="#"
-              class="btn btn-sm btn-neutral"
+              class="btn btn-sm btn-square btn-info text-danger-hover"
               v-b-modal.modal-xl
               variant="primary"
               @click="viewVisa(visa.id)"
-              >View</a
+              ><i class="bi bi-eye"></i></a
             >
-            <a href="#" @click="editVisa(visa.id)" class="btn btn-sm btn-neutral mx-2">Edit</a>
+            <a href="#" @click="editVisa(visa.id)" 
+            class="btn btn-sm btn-square btn-warning text-danger-hover  mx-2">
+            <i class="bi bi-pencil"></i></a>
 
             <button
               @click="deleteVisa(visa)"
               type="button"
-              class="btn btn-sm btn-square btn-neutral text-danger-hover"
+              class="btn btn-sm btn-square btn-danger text-danger-hover"
             >
               <i class="bi bi-trash"></i>
             </button>
@@ -678,6 +699,7 @@ export default {
       lastName: "",
       sex: "",
       birthday: "",
+      birthPlace:"",
       fatherName: "",
       motherName: "",
       birthCountry: "",
@@ -827,6 +849,7 @@ export default {
             (this.lastName = response.data.lastName),
             (this.sex = response.data.sex),
             (this.birthday = response.data.birthday),
+            (this.birthPlace = response.data.birthPlace),
             (this.fatherName = response.data.fatherName),
             (this.motherName = response.data.motherName),
             (this.birthCountry = response.data.birthCountry),
@@ -1332,7 +1355,7 @@ body {
       }
     }
     &[type="checkbox"],
-    &[type="radio"] {
+    &[type="radio" ] {
       border: 0;
       clip: rect(0 0 0 0);
       height: 1px;

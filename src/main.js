@@ -11,11 +11,17 @@ import axios from 'axios';
 import "@/assets/scss/style.scss";
 import "@/assets/scss/main.scss";
 import EventBus from './EventBus'
+import VueHtml2pdf from 'vue-html2pdf'
 
+
+
+
+
+Vue.use(VueHtml2pdf)
 
 
 Vue.prototype.$bus = EventBus;
-Vue.prototype.$url = "http://192.168.16.104:3000"
+Vue.prototype.$url = "http://38.242.192.16:3000"
 
 
 Vue.use(axios);

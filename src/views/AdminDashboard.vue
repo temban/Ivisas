@@ -277,13 +277,13 @@
                 <div class="card shadow border-0 mb-7">
                     <div class="card-header" >
                         <div> 
-                            <h5 class="mb-0">Tous les utilisateurs</h5>
+                            <h5 class="mb-0">Tous les clients</h5>
 
                         </div>
                         <div class="ml-auto">
                           <form class="search-box" >
                             <input v-model="userInput" name="q" size="35" type="text"
-                              placeholder="Rechercher un utilisateur par e-mail " />
+                              placeholder="Rechercher un client par e-mail " />
                           </form>
                       </div>
                     </div>
@@ -292,7 +292,7 @@
                         <div v-if="this.alert.display" class="alert" >
                       {{ alert.message }}
                     </div>
-                        <table class="table table-hover table-nowrap">
+                        <table class="table table-hover table-nowrap" >
                             <thead class="thead-light">
                                 <tr class="thead-light1">
                                     <th scope="col">Nom</th>
@@ -302,7 +302,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody  v-for="user in allUsers" :key="user">
+                            <tbody  v-for="user in allUsers" :key="user" >
                                 <tr class="tr" >
                                     <td class="mx-0">
                                         <div style="display:flex;">
@@ -310,7 +310,7 @@
                                   class="btn btn-circle btn-primary text-white"
                                   >{{ user.name[0]
                                   }}</a></div> 
-<div v-else  class="avatar avatar-xs" style="margin-top: -10px; margin-right: 10px; position: relative;">
+<div v-else  class="avatar avatar-xs" style="margin-right: 10px; position: relative;">
     <img alt="..." v-bind:src="$url+ '/' +  user.profileImage" v-on:click="viewImg(user.profileImage)" data-target="#exampleModal" style="width:60px; height:40px;cursor:pointer"
                                   data-toggle="modal">
 </div>
@@ -335,23 +335,40 @@
                                         </span>
                                     </td>
 
-                                    <td>
+
+                               <td>
+                                
+                                <label class="switch">
+                        <input @click="authorize(user)" type="checkbox" :id="user.id" :checked="user.authorized ===true" >            
+                        <span class="slider round"></span>
+                                </label>
+                               </td>
+
+                               <!-- <td> -->
+                                <!-- onclick="javascript: return false; -->
+                                <!-- <label class="switch">
+                        <input type="checkbox" id="1" @click="change()" :checked="user.authorized ===true" >            
+                        <span class="slider round"></span>
+                                </label>
+                               </td> -->
+
+                                    <!-- <td>
 
 
-<a v-if="!user.authorized" @click="authorize(user)" class="btn btn-sm btn-warning mx-6">Autoriser
+<a v-if="!user.authorized"  class="btn btn-sm btn-warning mx-6">Autoriser
        </a>
     
     <a v-else type="button" class="btn mx-12 btn-sm btn-square btn-success text-danger-hover">
     <i class="bi bi-hand-thumbs-up"></i>
 </a>
-</td>
+</td> -->
                                     <td class="text-end ">
                                         
                                         
                                            
 
-                                        <button @click="userDevis(user.id)" class="btn btn-sm btn-neutral">Demande de devis</button>
-                                        <button type="button" @click="userVisa(user.id)" class="btn btn-sm btn-neutral mx-3">Demande de visa</button>
+                                        <button @click="userDevis(user.id)" class="btn btn-sm btn-success">Demande de devis</button>
+                                        <button type="button" @click="userVisa(user.id)" class="btn btn-sm btn-success mx-3">Demande de visa</button>
                                         
                                       
                                     </td>
@@ -378,6 +395,7 @@
             allUsers:[],
             loading: false,
             users:[],
+            users1:[],
             deviRejecteted:[],
             visaRejecteted:[],
             allRejected:[],
@@ -394,7 +412,9 @@
         userInput: "",
         };
       },
+   mounted(){
    
+   },
       created() {
         var axios = require('axios').default;
         var config2 = {
@@ -507,16 +527,54 @@ axios(config)
       }
     },
       methods: {
+        updateUser(){
+        var axios = require('axios').default;
+            var config = {
+  method: 'get',
+  url: this.$url+'/users',
+  headers: { 
+    'Content-Type': 'application/json', 
+  }
+};
 
+axios(config)
+.then((response)=> {
+//   console.log(JSON.stringify(response.data));
+
+  for(let i=0; i<response.data.length; i++){
+    if(response.data[i].email != "ivisas.affaire@gmail.com"){
+        this.allUsers.push(response.data[i])
+    }
+  }
+ this.users1 =  this.allUsers;
+ this.users = this.users1;
+})
+.catch(function (error) {
+  console.log(error);
+});
+        },
+//          change() {
+//     var decider = document.getElementById('1');
+//     if(decider.checked){
+//         alert('check');
+//     } else {
+//       alert('unchecked');
+//     }
+// },
+//         onChange(event, user) {
+//               var optionText = event.target.value;
+//               console.log(optionText, user.id);
+//           },
         viewImg(img){
          this.pic = this.$url +"/"+ img;
         },
+
+
         authorize(user) {
-            
-            
-      Swal.fire({
+if(user.authorized ===false){
+    Swal.fire({
         title: "Êtes-vous sûr?",
-        text: "Êtes-vous sûr de vouloir autoriser cet utilisateur!",
+        text: "Êtes-vous sûr de vouloir autoriser ce client?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -542,27 +600,88 @@ axios(config)
               Swal.fire({
                 icon: "success",
                 title: "Succès",
-                text: "L'utilisateur a été autorisé",
+                text: "Le client a été autorisé",
               }).then(() => {
                 // Go to page after successfully login
-                window.location.reload();
+                this.updateUser()
                 this.loading = false;
               });
               console.log(JSON.stringify(response.data));
             })
-            .catch(function (error) {
+            .catch( (error) =>{
               Swal.fire(
                 "Échec !",
                 "Quelque chose s'est mal passé !",
                 "error"
               ).then(() => {
                 // Go to page after successfully login
-                window.location.reload();
+                this.loading = false;
               });
               console.log(error);
             });
+        }else{
+            document.getElementById(user.id).checked = false;
         }
       });
+}else{
+    Swal.fire({
+        title: "Êtes-vous sûr?",
+        text: "Êtes-vous sûr de vouloir annuler l'autorisation du client?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Oui",
+      }).then((result) => {
+        
+        if (result.isConfirmed) {
+            this.loading = true;
+          var axios = require("axios").default;
+          var config = {
+            method: "put",
+            url: this.$url + "/user/authorize",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("access-token"),
+            },
+            data: user,
+          };
+
+          axios(config)
+            .then((response) => {
+              Swal.fire({
+                icon: "success",
+                title: "Autorisation annulée.",
+                text: "L'autorisation a été annulée!",
+              }).then(() => {
+                // Go to page after successfully login
+                this.updateUser()
+                this.loading = false;
+                
+
+              });
+              console.log(JSON.stringify(response.data));
+            })
+            .catch( (error) =>{
+              Swal.fire(
+                "Échec !",
+                "Quelque chose s'est mal passé !",
+                "error"
+              ).then(() => {
+                // Go to page after successfully login
+                this.loading = false;
+              });
+              console.log(error);
+            });
+        }else{
+            document.getElementById(user.id).checked = true;
+        }
+      }); 
+}
+       
+         
+            
+     
     },
     singout() {
             localStorage.removeItem("access-token");
@@ -590,6 +709,7 @@ this.$router.push('/AdminParticularUserVisa')
 
   localStorage.setItem('adminUserVisasDevis', id)          
   this.$router.push('/AdminParticularUserDevis')
+  
 
         }
       },
@@ -629,6 +749,36 @@ this.$router.push('/AdminParticularUserVisa')
   src: url(https://d25purrcgqtc5w.cloudfront.net/dist/fonts/proximanova/302D42_5_0.eot?#iefix) format("embedded-opentype"),url(https://d25purrcgqtc5w.cloudfront.net/dist/fonts/proximanova/302D42_5_0.woff2) format("woff2"),url(https://d25purrcgqtc5w.cloudfront.net/dist/fonts/proximanova/302D42_5_0.woff) format("woff"),url(https://d25purrcgqtc5w.cloudfront.net/dist/fonts/proximanova/302D42_5_0.ttf) format("truetype"),url(https://d25purrcgqtc5w.cloudfront.net/dist/fonts/proximanova/302D42_5_0.svg#wf) format("svg");
   font-weight: 700;
   font-style: normal;
+}
+
+
+h1 {
+    background: linear-gradient(to bottom, #634f2c 24%, #686254 26%, #605c52 27%,#c6b173 40%,#3b2b0c 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+font-family: 'Playfair Display', serif;
+    position: relative;
+	text-transform: uppercase;	
+	font-size: 2vw;
+	margin: 0;
+	font-weight: 700;
+    	text-shadow:	5px 5px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+h1:after {
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow: 
+		-1px 0 1px #c6bb9f, 
+		0 1px 1px #c6bb9f, 
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
 }
 .card-header{
     display: flex;
@@ -716,5 +866,69 @@ input[type='search']::-webkit-search-cancel-button {
    transition: .2s
  }
   }
+  
+
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
     </style>
     

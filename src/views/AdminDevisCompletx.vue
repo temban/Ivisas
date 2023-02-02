@@ -1,20 +1,21 @@
 <template>
     <div>
-        <neutralNavBar/>
+      <router-link to="/AdminParticularUserDevis" ><img class="back" src="@/assets/back.gif"/></router-link> 
+
       <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
           <div class="col-md-3 border-right">
             <div
               class="d-flex flex-column align-items-center text-center p-3 py-5"
             >
-            <img v-if="UprofileImage === 'null'"
+            <img v-if="pUserPhoto === null"
               class="rounded-circle mt-5"
               width="150px"
               src="@/assets/u.png"  
             />
             <img v-else
               class="rounded-circle mt-5"
-              v-bind:src="profile" style="border-radius: 160px;
+              :src="profile" style="border-radius: 160px;
                               image-resolution: 3000000dpi;
                               background-color: #000;
                               background-position: center;
@@ -22,24 +23,24 @@
                               background-repeat: no-repeat;
                               max-width: 100%;
                               max-height: 100%; 
-                              height: 180px;
+                              height: 180px; 
                               width: 180px;"
             />
   
-            <span class="font-weight-bold">{{ this.Uname}}</span
-              ><span class="text-black-50">{{this.Uemail}}</span
+            <span class="font-weight-bold">{{ this.pUserName}}</span
+              ><span class="text-black-50">{{this.pUserEmail}}</span
               ><span> </span>
             </div>
           </div>
           <div class="col-md-5 border-right">
             <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Demande de l'utilisateur</h4>
+                <h4 class="text-right">Demande de devis</h4>
               </div>
               <div class="row mt-2">
                 <div class="col-md-6">
                   <label class="labels">Nom [nom de famille] :</label
-                  ><input
+                  ><input readonly
                     v-model="familyName"
                     type="text"
                     class="form-control"
@@ -49,7 +50,7 @@
                 </div>
                 <div class="col-md-6">
                   <label class="labels">Nom(s) de naissance :</label
-                  ><input
+                  ><input readonly
                     v-model="birthName"
                     type="text"
                     class="form-control"
@@ -59,7 +60,7 @@
                 </div>
                 <div class="col-md-6">
                   <label class="labels">Nom(s) de naissance :</label
-                  ><input
+                  ><input readonly
                     v-model="lastName"
                     type="text"
                     class="form-control"
@@ -71,7 +72,7 @@
               <div class="row mt-3">
                 <div class="col-md-12">
                   <label class="labels">Date de naissance :</label
-                  ><input
+                  ><input readonly
                     v-model="birthday"
                     type="date"
                     class="form-control"
@@ -81,7 +82,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Lieu de naissance :</label
-                  ><input
+                  ><input readonly
                     v-model="birthplace"
                     type="text"
                     class="form-control"
@@ -91,7 +92,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Nationalité actuelle:</label
-                  ><input
+                  ><input readonly
                     v-model="currentNationality"
                     type="text"
                     class="form-control"
@@ -102,7 +103,7 @@
                 <div class="col-md-12">
                   <label class="labels"
                     >Nationalité à la naissance, si différente :</label
-                  ><input
+                  ><input readonly
                     v-model="birthNationality"
                     type="text"
                     class="form-control"
@@ -112,7 +113,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Autre(s) nationalité(s) :</label
-                  ><input
+                  ><input readonly
                     v-model="anotherNationality"
                     type="text"
                     class="form-control"
@@ -124,16 +125,16 @@
                 <div class="col-md-12">
                   <label class="labels">Sexe</label>
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Masculin"
                       name="sexe"
                       id="3sex"
                       v-model="sex"
                     />
                     <label for="3sex">Masculin</label>
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Féminin"
                       name="sexe"
                       id="4sex"
@@ -146,8 +147,8 @@
                 <div class="col-md-12">
                   <label class="labels">Etat Civil :</label>
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Célibataire"
                       name="familyStatus"
                       id="1s"
@@ -155,8 +156,8 @@
                     />
                     <label for="1s">Célibataire</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Marié(e)"
                       name="familyStatus"
                       id="2s"
@@ -164,8 +165,8 @@
                     />
                     <label for="2s">Marié(e)</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Divorcé(e)"
                       name="familyStatus"
                       id="3s"
@@ -173,8 +174,8 @@
                     />
                     <label for="3s">Divorcé(e)</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Veuf(ve)"
                       name="familyStatus"
                       id="4s"
@@ -185,8 +186,8 @@
                 </div>
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Séparé(e)"
                       name="familyStatus"
                       id="5s"
@@ -194,8 +195,8 @@
                     />
                     <label for="5s">Séparé(e)</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Autre"
                       name="familyStatus"
                       id="6s"
@@ -210,7 +211,7 @@
                     >Autorité parentale (pour les mineurs)/tuteur légal ( nom,
                     prénom, adresse (si différente de celle du demandeur), numéro
                     de téléphone, adresse électronique et nationalité: </label
-                  ><input
+                  ><input readonly
                     v-model="parentalAuthority"
                     type="text"
                     class="form-control"
@@ -222,7 +223,7 @@
                 <div class="col-md-12">
                   <label class="labels"
                     >Numéro national d’identité, le cas échéant :</label
-                  ><input
+                  ><input readonly
                     v-model="cniNumber"
                     type="text"
                     class="form-control"
@@ -234,8 +235,8 @@
                 <div class="col-md-12">
                   <label class="labels">Type de document de voyage :</label>
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Passeport ordinaire"
                       name="travelDocumentType"
                       id="1pass"
@@ -243,8 +244,8 @@
                     />
                     <label for="1pass">Passeport ordinaire</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Passeport officie"
                       name="travelDocumentType"
                       id="2pass"
@@ -255,8 +256,8 @@
                 </div>
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Passeport diplomatique"
                       name="travelDocumentType"
                       id="3pass"
@@ -264,8 +265,8 @@
                     />
                     <label for="3pass">Passeport diplomatique</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Passeport spécial"
                       name="travelDocumentType"
                       id="4pass"
@@ -276,8 +277,8 @@
                 </div>
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Séparé(e)"
                       name="travelDocumentType"
                       id="5pass"
@@ -285,8 +286,8 @@
                     />
                     <label for="5pass">Passeport de service</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Autre document de voyage"
                       name="travelDocumentType"
                       id="6pass"
@@ -298,7 +299,7 @@
   
                 <div class="col-md-12">
                   <label class="labels">Numéro du document de voyage :</label
-                  ><input
+                  ><input readonly
                     v-model="travelDocumentNumber"
                     type="text"
                     class="form-control"
@@ -308,7 +309,7 @@
                 </div>
                 <div class="col-md-6">
                   <label class="labels">Date de délivrance :</label
-                  ><input
+                  ><input readonly
                     v-model="deliveredBy"
                     type="date"
                     class="form-control"
@@ -318,7 +319,7 @@
                 </div>
                 <div class="col-md-6">
                   <label class="labels">Date d’expiration :</label
-                  ><input
+                  ><input readonly
                     v-model="expiredDate"
                     type="date"
                     class="form-control"
@@ -329,7 +330,7 @@
   
                 <div class="col-md-12">
                   <label class="labels">Délivré par (pays) :</label
-                  ><input
+                  ><input readonly
                     v-model="homeAddress"
                     type="text"
                     class="form-control"
@@ -340,7 +341,7 @@
   
                 <div class="col-md-12">
                   <label class="labels">Adresse électronique du demandeur :</label
-                  ><input
+                  ><input readonly
                     v-model="applicantEmailAddress"
                     type="text"
                     class="form-control"
@@ -357,7 +358,7 @@
 
                 <div class="col-md-12">
                   <label class="labels">N° de téléphone :</label
-                  ><input
+                  ><input readonly
                     v-model="phoneNumber"
                     type="text"
                     class="form-control"
@@ -372,16 +373,16 @@
                     actuelle:</label
                   >
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Oui"
                       name="Résidence"
                       id="oui"
                       v-model="anotherHome"
                     />
                     <label for="oui">Oui</label>
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Non"
                       name="Résidence"
                       id="non"
@@ -394,7 +395,7 @@
                 <div class="col-md-12">
                   <label class="labels"
                     >Autorisation de séjour ou équivalent N° :</label
-                  ><input
+                  ><input readonly
                     v-model="residencePermitNumber"
                     type="text"
                     class="form-control"
@@ -404,7 +405,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Date d’expiration:</label
-                  ><input
+                  ><input readonly
                     v-model="residencePermitExpirationDate"
                     type="date"
                     class="form-control"
@@ -414,7 +415,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Profession actuelle :</label
-                  ><input
+                  ><input readonly
                     v-model="profession"
                     type="text"
                     class="form-control"
@@ -426,16 +427,16 @@
                 <div class="col-md-12">
                   <label class="labels">Type de document de voyage :</label>
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Tourisme"
                       name="travelReason"
                       id="Tourisme"
                       v-model="travelReason"
                     />
                     <label for="Tourisme">Tourisme</label>
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Visite officielle "
                       name="travelReason"
                       id="o"
@@ -449,8 +450,8 @@
                 </div>
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Sports"
                       name="travelReason"
                       id="Sports"
@@ -458,8 +459,8 @@
                     />
                     <label for="Sports">Sports</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Transit aéroportuaire"
                       name="travelReason"
                       id="Transit"
@@ -471,8 +472,8 @@
   
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Raisons médicales"
                       name="travelReason"
                       id="raison"
@@ -481,8 +482,8 @@
                     <label for="raison">Raisons médicales</label>
   
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Affaires"
                       name="travelReason"
                       id="Affaires"
@@ -496,8 +497,8 @@
   
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
-                      <input
-                      type="radio"
+                      <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Études"
                       name="travelReason"
                       id="Études"
@@ -505,8 +506,8 @@
                     />
                     <label for="Études">Études</label>
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Culture"
                       name="travelReason"
                       id="Culture"
@@ -522,8 +523,8 @@
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="Visite à la famille ou à des amis"
                       name="travelReason"
                       id="visit"
@@ -537,8 +538,8 @@
                 <div class="col-md-12">
                   <div class="input_field checkbox_option">
   
-                    <input
-                      type="radio"
+                    <input readonly
+                      type="radio" onclick="javascript: return false;"
                       value="- "
                       name="travelReason"
                       id="autre"
@@ -546,7 +547,7 @@
                     />
                     <label for="autre">Autre (à préciser)</label>
   
-                  <input
+                  <input readonly
                   v-model="travelReason"
                     type="text"
                     class="form-control"
@@ -559,6 +560,9 @@
             
             </div>
           </div>
+
+
+
           <div class="col-md-4">
             <div class="p-3 py-5">
                 <h4 class="text-right">Partie réservée à l’administration</h4>
@@ -778,7 +782,7 @@
                 <div class="col-md-12">
                   <label class="labels">Nombres de jours :</label
                   ><input
-                    v-model="phoneNumber"
+                    v-model="numberDay"
                     type="text"
                     class="form-control"
                     value=""
@@ -828,22 +832,23 @@
               
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </template>
   
   <script>
-  import neutralNavBar from '../components/navbars/neutralNavBar.vue';
+  // import neutralNavBar from '../components/navbars/neutralNavBar.vue';
       import Swal from 'sweetalert2'
   export default {
     name: "footer",
     data() {
       return {
-        UprofileImage: localStorage.getItem("pUserPhoto"),
-        profile: this.$url+'/'+localStorage.getItem("pUserPhoto"),
-          Uemail: localStorage.getItem("pUserEmail"),
-          Uname: localStorage.getItem("pUserName"),
+        pUserPhoto: "",
+        profile: "",
+        pUserEmail: "",
+          pUserName: "",
           formSpinner: false,
         familyName: "",
         birthName: "",
@@ -904,7 +909,7 @@
     },
     watch: {},
     components:{
-        neutralNavBar
+        // neutralNavBar
     },
     created() {
         var axios = require('axios').default;
@@ -920,11 +925,12 @@ var config = {
 
 axios(config)
 .then((res) => {
-    this.user.push(res.data);
-           localStorage.setItem("pUserPhoto", res.data.profileImage);
-          localStorage.setItem("pUserName", res.data.name);
-          localStorage.setItem("pUserEmail", res.data.email);
-        //   console.log("alllll", res.data);
+    this.user=res.data;
+           this.pUserPhoto = res.data.profileImage;
+          this.pUserName = res.data.name;
+          this.pUserEmail = res.data.email;
+          this.profile = this.$url+'/'+ this.pUserPhoto;
+          console.log("user",  this.user);
 //   this.authorized =  res.data.authorized;
 //   this.email = res.data.email;
 //   this.id = res.data.id;
@@ -971,7 +977,10 @@ var config1 = {
 
 axios(config1)
 .then((res) => {
-    this.orderDevis.push(res.data)
+    this.orderDevis = res.data;
+    console.log("this.orderDevis", this.orderDevis);
+
+
   this.id = res.data.id,
    this.familyName = res.data.familyName,
       this.birthName = res.data.birthName,
@@ -1001,8 +1010,7 @@ axios(config1)
       this.sendedDate = res.data.sendedDate,
       this.destinationCountry =  res.data.destinationCountry
       this.rejected = res.data.rejected,
-        this.view = res.data.view,
-  console.log(res.data.data);
+        this.view = res.data.view;
 })
 .catch(function (error) {
   console.log(error);
@@ -1031,10 +1039,6 @@ axios(config1)
           this.formSpinner = true;
       var axios = require("axios").default;
       var data = JSON.stringify({
-  "orderDevis": this.orderDevis,
-  "user": this.user,
-  "adminDevis": {
-    "id": this.id,
     "requestDate": this.requestDate,
     "requestNumber": this.requestNumber,
     "requestMade":this.requestMade,
@@ -1046,11 +1050,10 @@ axios(config1)
     "numberInputs": this.numberInputs,
     "numberDay": this.numberDay,
     "paymentMethod": this.paymentMethod,
-  }
 });
       var config = {
         method: "post",
-        url: this.$url+"/admin/devis",
+        url: this.$url+"/admin/devis?orderDevisId="+ this.orderDevis.id +"&userId="+ this.user.id,
         headers: {
           "Content-Type": "application/json",
           'Authorization': 'Bearer ' + localStorage.getItem('access-token')
@@ -1068,7 +1071,7 @@ axios(config1)
   }).then(() => {
             // Go to page after successfully login
             // this.$router.push('/UserAllDevis')
-            // window.location.href="/UserAllDevis"
+            window.location.href="/AdminParticularUserDevis"
           });
         })
         .catch( (error) => {
@@ -1206,7 +1209,13 @@ axios(config1)
     border: solid 1px goldenrod;
   }
 
-
+  .back{
+    width: 4.5rem;
+    cursor: pointer;
+    position: relative;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
   
   </style>
   

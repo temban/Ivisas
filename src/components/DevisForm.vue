@@ -333,7 +333,7 @@
               <div class="col-md-6">
                 <label class="labels">Date de délivrance :</label
                 ><input
-                  v-model="deliveredBy"
+                  v-model="currentdate"
                   type="date"
                   class="form-control"
                   placeholder="Date de délivrance"
@@ -354,7 +354,7 @@
               <div class="col-md-12">
                 <label class="labels">Délivré par (pays) :</label
                 ><input
-                  v-model="homeAddress"
+                  v-model="deliveredBy"
                   type="text"
                   class="form-control"
                   placeholder="Délivré par (pays)"
@@ -429,15 +429,26 @@
                 />
               </div>
               <div class="col-md-12">
-                <label class="labels">Date d’expiration:</label
-                ><input
-                  v-model="residencePermitExpirationDate"
-                  type="date"
-                  class="form-control"
-                  value=""
-                  placeholder="Date d’expiration"
-                />
-              </div>
+                 <label class="labels">Date d’expiration de l'autorisation:</label
+                 ><input 
+                   v-model="residencePermitExpirationDate"
+                   type="date"
+                   class="form-control"
+                   value=""
+                   placeholder="Date d’expiration"
+                 />
+               </div>
+
+               <div class="col-md-12">
+                 <label class="labels">Adresse du domicile :</label
+                 ><input 
+                   v-model="homeAddress"
+                   type="text"
+                   class="form-control"
+                   value=""
+                   placeholder="Profession actuelle "
+                 />
+               </div>
               <div class="col-md-12">
                 <label class="labels">Profession actuelle :</label
                 ><input
@@ -450,7 +461,7 @@
               </div>
 
               <div class="col-md-12">
-                <label class="labels">Type de document de voyage :</label>
+                <label class="labels">Objet(s) du voyage :</label>
                 <div class="input_field checkbox_option">
                   <input
                     type="radio"
@@ -592,6 +603,63 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <div id="grid">
+  <div class="cell">
+    <label>Je suis informé que les droits de visa ne sont pas remboursés si le visa est refusé
+</label>  </div>
+  <div class="cell">Applicable en cas de demande de visa à entrées multiples,
+Je suis informé de la nécessité de disposer d’une 
+assurance maladie en voyage adéquate pour mon premier séjour et lors de  
+voyages ultérieurs sur le territoire Camerounais
+
+  </div>
+  <div class="cell">
+       En connaissance de cause, j'accepte ce qui suit: aux fins de l'examen de ma demande de visa, il y a lieu de recueillir
+        les données requises dans ce formulaire, de me photographier et, le cas échéant, de prendre mes empreintes digitales.
+         Les données à caractère personnel me concernant qui figurent dans le présent formulaire de demande de visa, ainsi que 
+          mes empreintes digitales et ma photo, seront communiquées aux autorités compétentes camerounaise et traitées par elles, 
+          aux fins de la décision relative à ma demande de visa.
+Ces données ainsi que celles concernant la décision relative
+ à ma demande de visa, ou toute décision d'annulation, d'abrogation ou de
+prolongation de visa, seront saisies et conservées dans le système des visas pendant une période 
+maximale de cinq ans, durant laquelle elles seront
+accessibles aux autorités chargées des visas,aux autorités 
+compétentes chargées de contrôler les visas aux frontières extérieures et dans les États
+membres, aux autorités compétentes en matière d'immigration et d'asile dans les
+ États membres aux fins de la vérification du respect des
+conditions d'entrée et de séjour réguliers sur le territoire des États 
+membres, aux fins de l'identification des personnes qui ne remplissent
+pas ou plus ces conditions, aux fins de l'examen d'une 
+demande d'asile et de la détermination de l'autorité responsable de cet examen. 
+Dans
+certaines conditions, ces données seront aussi accessibles aux autorités 
+désignées des États membres et à Europol aux fins de la
+prévention et de la détection des infractions terroristes et des autres infractions pénales graves, ainsi qu'aux fins des enquêtes en la matière.
+Les autorités compétentes pour le traitement des données sont le Ministère des relations extérieurs au Cameroun (VGH8+G34, Yaoundé,
+Cameroun) et le Ministère des Affaires Etrangères (VGH8+G34, Yaoundé, Cameroun).
+Je suis informé(e) de mon droit d'obtenir auprès de IVISAS-AFFAIRES la notification des données me concernant qui sont enregistrées dans les
+services ainsi que de l'État membre qui les a transmises, et de demander que les données me concernant soient rectifiées si elles sont erronées .
+À ma demande expresse, l'autorité qui a examiné ma demande m'informera de la manière dont je peux exercer mon droit de vérifier les
+données à caractère personnel me concernant et de les faire rectifier ou supprimer, y compris des voies de recours prévues à cet égard par
+la législation nationale de l'État concerné. L'autorité de contrôle nationale du Cameroun pourra être saisie des demandes concernant la
+protection des données
+Je déclare qu'à ma connaissance, toutes les indications que j'ai fournies sont correctes et complètes. Je suis informé(e) que toute fausse
+déclaration entraînera le rejet de mademande ou l'annulation du visa s'il a déjà été délivré, et peut entraîner des poursuites pénales à mon égard
+en application du droit de l'État membre qui traite la demande.
+Je m'engage à quitter le territoire du Cameroun avant l'expiration du visa, si celui-ci m'est délivré. J'ai été informé(e) que la possession d'un
+visa n'est que l'une des conditions de l'entrée sur le territoire Camerounais. Le simple fait qu'un visa m'ait été accordé n'implique pas que j'aurai
+droit attachés aux citoyens du territoire, je dois prendre des informations auprès des services compétentes pour connaitre les droits qui me sont
+accordés.
+  </div>
+  <div class="cell1"></div>
+  <div class="cell1">Signature (pour les mineurs, signature de l’autorité parentale/du
+tuteur légal) : </div>
+</div>
+        </div>
+    </div> 
     </div>
   </div>
 </template>

@@ -52,7 +52,7 @@
                         type="text"
                         name="name"
                         placeholder="Lieu de naissance"
-                         v-model="birthCountry" 
+                         v-model="birthPlace" 
                       />
                     </div>
                   </div>
@@ -105,7 +105,7 @@
                     type="text"
                     name="name"
                     placeholder="Nationalité d'origine"
-                     v-model="currentCountry"
+                     v-model="birthCountry"
                   />
                 </div>
                 <div class="title_container1">
@@ -508,6 +508,7 @@
   lastName: "string",
   sex: "string",
   birthday: "string",
+  birthPlace:"string",
   fatherName: "string",
   motherName: "string",
   birthCountry: "string",
@@ -564,6 +565,7 @@ var data = JSON.stringify({
   "lastName": this.lastName,
   "sex": this.sex,
   "birthday": this.birthday,
+  "birthPlace": this.birthPlace,
   "fatherName": this.fatherName,
   "motherName": this.motherName,
   "birthCountry": this.birthCountry,

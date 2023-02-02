@@ -4,7 +4,7 @@
     <div class="wrap">
       <div class="top-header">
         <div class="logo" style="max-width: 25%; position: relative">
-          <a href="index.html">
+          <a href="/">
             <img src="@/assets/img/b2.png" title="logo"
           /></a>
         </div>
@@ -12,18 +12,18 @@
         <div class="social-icons">
           <ul v-if="isLogged === false">
             <li>
-              <a href="#"
+              <a href="https://www.facebook.com/profile.php?id=100088504264307" target="_blank"
                 ><img src="@/assets/images/facebook.png" title="facebook"
               /></a>
             </li>
             <li>
-              <a href="#"
-                ><img src="@/assets/images/twitter.png" title="twitter"
+              <a href="https://twitter.com/IVISASaffaires?t=4-VPWV8JUqMzEAZq9WHf8Q&s=09" target="_blank"
+                ><img  src="@/assets/images/twitter.png" title="twitter"
               /></a>
             </li>
             <li>
-              <a href="#"
-                ><img src="@/assets/images/google.png" title="google pluse"
+              <a  href="https://www.instagram.com/invites/contact/?i=1wt17ccjw3i2v&utm_content=pysezdx" target="_blank"
+                ><img src="@/assets/images/instagram.png" title="google pluse"
               /></a>
             </li>
           </ul>
@@ -54,7 +54,7 @@
                   ></i>
 
                   <div class="placeholder">
-                    <span class="placeholder-text">TB</span>
+                    <span class="placeholder-text">{{ first + second }}</span>
                   </div>
                 </div>
               </template>
@@ -123,6 +123,8 @@ export default {
   name: "navHome",
   data() {
     return {
+      first:"",
+        second:"",
       isLogged: this.checkIfIsLogged(),
     };
   },
@@ -131,6 +133,50 @@ export default {
     this.$bus.$on("logged", () => {
       this.isLogged = this.checkIfIsLogged();
     });
+
+
+    var axios = require('axios').default;
+var config = {
+  method: 'get',
+  url: this.$url+'/profile',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + localStorage.getItem('access-token')
+  },
+};
+
+axios(config)
+.then((res) => {
+
+// console.log(JSON.stringify(res.data));
+// this.myArray.push(res.data);
+// localStorage.setItem('infoUser',JSON.stringify(res.data))          
+// localStorage.setItem('userId', res.data.id);
+// localStorage.setItem('Name', res.data.name);
+// localStorage.setItem('tel', res.data.phone);
+// localStorage.setItem('email', res.data.email);
+// localStorage.setItem('authorized', res.data.authorized)
+// localStorage.setItem("profileImage", res.data.profileImage)
+
+var all = res.data.name;
+      var f =  all.substring(0, all.indexOf(' ')); 
+      var s =  all.substring(all.indexOf(' ') + 1)
+      this.first = f[0];
+      this.second = s[0];
+
+this.currenUser = res.data.id;
+window.onbeforeunload = () => {
+  localStorage.removeItem('isAuth');
+}
+        //localStorage.setItem('refresh-token', refreshtoken);
+        //localStorage.setItem('access-token', accesstoken);
+      })
+.catch(function (error) {
+  console.log(error);
+//  localStorage.clear()
+// window.location.href = "/"
+});
+    
   },
   methods: {
     singout() {
@@ -250,6 +296,8 @@ button#cancel-button:hover {
     width: 2rem;
     margin-top: 1rem;
   }
+
+  
   .social-icons {
     float: right;
     height: 3rem;

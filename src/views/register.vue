@@ -7,7 +7,7 @@
         <div class="imgBx"><img src="@/assets/slide4.png" alt="" /></div>
         <div class="formBx">
             
-            <router-link to="/" class="con" ><img src="@/assets/back.png"/></router-link> 
+            <router-link to="/" class="con" ><img src="@/assets/back.gif"/></router-link> 
           <form action="" onsubmit="return false;">
             <h2>S'identifier</h2>
             <input type="text" name="" placeholder="Username" v-model="useremail"/>
@@ -33,7 +33,7 @@
       
       <div class="user signupBx">
         <div class="formBx">
-            <router-link to="/" class="back"><img  src="@/assets/back.png"/></router-link> 
+            <router-link to="/" class="back"><img  src="@/assets/back.gif"/></router-link> 
           <form action="" onsubmit="return false;">
             <h2>Créer un compte</h2>
             <input type="name" name="" placeholder="Nom et prénom" v-model="name"/>
