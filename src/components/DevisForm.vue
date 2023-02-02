@@ -796,7 +796,7 @@ export default {
 }).then(() => {
           // Go to page after successfully login
           // this.$router.push('/UserAllDevis')
-          // window.location.href="/UserAllDevis"
+          window.location.href="/UserAllDevis"
         });
       })
       .catch( (error) => {

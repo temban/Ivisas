@@ -1114,7 +1114,7 @@ body {
       }
       @include desktop {
         &::before {
-          content: attr(data-title) " :";
+          content: attr(data-title) "";
         }
       }
       @include mobile-xxs {
