@@ -7,7 +7,6 @@
 
 ## Table of Contents
 
-* [Features](#features)
 * [Technologies](#technologies)
 * [Project Setup](#project-setup)
 
