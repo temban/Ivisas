@@ -23,7 +23,7 @@
             </li>
             <li>
               <a  href="https://www.instagram.com/invites/contact/?i=1wt17ccjw3i2v&utm_content=pysezdx" target="_blank"
-                ><img src="@/assets/images/instagram.png" title="google pluse"
+                ><img src="@/assets/images/instagram.png" title="instagram"
               /></a>
             </li>
           </ul>
@@ -198,7 +198,7 @@ window.onbeforeunload = () => {
   console.log(error); 
   Swal.fire(
               "Attention !",
-              "Votre session a expiré, veuillez vous reconnecter.",
+              "Veuillez vous reconnecter!",
               "warning"
             ).then(() => {
               this.singout1();

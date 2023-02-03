@@ -10,8 +10,8 @@
             <router-link to="/" class="con" ><img src="@/assets/back.gif"/></router-link> 
           <form action="" onsubmit="return false;">
             <h2>S'identifier</h2>
-            <input type="text" name="" placeholder="Username" v-model="useremail"/>
-            <input type="password" name="" placeholder="Password"  v-model="password"/>
+            <input type="text" name="" placeholder="E-mail" v-model="useremail"/>
+            <input type="password" name="" placeholder="mot de passe"  v-model="password"/>
 
 
             <button type="button" name="" @click="login()"> S'identifier<div class="spinner-border text-light spinner-border-sm" role="status" v-if="logIn">
@@ -36,11 +36,11 @@
             <router-link to="/" class="back"><img  src="@/assets/back.gif"/></router-link> 
           <form action="" onsubmit="return false;">
             <h2>Créer un compte</h2>
-            <input type="name" name="" placeholder="Nom et prénom" v-model="name"/>
-            <input type="email" name="" placeholder="Adresse e-mail" v-model="useremail"/>
-            <input type="number" name="" placeholder="Numéro de téléphone" v-model="tel"/>
-            <input type="password" name="" placeholder="Créer un mot de passe" v-model="password"/>
-            <input type="password" name="" placeholder="Confirmez le mot de passe" v-model="confirmPassword"/>
+            <input type="name" name="name" placeholder="Nom et prénom" v-model="name"/>
+            <input type="email" name="email" placeholder="Adresse e-mail" v-model="useremail"/>
+            <input type="number" name="tel" placeholder="Numéro de téléphone" v-model="tel"/>
+            <input type="password" name="password" placeholder="Créer un mot de passe" v-model="password"/>
+            <input type="password" name="password" placeholder="Confirmez le mot de passe" v-model="confirmPassword"/>
 
 
             <button type="button" name="" @click="register()"> S'inscrire
