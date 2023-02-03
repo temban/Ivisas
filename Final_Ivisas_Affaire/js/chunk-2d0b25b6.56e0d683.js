@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b25b6"],{2486:function(n,t,e){"use strict";e.r(t);var a=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",[e("h5",[n._v("Your payment is processing...")]),e("div",{staticClass:"text-center"},[e("b-spinner",{staticClass:"my-4",attrs:{variant:"primary",label:"Spinning"}})],1)])},s=[],i={name:"PaymentLoading"},r=i,c=e("2877"),l=Object(c["a"])(r,a,s,!1,null,null,null);t["default"]=l.exports}}]);
-//# sourceMappingURL=chunk-2d0b25b6.56e0d683.js.map
