@@ -29,7 +29,7 @@
                              width: 90px;"
            />
  
-           <span style="font-weight: 700;">{{"N°" + this.id.slice(0, 13)}}</span
+           <span style="font-weight: 700; font-size: 0.7rem;">{{"N°" + this.id.slice(0, 13)}}</span
              >
            </div>
 

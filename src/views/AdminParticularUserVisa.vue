@@ -1180,7 +1180,7 @@ this.visaNature=  response.data.visaNature,
     console.log(error);
     Swal.fire(
                   "Échec !",
-                  "Quelque chose s'est mal passé !",
+                  "Quelque chose s'est mal passé ! Échec du rejet, mauvaise adresse e-mail envoyée dans la demande.",
                   "error"
                 ).then(() => {
                   // Go to page after successfully login

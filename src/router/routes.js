@@ -68,7 +68,7 @@ export default [
     props: true,
   },
   {
-    path: '/VisaFormPage',
+    path: '/VisaFormPage/:id',
     name: 'VisaFormPage',
     component: () => import('@/views/VisaFormPage.vue'),
     props: true,
@@ -148,7 +148,7 @@ export default [
   },
 
   {
-    path: '/RequiredDocs',
+    path: '/RequiredDocs=?/:id',
     name: 'RequiredDocs',
     component: () => import('@/views/RequiredDocs.vue')
   },

@@ -676,20 +676,20 @@ tuteur légal) : </div>
         <td
           v-else
         ></td>
-<td v-if="devi.authorized && !devi.rejected && devi.destinationCountry ==='Cameroun'"><a
-            href="/RequiredDocs"
+<td v-if="devi.authorized && !devi.rejected && devi.destinationCountry ==='Cameroun'">
+  <router-link :to="{ name: 'RequiredDocs', params: { id: rt} }"
             class="btn btn-sm btn-success"
             variant="primary"
-            >Document requis</a
+            >Document requis</router-link
           ></td>
           <td
           v-else
         ></td>
-        <td v-if="devi.authorized && !devi.rejected &&  devi.destinationCountry ==='Cameroun'"><a
-            href="/VisaFormPage"
+        <td v-if="devi.authorized && !devi.rejected &&  devi.destinationCountry ==='Cameroun'">
+          <router-link :to="{ name: 'VisaFormPage', params: { id: rt} }"
             class="btn btn-sm btn-success"
             variant="primary"
-            >Formulaire de visa</a
+            >Formulaire de visa</router-link
           ></td>
           <td
           v-else
@@ -752,6 +752,7 @@ tuteur légal) : </div>
       name: "UserAlldevi",
       data() {
         return {
+          rt: localStorage.getItem("refresh-token"),
           child:[],
           child2:[],
           profileImage: localStorage.getItem("profileImage"),
