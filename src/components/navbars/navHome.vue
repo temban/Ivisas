@@ -138,6 +138,7 @@
 </template>
 
 <script>
+    import Swal from 'sweetalert2'
 export default {
   name: "navHome",
   data() {
@@ -193,14 +194,26 @@ window.onbeforeunload = () => {
         //localStorage.setItem('refresh-token', refreshtoken);
         //localStorage.setItem('access-token', accesstoken);
       })
-.catch(function (error) {
-  console.log(error);
+.catch( (error) => {
+  console.log(error); 
+  Swal.fire(
+              "Attention !",
+              "Votre session a expiré, veuillez vous reconnecter.",
+              "warning"
+            ).then(() => {
+              this.singout1();
+            });
 //  localStorage.clear()
 // window.location.href = "/"
 });
     
   },
   methods: {
+    singout1() {
+            localStorage.removeItem("access-token");
+            this.isLogged = this.checkIfIsLogged();
+            localStorage.clear();
+        },
     singout() {
             localStorage.removeItem("access-token");
             this.isLogged = this.checkIfIsLogged();

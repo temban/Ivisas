@@ -310,7 +310,7 @@ this.loginOn = true;
             
           //window.location.href = "/";
         })
-        .catch(function (error) {
+        .catch( (error) => {
           console.log(error);
           if (error.response.status === 500) {
             Swal.fire("Échec de l'enregistrement !", "L'utilisateur existe déjà !", "error").then(() => {
