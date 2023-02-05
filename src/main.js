@@ -21,7 +21,7 @@ Vue.use(VueHtml2pdf)
 
 
 Vue.prototype.$bus = EventBus;
-Vue.prototype.$url = "http://192.168.16.107:3000"
+Vue.prototype.$url = "https://ivisas-affaires.com:3000"
 
 
 Vue.use(axios);

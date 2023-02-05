@@ -2,6 +2,7 @@
   <div>
  <navHome/>
     <body>
+
       <sliderVue/>
 <listingVue/>
 <testimonialVue/>

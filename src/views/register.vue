@@ -1,113 +1,276 @@
 <template>
-    <div>
-    
-  <section>
-    <div class="container">
-      <div class="user signinBx">
-        <div class="imgBx"><img src="@/assets/slide4.png" alt="" /></div>
-        <div class="formBx">
-            
-            <router-link to="/" class="con" ><img src="@/assets/back.gif"/></router-link> 
-          <form action="" onsubmit="return false;">
-            <h2>S'identifier</h2>
-            <input type="text" name="" placeholder="E-mail" v-model="useremail"/>
-            <input type="password" name="" placeholder="mot de passe"  v-model="password"/>
+  <div>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="imgBx"><img src="@/assets/slide4.png" alt="" /></div>
+          <div class="formBx">
+            <router-link to="/" class="con"
+              ><img src="@/assets/back.gif"
+            /></router-link>
+            <form action="" onsubmit="return false;">
+              <h2>S'identifier</h2>
+              <input
+                type="text"
+                name=""
+                placeholder="E-mail"
+                v-model="useremail"
+              />
+              <input
+              id="loginPassword"
+                type="password"
+                name=""
+                placeholder="mot de passe"
+                v-model="password"
+              />
+              <span
+                  v-if="!state1"
+                  
+                  class="show-pass"
+                  v-on:click="toggle1()"
+                  style="
+                    float: right;
+                    margin-right: 15px;
+                    margin-top: -38px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                >
+<img src="@/assets/eyw.png" class="eye" />                              </span>
+                <span
+                  v-else
+                  class="show-pass"
+                  v-on:click="toggle1()"
+                  style="
+                   float: right;
+                    margin-right: 15px;
+                    margin-top: -43px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                >
+                <img src="@/assets/l-eye.png" class="eye" /> 
+                </span>
 
+              <button type="button" name="" @click="login()">
+                S'identifier
+                <div
+                  class="spinner-border text-light spinner-border-sm"
+                  role="status"
+                  v-if="logIn"
+                >
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </button>
 
-            <button type="button" name="" @click="login()"> S'identifier<div class="spinner-border text-light spinner-border-sm" role="status" v-if="logIn">
-          <span class="sr-only">Loading...</span></div></button>
-
-            <p class="signup">
+              <p class="signup">
                 Vous n'avez pas de compte ?
-          <a href="#" @click="toggleForm()">S'inscrire.</a>
-            </p>
+                <a href="#" @click="toggleForm()">S'inscrire.</a>
+              </p>
 
-            <p class="" style="margin-top:2rem">
-              Mot de passe oublié ?
-          <a href="/ResetPassword">Réinitialiser.</a>
-            </p>
-          </form>
+              <p class="" style="margin-top: 2rem">
+                Mot de passe oublié ?
+                <a href="/ResetPassword">Réinitialiser.</a>
+              </p>
+            </form>
+          </div>
         </div>
-      </div>
 
-      
-      <div class="user signupBx">
-        <div class="formBx">
-            <router-link to="/" class="back"><img  src="@/assets/back.gif"/></router-link> 
-          <form action="" onsubmit="return false;">
-            <h2>Créer un compte</h2>
-            <input type="name" name="name" placeholder="Nom et prénom" v-model="name"/>
-            <input type="email" name="email" placeholder="Adresse e-mail" v-model="useremail"/>
-            <input type="number" name="tel" placeholder="Numéro de téléphone" v-model="tel"/>
-            <input type="password" name="password" placeholder="Créer un mot de passe" v-model="password"/>
-            <input type="password" name="password" placeholder="Confirmez le mot de passe" v-model="confirmPassword"/>
+        <div class="user signupBx">
+          <div class="formBx">
+            <router-link to="/" class="back"
+              ><img src="@/assets/back.gif"
+            /></router-link>
+            <form action="" onsubmit="return false;">
+              <h2>Créer un compte</h2>
+              <input
+                type="name"
+                name="name"
+                placeholder="Nom et prénom"
+                v-model="name"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Adresse e-mail"
+                v-model="useremail"
+              />
+              <input
+                type="number"
+                name="tel"
+                placeholder="Numéro de téléphone"
+                v-model="tel"
+              />
+              <input
+              id="RegPassword"
+                type="password"
+                name="password"
+                placeholder="Créer un mot de passe"
+                v-model="password"
+              />
+              <span
+                  v-if="!state2"
+                  
+                  class="show-pass"
+                  v-on:click="toggle2()"
+                  style="
+                    float: right;
+                    margin-right: 15px;
+                    margin-top: -38px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                >
+<img src="@/assets/eyw.png" class="eye" />                              </span>
+                <span
+                  v-else
+                  class="show-pass"
+                  v-on:click="toggle2()"
+                  style="
+                   float: right;
+                    margin-right: 15px;
+                    margin-top: -43px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                >
+                <img src="@/assets/l-eye.png" class="eye" /> 
+                </span>
+              <input
+              id="conRegPassword"
+                type="password"
+                name="password"
+                placeholder="Confirmez le mot de passe"
+                v-model="confirmPassword"
+              />
+              <span
+                  v-if="!state3"
+                  
+                  class="show-pass"
+                  v-on:click="toggle3()"
+                  style="
+                    float: right; 
+                    margin-right: 15px;
+                    margin-top: -38px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                >
+<img src="@/assets/eyw.png" class="eye" />                              </span>
+                <span
+                  v-else
+                  class="show-pass"
+                  v-on:click="toggle3()"
+                  style="
+                   float: right;
+                    margin-right: 15px;
+                    margin-top: -43px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                >
+                <img src="@/assets/l-eye.png" class="eye" /> 
+                </span>
+              <button type="button" name="" @click="register()">
+                S'inscrire
+                <div
+                  class="spinner-border text-light spinner-border-sm"
+                  role="status"
+                  v-if="loginOn"
+                >
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </button>
 
-
-            <button type="button" name="" @click="register()"> S'inscrire
-              <div class="spinner-border text-light spinner-border-sm" role="status" v-if="loginOn">
-          <span class="sr-only">Loading...</span></div></button>
-
-            <p class="signup">
+              <p class="signup">
                 Vous avez déjà un compte ?
-              <a href="#" @click="toggleForm()">S'identifier.</a>
-            </p>
-          </form>
+                <a href="#" @click="toggleForm()">S'identifier.</a>
+              </p>
+            </form>
+          </div>
+          <div class="imgBx"><img src="@/assets/img/about.png" alt="" /></div>
         </div>
-        <div class="imgBx"><img src="@/assets/img/about.png" alt="" /></div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+</template>
 
-    </div>
-    </template>
-    
-    <script>
-import Swal from 'sweetalert2'
-    export default {
-      name: "Admin",
-      data() {
-        return {
-            name:"",
-            tel:"",
-            useremail:"",
-            password:"",
-            confirmPassword:"",
-            loginOn:false,
-            logIn:false,
-            $url:  this.$url,
-        };
-      },
-      watch: {},
-      created() {
-        
-       console.log(this.$url)
+<script>
+import Swal from "sweetalert2";
+export default {
+  name: "Admin",
+  data() {
+    return {
+      name: "",
+      tel: "",
+      useremail: "",
+      password: "",
+      confirmPassword: "",
+      loginOn: false,
+      logIn: false,
+      state2: false,
+      state1:false,
+      state3:false,
+      $url: this.$url,
+    };
+  },
+  watch: {},
+  created() {
+    console.log(this.$url);
+  },
+  methods: {
+    toggle1() {
+      if (this.state1) {
+        document.getElementById("loginPassword").setAttribute("type", "password");
+        this.state1 = false;
+      } else {
+        document.getElementById("loginPassword").setAttribute("type", "text");
+        this.state1 = true;
+      }
+    },
 
+    toggle2() {
+      if (this.state2) {
+        document.getElementById("RegPassword").setAttribute("type", "password");
+        this.state2 = false;
+      } else {
+        document.getElementById("RegPassword").setAttribute("type", "text");
+        this.state2 = true;
+      }
+    },
+    toggle3() {
+      if (this.state3) {
+        document.getElementById("conRegPassword").setAttribute("type", "password");
+        this.state3 = false;
+      } else {
+        document.getElementById("conRegPassword").setAttribute("type", "text");
+        this.state3 = true;
+      }
+    },
+    toggleForm() {
+      const container = document.querySelector(".container");
+      container.classList.toggle("active");
+    },
 
-      },
-      methods: {
-
-         toggleForm (){
-  const container = document.querySelector('.container');
-  container.classList.toggle('active');
-}, 
-
-
-login(){
-if( this.usermail==='' || this.password==='' || this.usermail==="ivisas.affaire@gmail.com") {
+    login() {
+      if (
+        this.usermail === "" ||
+        this.password === "" ||
+        this.usermail === "ivisas.affaire@gmail.com"
+      ) {
         Swal.fire({
           icon: "warning",
-   title: 'Attention',
-   text: 'vous devez remplir toutes les champs',
-   type: 'warning',
-})
- }else{
-    this.logIn = true;
-    let profile =()=>{
-      
-    var axios = require('axios').default;
-    var config0 = { 
+          title: "Attention",
+          text: "vous devez remplir toutes les champs",
+          type: "warning",
+        });
+      } else {
+        this.logIn = true;
+        let profile = () => {
+          var axios = require("axios").default;
+          var config0 = {
             method: "get",
-            url: this.$url+'/profile',
+            url: this.$url + "/profile",
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + localStorage.getItem("access-token"),
@@ -128,235 +291,255 @@ if( this.usermail==='' || this.password==='' || this.usermail==="ivisas.affaire@
             .catch(function (error) {
               console.log(error);
             });
+        };
 
+        var axios = require("axios").default;
 
+        var qs = require("qs");
+        var data = qs.stringify({
+          useremail: this.useremail,
+          password: this.password,
+        });
+        var config = {
+          method: "post",
+          url: this.$url + "/login",
+          data: data,
+        };
+
+        axios(config)
+          .then((response) => {
+            if (response.status === 200) {
+              const temp = response.data;
+              const refreshtoken = Object.values(temp)[0];
+              const accesstoken = Object.values(temp)[1];
+              localStorage.setItem("refresh-token", refreshtoken);
+              localStorage.setItem("access-token", accesstoken);
+              this.$bus.$emit("logged", "User logged");
+              profile();
+            }
+          })
+          .catch(function (error) {
+            if (error.response.status === 500) {
+              Swal.fire(
+                "Échec de la connexion!",
+                "Veuillez vérifier vos informations d'identification !",
+                "error"
+              ).then(() => {
+                // Go to page after successfully login
+                window.location.reload();
+              });
+            }
+            if (error.response.status === 401) {
+              Swal.fire(
+                "Échec de la connexion !",
+                "L'utilisateur n'existe pas !",
+                "error"
+              ).then(() => {
+                // Go to page after successfully login
+                window.location.reload();
+              });
+            }
+            if (error.response.status === 404) {
+              Swal.fire(
+                "Échec !",
+                "Quelque chose s'est mal passé !",
+                "error"
+              ).then(() => {
+                // Go to page after successfully login
+                window.location.reload();
+              });
+            }
+            console.log(error);
+          });
       }
+    },
 
-      var axios = require("axios").default;
-
-      var qs = require("qs");
-      var data = qs.stringify({
-        useremail: this.useremail,
-        password: this.password,
-      });
-      var config = {
-        method: "post",
-        url: this.$url+"/login",
-        data: data,
-      };
-
-      axios(config)
-        .then((response) => {
-          if (response.status === 200) {
-
-            const temp = response.data;
-          const refreshtoken = Object.values(temp)[0];
-          const accesstoken = Object.values(temp)[1];
-          localStorage.setItem("refresh-token", refreshtoken);
-          localStorage.setItem("access-token", accesstoken);
-          this.$bus.$emit("logged", "User logged"); 
-          profile();
-          }
-         
-
-        })
-        .catch(function (error) {
-          if (error.response.status === 500) {
-            Swal.fire(
-              "Échec de la connexion!",
-              "Veuillez vérifier vos informations d'identification !",
-              "error"
-            ).then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          if (error.response.status === 401) {
-            Swal.fire("Échec de la connexion !", "L'utilisateur n'existe pas !", "error").then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          if (error.response.status === 404) {
-            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          console.log(error);
-        });
-
- }
-
-},
-
-register(){
-    if(this.password != this.confirmPassword){
+    register() {
+      if (this.password != this.confirmPassword) {
         Swal.fire({
-            icon: "warning",
-   title: 'Attention',
-   text: "Le mot de passe ne correspond pas",
-   type: 'warning',
-})
-    }else if( this.name==='' || this.tel==='' || this.usermail==='' || this.password==='' || this.confirmPassword==='' || this.usermail==="ivisas.affaire@gmail.com") {
+          icon: "warning",
+          title: "Attention",
+          text: "Le mot de passe ne correspond pas",
+          type: "warning",
+        });
+      } else if (
+        this.name === "" ||
+        this.tel === "" ||
+        this.usermail === "" ||
+        this.password === "" ||
+        this.confirmPassword === "" ||
+        this.usermail === "ivisas.affaire@gmail.com"
+      ) {
         Swal.fire({
-            icon: "warning",
-   title: 'Attention',
-   text: 'vous devez remplir toutes les champs',
-   type: 'warning',
-})
-    }else{
-this.loginOn = true;
-      let onLogin =()=>{
-      var axios = require("axios").default;
+          icon: "warning",
+          title: "Attention",
+          text: "vous devez remplir toutes les champs",
+          type: "warning",
+        });
+      } else {
+        this.loginOn = true;
+        let onLogin = () => {
+          var axios = require("axios").default;
 
-      var qs = require("qs");
-      var data = qs.stringify({
-        useremail: this.useremail,
-        password: this.password,
-      });
-      var config = {
-        method: "post",
-        url: this.$url+"/login",
-        data: data,
-      };
-
-      axios(config)
-        .then((response) => {
-          const temp = response.data;
-          const refreshtoken = Object.values(temp)[0];
-          const accesstoken = Object.values(temp)[1];
-          localStorage.setItem("refresh-token", refreshtoken);
-          localStorage.setItem("access-token", accesstoken);
-
-          var config0 = { 
-            method: "get",
-            url: this.$url+'/profile',
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access-token"),
-            },
+          var qs = require("qs");
+          var data = qs.stringify({
+            useremail: this.useremail,
+            password: this.password,
+          });
+          var config = {
+            method: "post",
+            url: this.$url + "/login",
+            data: data,
           };
 
-          axios(config0)
-            .then((res) => {
-              let a = res.data;
-              if (a.email == "ivisas.affaire@gmail.com") {
-                window.location.href = "/AdminDashboard";
-              } else {
-                console.log(a);
-                window.location.href = "/";
-                //window.location.reload()
-              }
+          axios(config)
+            .then((response) => {
+              const temp = response.data;
+              const refreshtoken = Object.values(temp)[0];
+              const accesstoken = Object.values(temp)[1];
+              localStorage.setItem("refresh-token", refreshtoken);
+              localStorage.setItem("access-token", accesstoken);
+
+              var config0 = {
+                method: "get",
+                url: this.$url + "/profile",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization:
+                    "Bearer " + localStorage.getItem("access-token"),
+                },
+              };
+
+              axios(config0)
+                .then((res) => {
+                  let a = res.data;
+                  if (a.email == "ivisas.affaire@gmail.com") {
+                    window.location.href = "/AdminDashboard";
+                  } else {
+                    console.log(a);
+                    window.location.href = "/";
+                    //window.location.reload()
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+              this.$bus.$emit("logged", "User logged");
             })
             .catch(function (error) {
+              if (error.response.status === 500) {
+                Swal.fire(
+                  "Échec de la connexion!",
+                  "Veuillez vérifier vos informations d'identification !",
+                  "error"
+                ).then(() => {
+                  // Go to page after successfully login
+                  window.location.reload();
+                });
+              }
+              if (error.response.status === 401) {
+                Swal.fire(
+                  "Échec de la connexion !",
+                  "L'utilisateur n'existe pas !",
+                  "error"
+                ).then(() => {
+                  // Go to page after successfully login
+                  window.location.reload();
+                });
+              }
+              if (error.response.status === 404) {
+                Swal.fire(
+                  "Échec !",
+                  "Quelque chose s'est mal passé !",
+                  "error"
+                ).then(() => {
+                  // Go to page after successfully login
+                  window.location.reload();
+                });
+              }
               console.log(error);
             });
-          this.$bus.$emit("logged", "User logged");
-        })
-        .catch(function (error) {
-          if (error.response.status === 500) {
-            Swal.fire(
-              "Échec de la connexion!",
-              "Veuillez vérifier vos informations d'identification !",
-              "error"
-            ).then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          if (error.response.status === 401) {
-            Swal.fire("Échec de la connexion !", "L'utilisateur n'existe pas !", "error").then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          if (error.response.status === 404) {
-            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          console.log(error);
-        }); 
-      }
+        };
 
-      var axios = require("axios").default;
-      var data = JSON.stringify({
-        "name": this.name,
-        "phone": this.tel,
-        "email": this.useremail,
-        "password": this.password,
-      });
+        var axios = require("axios").default;
+        var data = JSON.stringify({
+          name: this.name,
+          phone: this.tel,
+          email: this.useremail,
+          password: this.password,
+        });
 
-      var config = {
-        method: "post",
-        url: this.$url+"/signup",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
+        var config = {
+          method: "post",
+          url: this.$url + "/signup",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: data,
+        };
 
-      axios(config)
-        .then(function (response) {
-               if (response.status === 200) {
-            onLogin();
-          }
+        axios(config)
+          .then(function (response) {
+            if (response.status === 200) {
+              onLogin();
+            }
             this.loading = false;
-           this.load = true;
-          console.log(JSON.stringify(response));
-          
-            
-          //window.location.href = "/";
-        })
-        .catch( (error) => {
-          console.log(error);
-          if (error.response.status === 500) {
-            Swal.fire("Échec de l'enregistrement !", "L'utilisateur existe déjà !", "error").then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-          if (error.response.status === 404) {
-            Swal.fire("Échec !", "Quelque chose s'est mal passé !", "error").then(() => {
-          // Go to page after successfully login
-          window.location.reload();
-        });
-          }
-        });
-        
+            this.load = true;
+            console.log(JSON.stringify(response));
 
+            //window.location.href = "/";
+          })
+          .catch((error) => {
+            console.log(error);
+            if (error.response.status === 500) {
+              Swal.fire(
+                "Échec de l'enregistrement !",
+                "L'utilisateur existe déjà !",
+                "error"
+              ).then(() => {
+                // Go to page after successfully login
+                window.location.reload();
+              });
+            }
+            if (error.response.status === 404) {
+              Swal.fire(
+                "Échec !",
+                "Quelque chose s'est mal passé !",
+                "error"
+              ).then(() => {
+                // Go to page after successfully login
+                window.location.reload();
+              });
+            }
+          });
+      }
+    },
+  },
+};
+</script>
 
-}
-    }
-
-      },
-    };
-    </script>
-    
-    <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
+<style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.con{
-    width: 3rem;
-    cursor: pointer;
-    position: relative;
-    margin-top: -27rem;
-    margin-left: -2rem;
+.con {
+  width: 3rem;
+  cursor: pointer;
+  position: relative;
+  margin-top: -27rem;
+  margin-left: -2rem;
 }
-.back{
-    width: 6rem;
-    cursor: pointer;
-    position: relative;
-    margin-top: -27rem;
-    margin-left: -2rem;
+.back {
+  width: 6rem;
+  cursor: pointer;
+  position: relative;
+  margin-top: -27rem;
+  margin-left: -2rem;
 }
 section {
   position: relative;
@@ -369,7 +552,7 @@ section {
 
 section .container {
   position: relative;
-  max-width:69%;
+  max-width: 69%;
   height: 500px;
   background: #fff;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
@@ -440,7 +623,11 @@ section .container .user .formBx form input {
   font-weight: 300;
 }
 
-section button{
+.eye{
+  max-width:3rem;
+  width:100%;
+}
+section button {
   position: relative;
   width: 100%;
   padding: 10px;
@@ -456,8 +643,8 @@ section button{
   font-weight: 300;
 }
 
-section .container .user .formBx form input[type='submit'] {
-    max-width: 100px;
+section .container .user .formBx form input[type="submit"] {
+  max-width: 100px;
   background: #677eff;
   color: #fff;
   cursor: pointer;
@@ -470,7 +657,7 @@ section .container .user .formBx form input[type='submit'] {
 section .container .user .formBx form .signup {
   position: relative;
   margin-top: 20px;
-  font-size: 12px;
+  fdont-size: 12px;
   letter-spacing: 1px;
   color: #555;
   text-transform: uppercase;
@@ -535,21 +722,19 @@ section .container.active .signinBx .imgBx {
   section .container .user .formBx {
     width: 100%;
   }
-  .back{
+  .back {
     width: 15.5rem;
     cursor: pointer;
     position: relative;
     margin-top: -27rem;
     margin-left: -2rem;
-}
-.con{
+  }
+  .con {
     width: 6.5rem;
     cursor: pointer;
     position: relative;
     margin-top: -27rem;
     margin-left: -2rem;
+  }
 }
-}
-
-    </style>
-    
+</style>

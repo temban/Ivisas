@@ -48,9 +48,7 @@
           <div class="clear"></div>
         </div>
       </div>
-      <div class="copy-right">
-        <p>Design by <a href="http://w3layouts.com/"> MbahgiMets-group</a></p>
-      </div>
+  
 </div>
 </template>
 

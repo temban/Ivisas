@@ -46,7 +46,7 @@
           "
         >
           <h3 style="font-size: 2rem; font-weight: 700">
-            Obtenez votre visa en un click!!
+            Obtenez votre visa en un clic.
           </h3>
           <p style="font-size: 1.1rem; color: black">
             Specialiste de la gestion de vos voyages, nous sommes là pour vous
